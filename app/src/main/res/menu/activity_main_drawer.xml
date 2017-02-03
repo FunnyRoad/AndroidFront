@@ -8,12 +8,21 @@
             android:icon="@drawable/ic_menu_road_trip"
             android:title="Road Trips" />
         <item
+            android:id="@+id/nav_photos"
+            android:icon="@drawable/ic_menu_photos"
+            android:title="Photos" />
+        <item
+            android:id="@+id/nav_lieux"
+            android:icon="@drawable/ic_menu_lieux"
+            android:title="Lieux" />
+        <item
             android:id="@+id/nav_profil"
             android:icon="@drawable/ic_menu_profil"
             android:title="Profil" />
+        <item
+            android:id="@+id/nav_urgence"
+            android:icon="@drawable/ic_menu_urgence"
+            android:title="Urgence" />
     </group>
-
-    <item android:title="To Be Continued">
-    </item>
 
 </menu>

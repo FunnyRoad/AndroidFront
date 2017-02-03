@@ -15,7 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+
+import com.example.oraberkane.appliplatine.lieu.view.LieuxFragment;
+import com.example.oraberkane.appliplatine.photos.view.PhotosFragment;
+import com.example.oraberkane.appliplatine.profil.view.ProfilFragment;
+import com.example.oraberkane.appliplatine.roadtrip.view.RoadTripFragment;
+import com.example.oraberkane.appliplatine.urgence.view.UrgenceFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,15 +35,6 @@ public class MainActivity extends AppCompatActivity
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -104,6 +100,12 @@ public class MainActivity extends AppCompatActivity
             fragment = new RoadTripFragment();
         } else if (id == R.id.nav_profil) {
             fragment = new ProfilFragment();
+        } else if (id == R.id.nav_urgence) {
+            fragment = new UrgenceFragment();
+        } else if (id == R.id.nav_photos) {
+            fragment = new PhotosFragment();
+        } else if (id == R.id.nav_lieux) {
+            fragment = new LieuxFragment();
         }
             if (fragment != null) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
