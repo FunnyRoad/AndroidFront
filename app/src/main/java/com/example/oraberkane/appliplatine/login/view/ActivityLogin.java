@@ -10,20 +10,19 @@ import com.example.oraberkane.appliplatine.common.LayoutCommonActivity;
  * Created by oraberkane on 01/02/2017.
  */
 
-public class LoginActivity extends LayoutCommonActivity {
-
+public class ActivityLogin extends LayoutCommonActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LoginFragment mLoginFragment = new LoginFragment();
+        FragmentLogin mLoginFragment = new FragmentLogin();
 
         //desactiver la toolbar
         mToolbar.setVisibility(View.GONE);
 
         getSupportFragmentManager()//appel fragment manager jva
                 .beginTransaction()
-                //.add(R.id.container_fragment, mLoginFragment)
+                .add(R.id.container_fragment, mLoginFragment)
                 .commit();
     }
 
