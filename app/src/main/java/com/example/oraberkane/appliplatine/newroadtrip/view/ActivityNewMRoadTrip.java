@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.example.oraberkane.appliplatine.R;
 import com.example.oraberkane.appliplatine.common.LayoutCommonActivity;
-import com.example.oraberkane.appliplatine.newroadtrip.filtreroadtrip.view.FiltreRoadTripFragment;
-import com.example.oraberkane.appliplatine.newroadtrip.listroad.view.ListRoadFragment;
+import com.example.oraberkane.appliplatine.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
+import com.example.oraberkane.appliplatine.newroadtrip.listroadtrip.view.ListRoadFragment;
 
 import butterknife.BindView;
 
@@ -18,7 +18,7 @@ import butterknife.BindView;
  * Created by oraberkane on 03/02/2017.
  */
 
-public class NewMRoadTripActivity extends LayoutCommonActivity {
+public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
@@ -44,6 +44,7 @@ public class NewMRoadTripActivity extends LayoutCommonActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText("Liste"));
         tabLayout.addTab(tabLayout.newTab().setText("Filtre"));
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final PagerAdapter adapter = new PagerAdapter

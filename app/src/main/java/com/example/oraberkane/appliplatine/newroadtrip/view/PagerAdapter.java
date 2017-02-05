@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.oraberkane.appliplatine.newroadtrip.filtreroadtrip.view.FiltreRoadTripFragment;
-import com.example.oraberkane.appliplatine.newroadtrip.listroad.view.ListRoadFragment;
+import com.example.oraberkane.appliplatine.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
+import com.example.oraberkane.appliplatine.newroadtrip.listroadtrip.view.ListRoadFragment;
 
 /**
  * Created by oraberkane on 03/02/2017.

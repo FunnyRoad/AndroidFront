@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -16,9 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
-import com.example.oraberkane.appliplatine.newroadtrip.view.NewMRoadTripActivity;
+import com.example.oraberkane.appliplatine.googlemap.view.ActivityNewRoaTripRouteChoice;
+import com.example.oraberkane.appliplatine.googlemap.view.FragmentRouteChoice;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                   //      .setAction("Action", null).show();
-                Intent intent = new Intent(MainActivity.this, NewMRoadTripActivity.class);
+                Intent intent = new Intent(MainActivity.this, ActivityNewRoaTripRouteChoice.class);
                 startActivity(intent);
             }
         });
