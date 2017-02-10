@@ -13,20 +13,35 @@ import butterknife.ButterKnife;
  * Created by oraberkane on 01/02/2017.
  */
 
-public class LayoutCommonActivity extends AppCompatActivity {
+public abstract class LayoutCommonActivity extends AppCompatActivity {
 
     //public Toolbar toolbar;
     @BindView(R.id.toolbar)
     public Toolbar mToolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_common_activity);
+        setContentView(R.layout.activity_layout_common);
 
-      //  toolbar = (Toolbar) findViewById(R.id.toolbar);
         ButterKnife.bind(this);//relié à LayoutCommonActivity
         ButterKnife.bind(mToolbar);//pour y acceder depuis les autres activity (qui etendent LayoutCommonActivity )
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
 }

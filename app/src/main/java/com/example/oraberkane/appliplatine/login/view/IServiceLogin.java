@@ -18,7 +18,5 @@ public interface IServiceLogin {
 
     public void isLoginSuccess();
 
-    public void errorPassword();
-
 
 }
