@@ -1,5 +1,6 @@
 package com.example.oraberkane.appliplatine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.oraberkane.appliplatine.googlemap.view.ActivityNewRoaTripRouteChoice;
 import com.example.oraberkane.appliplatine.lieu.view.LieuxFragment;
 import com.example.oraberkane.appliplatine.photos.view.PhotosFragment;
 import com.example.oraberkane.appliplatine.profil.view.ProfilFragment;
@@ -54,25 +56,6 @@ public class MainActivity extends AppCompatActivity
 
 
         navigationView.setNavigationItemSelectedListener(this);
-        
-        
-        
-        
-        
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
-                Intent intent = new Intent(MainActivity.this, ActivityNewRoaTripRouteChoice.class);
-                startActivity(intent);
-            }
-        });
-
-        
-        
-        
     }
 
     @Override
