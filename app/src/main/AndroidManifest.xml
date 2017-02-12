@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.oraberkane.appliplatine">
+    package="com.project.application.funnyroad">
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-        <activity android:name=".login.view.ActivityLogin">
+        <activity android:name="com.project.application.funnyroad.login.view.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,22 +41,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".register.view.ActivityRegister">
+        <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
             </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.project.application.funnyroad.MainActivity">
         </activity>
 
-        <activity android:name=".newroadtrip.view.ActivityNewMRoadTrip">
+        <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
         </activity>
 
-        <activity android:name=".googlemap.view.ActivityNewRoaTripRouteChoice">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice">
         </activity>
 
-        <activity android:name=".googlemap.view.googleMapActivity">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
         </activity>
 
-        <activity android:name=".detailroadtrip.view.DetailsRoadTripActivity">
+        <activity android:name="com.project.application.funnyroad.detailroadtrip.view.DetailsRoadTripActivity">
         </activity>
 
 
