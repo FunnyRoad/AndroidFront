@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.detailroadtrip.presenter;
+package com.project.application.funnyroad.detailroadtripnew.presenter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

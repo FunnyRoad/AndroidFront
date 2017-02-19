@@ -21,11 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-
-       <!-- <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAXhBdyKxUo_cb-EkSgWJQTdqR0QjLcqes" />
-        -->
+        <!-- <meta-data
+             android:name="com.google.android.geo.API_KEY"
+             android:value="AIzaSyAXhBdyKxUo_cb-EkSgWJQTdqR0QjLcqes" />
+         -->
         <!-- google maps v2 et la clé -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -33,7 +32,7 @@
 
 
 
-        <activity android:name="com.project.application.funnyroad.login.view.ActivityLogin">
+        <activity android:name="com.project.application.funnyroad.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,10 +41,9 @@
         </activity>
 
         <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
-            </activity>
-
-        <activity android:name="com.project.application.funnyroad.MainActivity">
         </activity>
+
+
 
         <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
         </activity>
@@ -53,13 +51,14 @@
         <activity android:name="com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice">
         </activity>
 
-        <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
-        </activity>
+        <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
+         </activity>   -->
 
-        <activity android:name="com.project.application.funnyroad.detailroadtrip.view.DetailsRoadTripActivity">
-        </activity>
+        <activity android:name=".addplace.view.view.AddPlaceActivity"></activity>
+        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
 
 
+        <activity android:name=".allroads.view.AllRoadTripActivity"></activity>
 
     </application>
 

@@ -10,7 +10,8 @@ import android.view.View;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
-import com.project.application.funnyroad.newroadtrip.listroadtrip.view.ListRoadFragment;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
 import butterknife.BindView;
 
@@ -35,15 +36,24 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
         ListRoadFragment mListRoadFragment = new ListRoadFragment();
         FiltreRoadTripFragment filtreRoadFragment = new FiltreRoadTripFragment();
+        VisualRoadTripFragment visualRoadTripFragment = new VisualRoadTripFragment();
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            visualRoadTripFragment.setArguments(bundle);
+
+        }
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.container_fragment, mListRoadFragment)
                 .add(R.id.container_fragment, filtreRoadFragment)
+                .add(R.id.container_fragment , visualRoadTripFragment )
                 .commit();
 
         tabLayout.addTab(tabLayout.newTab().setText("Liste"));
         tabLayout.addTab(tabLayout.newTab().setText("Filtre"));
+        tabLayout.addTab(tabLayout.newTab().setText("Visual"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -67,6 +77,10 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
             }
         });
+
+        if(bundle != null){
+            viewPager.setCurrentItem(3);
+        }
     }
 
     @Override

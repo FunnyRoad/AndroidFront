@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_menu_road_trip"
+        app:srcCompat="@android:drawable/presence_busy"
         android:id="@+id/imageView_photo" />
 
     <TextView
