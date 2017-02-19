@@ -17,4 +17,17 @@
         android:id="@+id/content_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/content_frame"
+        android:layout_toEndOf="@+id/content_frame"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="51dp"
+        android:id="@+id/ButtonAllRoads" />
+
 </RelativeLayout>

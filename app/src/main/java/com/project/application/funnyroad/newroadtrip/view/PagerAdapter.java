@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
-import com.project.application.funnyroad.newroadtrip.listroadtrip.view.ListRoadFragment;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
 /**

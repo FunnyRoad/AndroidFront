@@ -48,7 +48,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private String editDepart;
         private String editArrivee;
         private String[] listCities;
-        private Endroit[] listEndroit;
+        private ArrayList<Endroit> listEndroit;
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
         /*******************************************************/
@@ -75,7 +75,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
 
         }
 
-        public ItineraireTask(final Context context, final GoogleMap gMap, Endroit[] listEndroit) {
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Endroit> listEndroit) {
             this.context = context;
             this.gMap= gMap;
             this.listEndroit = listEndroit;
@@ -99,10 +99,9 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 //Construction de l'url à appeler
                 final StringBuilder url = new StringBuilder("http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr");
                 url.append("&origin=");
-                url.append(this.listEndroit[0].getLatitude()+","+this.listEndroit[0].getLongitude());
-                //url.append("Lille".replace(' ', '+'));
+                url.append(this.listEndroit.get(0).getLatitude()+","+this.listEndroit.get(0).getLongitude());
                 url.append("&destination=");
-                url.append(this.listEndroit[1].getLatitude()+","+this.listEndroit[1].getLongitude());
+                url.append(this.listEndroit.get(1).getLatitude()+","+this.listEndroit.get(1).getLongitude());
                 //url.append("marseille".replace(' ', '+'));
                 /*url.append("&waypoints=");
                 for(String s : listCities) {
@@ -126,30 +125,31 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 //On récupère d'abord le status de la requête
                 final String status = document.getElementsByTagName("status").item(0).getTextContent();
                 if(!"OK".equals(status)) {
+
                     return false;
                 }
 
+                Log.d("TAG", "doInBackground: avant boucle for");
                 final Element elementRoute = (Element) document.getElementsByTagName("route").item(0);
                 final NodeList nodeListLeg = elementRoute.getElementsByTagName("leg");
                 for(int j = 0 ; j < nodeListLeg.getLength() ; j++){
+                    Log.d("TAG", "doInBackground: "+nodeListLeg.item(j));
                     //On récupère les steps
                     final Element elementLeg = (Element) document.getElementsByTagName("leg").item(j);
-                    Log.d("tag", "leg2: " + document.getElementsByTagName("leg").item(1));
                     final NodeList nodeListStep = elementLeg.getElementsByTagName("step");
                     final int length = nodeListStep.getLength();
-
                     for(int i=0; i<length; i++) {
+                        Log.d("TAG", "doInBackground: "+ nodeListStep.item(i));
                         final Node nodeStep = nodeListStep.item(i);
                         if(nodeStep.getNodeType() == Node.ELEMENT_NODE) {
                             final Element elementStep = (Element) nodeStep;
                             //On décode les points du XML
-                            Log.d("tag", "point1: " + elementStep.getElementsByTagName("points").item(0).getTextContent());
                             //Log.d("tag", "point2: " + elementStep.getElementsByTagName("points").item(1).getTextContent());
                             decodePolylines(elementStep.getElementsByTagName("points").item(0).getTextContent());
                         }
                     }
                 }
-
+                Log.d("TAG", "doInBackground: fini" );
                 return true;
             }
             catch(final Exception e) {
@@ -201,6 +201,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 Toast.makeText(context, TOAST_ERR_MAJ, Toast.LENGTH_SHORT).show();
             }
             else {
+                Log.d("TAG", "onPostExecute: debut");
                 //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
                 final PolylineOptions polylines = new PolylineOptions();
                 polylines.color(Color.BLUE);
@@ -233,6 +234,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 gMap.addMarker(markerA);
                 gMap.addPolyline(polylines);
                 gMap.addMarker(markerB);
+                Log.d("TAG", "onPostExecute: fini");
                 /*gMap.addPolyline(polylines);
                 gMap.addMarker(markerB);*/
             }
