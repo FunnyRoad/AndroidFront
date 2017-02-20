@@ -10,16 +10,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice;
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
-import com.project.application.funnyroad.newroadtrip.listroadtrip.view.ListRoadFragment;
-import com.project.application.funnyroad.newroadtrip.view.*;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,7 +66,7 @@ public class RoadTripFragment extends Fragment {
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final com.project.application.funnyroad.roadtrip.view.PagerAdapter adapter = new com.project.application.funnyroad.roadtrip.view.PagerAdapter
+        final PagerAdapter adapter = new PagerAdapter
                 (getChildFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

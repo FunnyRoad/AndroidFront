@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.ListRoadFragment;
+import com.project.application.funnyroad.roadtrip.view.LesRecommandesFragment;
+import com.project.application.funnyroad.roadtrip.view.LesRoadTripsFragment;
 
 /**
  * Created by sameur on 12/02/2017.
