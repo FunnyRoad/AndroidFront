@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.detailroadtrip.presenter;
+package com.project.application.funnyroad.detailroadtripnew.presenter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Endroit;
+import com.project.application.funnyroad.detailroadtrip.modele.Place;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTripAdapter.MyViewHolder> {
 
-    private List<Endroit> tripsList;
+    private List<Place> tripsList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -51,7 +51,7 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
     }
 
 
-    public DetailsRoadTripAdapter(List<Endroit> tripsList) {
+    public DetailsRoadTripAdapter(List<Place> tripsList) {
         this.tripsList = tripsList;
     }
 
@@ -66,8 +66,8 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
     // remplir les champs d'un item de la recyclerView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        Endroit trip = tripsList.get(position);
-        holder.photo.setImageBitmap(trip.getPhoto());
+        Place place = tripsList.get(position);
+        holder.photo.setImageBitmap(place.getPhoto());
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
  * Created by oraberkane on 04/02/2017.
  */
 
-public class Endroit {
+public class Place {
 
 
     Bitmap photo;

@@ -5,25 +5,30 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <Button
-        android:text="Button"
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_weight="0.11" />
+        app:srcCompat="@mipmap/ic_ambulance"
+        android:id="@+id/imageButton"
+        android:scaleType="centerCrop" />
 
-    <Button
-        android:text="Button"
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_weight="0.11"
-        android:background="@drawable/ic_ambulance"/>
+        app:srcCompat="@mipmap/ic_pompiers"
+        android:id="@+id/imageButton2"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
 
-    <Button
-        android:text="Button"
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:layout_weight="0.11" />
+        app:srcCompat="@mipmap/ic_police"
+        android:id="@+id/imageButton3"
+        android:elevation="0dp"
+        style="@android:style/Widget.ImageButton"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
 </LinearLayout>

@@ -1,3 +1,4 @@
+/*
 package com.project.application.funnyroad.detailroadtrip.view;
 
 import android.graphics.Bitmap;
@@ -12,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.detailroadtrip.modele.Endroit;
-import com.project.application.funnyroad.detailroadtrip.presenter.DetailsRoadTripAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by oraberkane on 04/02/2017.
- */
 
 public class DetailsRoadTripFragment extends Fragment {
 
@@ -59,3 +56,4 @@ public class DetailsRoadTripFragment extends Fragment {
     }
 
 }
+*/

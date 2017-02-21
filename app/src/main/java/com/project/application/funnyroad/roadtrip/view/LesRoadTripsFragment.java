@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by sameur on 12/02/2017.
  */
 
-public class LesRoadTripsFragment extends Fragment {
+public class  LesRoadTripsFragment extends Fragment {
 
     @BindView(R.id.roadtrips_recyclerView)
     RecyclerView roadTripsRecyclerView;

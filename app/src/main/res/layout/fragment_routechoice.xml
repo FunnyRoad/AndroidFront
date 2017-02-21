@@ -6,7 +6,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="3"
         android:orientation="horizontal" >
 
@@ -33,7 +33,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="3"
         android:orientation="horizontal" >
 
@@ -65,4 +65,27 @@
         android:layout_height="fill_parent"
         android:text="Rechercher"
         android:background="@android:color/holo_purple" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_weight="3"
+        android:layout_height="430dp">
+
+        <fragment
+            android:id="@+id/choiceMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:text="Valider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit"
+            android:layout_gravity="bottom"
+            android:visibility="gone" />
+    </FrameLayout>
+
+>>>>>>> c29ce59ced2cfc4dc9a1d267738248beaccc6535
 </LinearLayout>

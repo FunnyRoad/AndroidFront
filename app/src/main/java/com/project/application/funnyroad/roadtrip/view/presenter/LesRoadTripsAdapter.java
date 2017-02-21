@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Endroit;
-import com.project.application.funnyroad.detailroadtrip.presenter.DetailsRoadTripAdapter;
 import com.project.application.funnyroad.roadtrip.view.model.RoadTrip;
 
 import java.util.List;
