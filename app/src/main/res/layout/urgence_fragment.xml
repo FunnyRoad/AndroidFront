@@ -1,66 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:text="Ambulance :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:layout_alignTop="@+id/imageButton5"
-        android:layout_toStartOf="@+id/imageButton5"
-        android:layout_marginEnd="53dp"
-        android:layout_marginTop="24dp"/>
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_ambulance"
-        android:layout_marginTop="103dp"
-        android:id="@+id/imageButton5"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="92dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:id="@+id/imageButton"
+        android:scaleType="centerCrop" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_police"
-        android:layout_marginTop="43dp"
-        android:id="@+id/imageButton6"
-        android:layout_below="@+id/imageButton4"
-        android:layout_alignStart="@+id/imageButton4"
-        android:background="@color/colorPrimaryDark"/>
-
-    <TextView
-        android:text="Pompiers :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5"
-        android:layout_marginTop="24dp"
-        android:layout_alignTop="@+id/imageButton4"
-        android:layout_alignStart="@+id/textView4" />
-
-    <TextView
-        android:text="Police :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_marginTop="24dp"
-        android:layout_alignTop="@+id/imageButton6"
-        android:layout_alignStart="@+id/textView5" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_pompiers"
-        android:layout_marginTop="43dp"
-        android:id="@+id/imageButton4"
-        android:layout_below="@+id/imageButton5"
-        android:layout_alignStart="@+id/imageButton5"
-        android:background="@color/colorPrimaryDark"/>
+        android:id="@+id/imageButton2"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
 
-</RelativeLayout>
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_police"
+        android:id="@+id/imageButton3"
+        android:elevation="0dp"
+        style="@android:style/Widget.ImageButton"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false" />
+</LinearLayout>

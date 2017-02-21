@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Endroit;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,9 @@ import butterknife.ButterKnife;
 
 public class ListRoadTripAdapter extends RecyclerView.Adapter<ListRoadTripAdapter.MyViewHolder> {
 
-    private List<Endroit> endroitList;
-    public ArrayList<Endroit> listChecked = new ArrayList<>();
+
+    private List<Place> endroitList;
+    public ArrayList<Place> listChecked = new ArrayList<>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -61,7 +62,8 @@ public class ListRoadTripAdapter extends RecyclerView.Adapter<ListRoadTripAdapte
     }
 
 
-    public ListRoadTripAdapter(List<Endroit> endroitList) {
+
+    public ListRoadTripAdapter(List<Place> endroitList) {
         this.endroitList = endroitList;
     }
 
@@ -76,7 +78,7 @@ public class ListRoadTripAdapter extends RecyclerView.Adapter<ListRoadTripAdapte
     // remplir les champs d'un item de la recyclerView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        Endroit trip = endroitList.get(position);
+        Place trip = endroitList.get(position);
         holder.endroitName.setText(trip.getName());
         holder.endroitDescription.setText(trip.getDescription());
     }

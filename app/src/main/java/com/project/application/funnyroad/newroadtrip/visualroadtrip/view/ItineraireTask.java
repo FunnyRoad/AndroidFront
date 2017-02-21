@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Endroit;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,7 +48,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private String editDepart;
         private String editArrivee;
         private String[] listCities;
-        private ArrayList<Endroit> listEndroit;
+        private ArrayList<Place> listEndroit;
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
         /*******************************************************/
@@ -75,7 +75,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
 
         }
 
-        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Endroit> listEndroit) {
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listEndroit) {
             this.context = context;
             this.gMap= gMap;
             this.listEndroit = listEndroit;

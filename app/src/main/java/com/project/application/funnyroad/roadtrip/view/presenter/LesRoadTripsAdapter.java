@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.detailroadtripnew.presenter;
+package com.project.application.funnyroad.roadtrip.view.presenter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Place;
+import com.project.application.funnyroad.roadtrip.view.model.RoadTrip;
 
 import java.util.List;
 
@@ -15,17 +15,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by oraberkane on 04/02/2017.
+ * Created by sameur on 20/02/2017.
  */
 
+public class LesRoadTripsAdapter extends RecyclerView.Adapter<LesRoadTripsAdapter.MyViewHolder> {
 
-/**
- * Created by you on 21/01/2017.
- */
-
-public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTripAdapter.MyViewHolder> {
-
-    private List<Place> tripsList;
+    private List<RoadTrip> roadTripsList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -51,27 +46,27 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
     }
 
 
-    public DetailsRoadTripAdapter(List<Place> tripsList) {
-        this.tripsList = tripsList;
+    public LesRoadTripsAdapter(List<RoadTrip> roadTripsList) {
+        this.roadTripsList = roadTripsList;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LesRoadTripsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_photos_details , parent, false);
 
-        return new MyViewHolder(itemView);
+        return new LesRoadTripsAdapter.MyViewHolder(itemView);
     }
 
     // remplir les champs d'un item de la recyclerView
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position){
-        Place place = tripsList.get(position);
-        holder.photo.setImageBitmap(place.getPhoto());
+    public void onBindViewHolder(LesRoadTripsAdapter.MyViewHolder holder, int position){
+        RoadTrip roadTrip = roadTripsList.get(position);
+        holder.photo.setImageBitmap(roadTrip.getPhoto());
     }
 
     @Override
     public int getItemCount() {
-        return tripsList.size();
+        return roadTripsList.size();
     }
 }

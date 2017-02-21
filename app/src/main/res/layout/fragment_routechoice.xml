@@ -15,7 +15,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_purple"
+            android:fontFamily="sans-serif-condensed" />
 
         <EditText
             android:id="@+id/editDepart"
@@ -24,7 +26,9 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
-            android:lines="1" />
+            android:lines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/holo_purple" />
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,7 +42,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_purple"
+            android:fontFamily="sans-serif-condensed" />
 
         <EditText
             android:id="@+id/editArrivee"
@@ -47,14 +53,18 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
-            android:lines="1" />
+            android:lines="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_purple" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Rechercher"/>
+        android:text="Rechercher"
+        android:background="@android:color/holo_purple" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -75,5 +85,4 @@
             android:layout_gravity="bottom"
             android:visibility="gone" />
     </FrameLayout>
-
 </LinearLayout>

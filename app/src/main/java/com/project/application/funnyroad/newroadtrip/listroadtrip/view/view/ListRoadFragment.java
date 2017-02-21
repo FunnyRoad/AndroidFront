@@ -3,22 +3,19 @@ package com.project.application.funnyroad.newroadtrip.listroadtrip.view.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListRoadTripAdapter;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
-import com.project.application.funnyroad.newroadtrip.view.PagerAdapter;
-import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Endroit;
-import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
+
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +43,11 @@ public class ListRoadFragment extends Fragment {
         // On bind la view du fragment pour l'utiliser avec ButterKnife.
         ButterKnife.bind(this,view);
 
-        List<Endroit> listEndroits = new ArrayList<>();
+        List<Place> listEndroits = new ArrayList<>();
 
-        Endroit e1 = new Endroit("Tour effeil" ,"un truc de fou cet endroit" , 48.8584 , 2.2945);
-        Endroit e2 = new Endroit("Palais beaux arts" ," le monde aux années 80" , 48.866667 , 2.333333);
-        Endroit e3 = new Endroit("Parc asterix" ," joli endroit", 50.62925 , 3.057256000000052);
+        Place e1 = new Place("Tour effeil" ,"un truc de fou cet endroit" , 48.8584 , 2.2945);
+        Place e2 = new Place("Palais beaux arts" ," le monde aux années 80" , 48.866667 , 2.333333);
+        Place e3 = new Place("Parc asterix" ," joli endroit", 50.62925 , 3.057256000000052);
 
         listEndroits.add(e1); listEndroits.add(e2); listEndroits.add(e3);
 
@@ -64,7 +61,7 @@ public class ListRoadFragment extends Fragment {
 
     @OnClick(R.id.buttonAdd)
     public void sendCheckedBox(){
-        ArrayList<Endroit> listEndroitChecked = listRoadTripAdapter.listChecked;
+        ArrayList<Place> listEndroitChecked = listRoadTripAdapter.listChecked;
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("listEndroitChecked" , listEndroitChecked);
         Intent i = new Intent(getActivity() , ActivityNewMRoadTrip.class);
