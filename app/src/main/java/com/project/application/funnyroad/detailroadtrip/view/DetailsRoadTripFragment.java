@@ -1,4 +1,3 @@
-/*
 package com.project.application.funnyroad.detailroadtrip.view;
 
 import android.graphics.Bitmap;
@@ -12,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Endroit;
+import com.project.application.funnyroad.detailroadtrip.modele.Place;
+import com.project.application.funnyroad.detailroadtripnew.presenter.DetailsRoadTripAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +39,11 @@ public class DetailsRoadTripFragment extends Fragment {
         Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
         Bitmap bmp = Bitmap.createBitmap(200, 100, conf); // this creates a MUTABLE bitmap
 
-        List<Endroit> listPhoto = new ArrayList<>();
-        Endroit e1 = new Endroit();
-        Endroit e2 = new Endroit();
-        Endroit e3 = new Endroit();
-        Endroit e4 = new Endroit();
+        List<Place> listPhoto = new ArrayList<>();
+        Place e1 = new Place();
+        Place e2 = new Place();
+        Place e3 = new Place();
+        Place e4 = new Place();
         e1.setPhoto(bmp);e2.setPhoto(bmp);e3.setPhoto(bmp);e4.setPhoto(bmp);
         listPhoto.add(e1); listPhoto.add(e2); listPhoto.add(e3); listPhoto.add(e4);
 
@@ -56,4 +56,3 @@ public class DetailsRoadTripFragment extends Fragment {
     }
 
 }
-*/
