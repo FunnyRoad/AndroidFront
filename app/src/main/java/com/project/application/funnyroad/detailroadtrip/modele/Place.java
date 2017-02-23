@@ -10,48 +10,48 @@ public class Place {
 
     //ATTRIBUTES
 
-    private Long id;
+    private Long pid;
 
-    private String name;
+    private String pname;
 
-    private String description;
+    private String pdescription;
 
-    private Double grade;
+    private Double pgrade;
 
     private Bitmap photo;
 
     //METHODS
 
-    public Long getId() {
-        return id;
+    public Long getPid() {
+        return pid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPid(Long pid) {
+        this.pid = pid;
     }
 
     public String getName() {
-        return name;
+        return pname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String pname) {
+        this.pname = pname;
     }
 
     public String getDescription() {
-        return description;
+        return pdescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String pdescription) {
+        this.pdescription = pdescription;
     }
 
     public Double getGrade() {
-        return grade;
+        return pgrade;
     }
 
-    public void setGrade(Double grade) {
-        this.grade = grade;
+    public void setGrade(Double pgrade) {
+        this.pgrade = pgrade;
     }
 
     public Bitmap getPhoto() {
