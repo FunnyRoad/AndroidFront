@@ -8,7 +8,31 @@ import android.graphics.Bitmap;
 
 public class RoadTrip {
 
-    Bitmap photo;
+    //ATTRIBUTES
+
+    private Long rid;
+
+    private String rname;
+
+    private Bitmap photo;
+
+    //METHODS
+
+    public Long getRid() {
+        return rid;
+    }
+
+    public void setRid(Long rid) {
+        this.rid = rid;
+    }
+
+    public String getName() {
+        return rname;
+    }
+
+    public void setName(String rname) {
+        this.rname = rname;
+    }
 
     public Bitmap getPhoto() {
         return photo;
