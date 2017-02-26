@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.login.presenter;
 
+import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.login.service.IWebServiceLogin;
 import com.project.application.funnyroad.login.view.IServiceLogin;
 
@@ -17,15 +18,8 @@ import retrofit.RestAdapter;
 public class PresenterLogin {
 
 
-    IWebServiceLogin iWebServiceLogin = new RestAdapter.Builder()
-            .setEndpoint("lien du webService")
-            .setLogLevel(RestAdapter.LogLevel.FULL)
-            .build()
+    IWebServiceLogin iWebServiceLogin = ConnexionWebService.restAdapter
             .create(IWebServiceLogin.class);
-
-
-
-
 
     private IServiceLogin mIServiceLogin;
 

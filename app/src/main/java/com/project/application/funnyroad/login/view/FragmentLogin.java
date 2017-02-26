@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.project.application.funnyroad.MainActivity;
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.login.presenter.PresenterLogin;
 import com.project.application.funnyroad.register.view.ActivityRegister;
 
@@ -44,8 +44,6 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
     private PresenterLogin mPresenterLogin;
 
 
-
-
     /***********************************/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,7 +67,7 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
     public void goToHome() {
         //appel de la fonction connect qui verifie l'email et le password et fait appel au web service
       //  mPresenterLogin.connect(mlogin_mail.getText().toString(), mlogin_password.getText().toString());
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), ActivityHome2.class);
         startActivity(intent);
 
     }
@@ -134,7 +132,7 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
     @Override
     public void isLoginSuccess() {
         //mPresenterLogin.fcmRegistration();
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), ActivityHome2.class);
         startActivity(intent);
     }
 

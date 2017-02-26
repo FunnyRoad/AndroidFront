@@ -32,7 +32,7 @@
 
 
 
-        <activity android:name="com.project.application.funnyroad.MainActivity">
+        <activity android:name=".home.view.ActivityHome2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,18 +48,17 @@
         <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
         </activity>
 
-        <activity android:name="com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice">
         </activity>
 
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
          </activity>   -->
 
-        <activity android:name=".addplace.view.view.AddPlaceActivity"></activity>
+        <activity android:name=".addplace.view.AddPlaceActivity"></activity>
         <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
-
-
         <activity android:name=".allroads.view.AllRoadTripActivity"></activity>
 
+        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
     </application>
 
 

@@ -1,48 +1,55 @@
 package com.project.application.funnyroad.newroadtrip.visualroadtrip.model;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.ArrayList;
 
 /**
  * Created by oraberkane on 14/02/2017.
  */
 
 @SuppressLint("ParcelCreator")
-public class Endroit implements Parcelable {
+public class Place implements Parcelable {
 
-
+    private int id;
     private String name;
     private String description;
     private double longitude;
     private double latitude;
+    private ArrayList<Bitmap> listPhotos;
 
-
-    public Endroit(String name, String description, double latitude, double longitude) {
+    public Place(String name, String description, double latitude, double longitude) {
         this.name = name;
         this.description = description;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public Endroit(double longitude, double latitude) {
+    public Place(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public Endroit(Parcel in) {
+    public Place(Parcel in) {
         super();
         readFromParcel(in);
     }
 
+    public Place(){
 
-    public static final Parcelable.Creator<Endroit> CREATOR = new Parcelable.Creator<Endroit>() {
-        public Endroit createFromParcel(Parcel in) {
-            return new Endroit(in);
+    }
+
+
+    public static final Parcelable.Creator<Place> CREATOR = new Parcelable.Creator<Place>() {
+        public Place createFromParcel(Parcel in) {
+            return new Place(in);
         }
 
-        public Endroit[] newArray(int size) {
-            return new Endroit[size];
+        public Place[] newArray(int size) {
+            return new Place[size];
         }
 
     };
@@ -61,6 +68,14 @@ public class Endroit implements Parcelable {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
 
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getName() {
@@ -95,6 +110,14 @@ public class Endroit implements Parcelable {
         this.latitude = latitude;
     }
 
+    public ArrayList<Bitmap> getListPhotos() {
+        return listPhotos;
+    }
+
+    public void setListPhotos(ArrayList<Bitmap> listPhotos) {
+        this.listPhotos = listPhotos;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,7 +125,7 @@ public class Endroit implements Parcelable {
 
     @Override
     public String toString() {
-        return "Endroit{" +
+        return "Place{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +

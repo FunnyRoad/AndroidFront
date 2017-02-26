@@ -1,21 +1,15 @@
-package com.project.application.funnyroad.googlemap.view;
+package com.project.application.funnyroad.detailroadtripnew.presenter;
 
 /**
  * Created by oraberkane on 04/02/2017.
  */
 
 
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,11 +17,19 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.widget.Toast;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 
 public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
@@ -45,6 +47,8 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private GoogleMap gMap;
         private String editDepart;
         private String editArrivee;
+        private String[] listCities;
+        private ArrayList<Place> listPlace;
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
         /*******************************************************/
@@ -64,6 +68,26 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
             this.editArrivee = editArrivee;
         }
 
+        public ItineraireTask(final Context context, final GoogleMap gMap, String[] listCities) {
+            this.context = context;
+            this.gMap= gMap;
+            this.listCities = listCities;
+
+        }
+
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listPlace) {
+            this.context = context;
+            this.gMap= gMap;
+            this.listPlace = listPlace;
+        }
+
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listPlace, String depart , String arrival) {
+            this.context = context;
+            this.gMap= gMap;
+            this.listPlace = listPlace;
+            this.editDepart = depart;
+            this.editArrivee = arrival;
+        }
         /**
          * {@inheritDoc}
          */
@@ -77,14 +101,22 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
          */
         @Override
         protected Boolean doInBackground(Void... params) {
+
             try {
                 //Construction de l'url à appeler
                 final StringBuilder url = new StringBuilder("http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr");
                 url.append("&origin=");
-                url.append(editDepart.replace(' ', '+'));
+                url.append(this.editDepart);
+                //url.append(this.listPlace.get(0).getLatitude()+","+this.listPlace.get(0).getLongitude());
                 url.append("&destination=");
-                url.append(editArrivee.replace(' ', '+'));
-
+                url.append(this.editArrivee);
+                //url.append(this.listPlace.get(1).getLatitude()+","+this.listPlace.get(1).getLongitude());
+                url.append("&waypoints=");
+                for(Place e : listPlace) {
+                    url.append(e.getLatitude()+","+e.getLongitude()+"|");
+                }
+                url.deleteCharAt(url.length()-1);
+                Log.d("TAG", "doInBackground: " +url);
                 //Appel du web service
                 final InputStream stream = new URL(url.toString()).openStream();
 
@@ -103,22 +135,27 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                     return false;
                 }
 
-                //On récupère les steps
-                final Element elementLeg = (Element) document.getElementsByTagName("leg").item(0);
-                final NodeList nodeListStep = elementLeg.getElementsByTagName("step");
-                final int length = nodeListStep.getLength();
-
-                for(int i=0; i<length; i++) {
-                    final Node nodeStep = nodeListStep.item(i);
-
-                    if(nodeStep.getNodeType() == Node.ELEMENT_NODE) {
-                        final Element elementStep = (Element) nodeStep;
-
-                        //On décode les points du XML
-                        decodePolylines(elementStep.getElementsByTagName("points").item(0).getTextContent());
+                Log.d("TAG", "doInBackground: avant boucle for");
+                final Element elementRoute = (Element) document.getElementsByTagName("route").item(0);
+                final NodeList nodeListLeg = elementRoute.getElementsByTagName("leg");
+                for(int j = 0 ; j < nodeListLeg.getLength() ; j++){
+                    Log.d("TAG", "doInBackground: "+nodeListLeg.item(j));
+                    //On récupère les steps
+                    final Element elementLeg = (Element) document.getElementsByTagName("leg").item(j);
+                    final NodeList nodeListStep = elementLeg.getElementsByTagName("step");
+                    final int length = nodeListStep.getLength();
+                    for(int i=0; i<length; i++) {
+                        Log.d("TAG", "doInBackground: "+ nodeListStep.item(i));
+                        final Node nodeStep = nodeListStep.item(i);
+                        if(nodeStep.getNodeType() == Node.ELEMENT_NODE) {
+                            final Element elementStep = (Element) nodeStep;
+                            //On décode les points du XML
+                            //Log.d("tag", "point2: " + elementStep.getElementsByTagName("points").item(1).getTextContent());
+                            decodePolylines(elementStep.getElementsByTagName("points").item(0).getTextContent());
+                        }
                     }
                 }
-
+                Log.d("TAG", "doInBackground: fini" );
                 return true;
             }
             catch(final Exception e) {
@@ -128,7 +165,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
 
         /**
          * Méthode qui décode les points en latitudes et longitudes
-         * @param points
+         * @param encodedPoints
          */
         private void decodePolylines(final String encodedPoints) {
             int index = 0;
@@ -170,6 +207,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 Toast.makeText(context, TOAST_ERR_MAJ, Toast.LENGTH_SHORT).show();
             }
             else {
+                Log.d("TAG", "onPostExecute: debut");
                 //On déclare le polyline, c'est-à-dire le trait (ici bleu) que l'on ajoute sur la carte pour tracer l'itinéraire
                 final PolylineOptions polylines = new PolylineOptions();
                 polylines.color(Color.BLUE);
@@ -179,10 +217,18 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                     polylines.add(latLng);
                 }
 
+                for(LatLng l : lstLatLng ){
+                    Log.d("tableulgt", "onPostExecute: " + l.toString());
+                }
                 //On déclare un marker vert que l'on placera sur le départ
                 final MarkerOptions markerA = new MarkerOptions();
                 markerA.position(lstLatLng.get(0));
                 markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+                /*final MarkerOptions markerZ = new MarkerOptions();
+                markerZ.position(lstLatLng.get(0));
+                markerZ.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+                */
 
                 //On déclare un marker rouge que l'on mettra sur l'arrivée
                 final MarkerOptions markerB = new MarkerOptions();
@@ -194,6 +240,9 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 gMap.addMarker(markerA);
                 gMap.addPolyline(polylines);
                 gMap.addMarker(markerB);
+                Log.d("TAG", "onPostExecute: fini");
+                /*gMap.addPolyline(polylines);
+                gMap.addMarker(markerB);*/
             }
         }
     }

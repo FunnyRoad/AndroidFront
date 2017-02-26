@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
+import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.view.FiltreRoadTripFragment;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
@@ -40,7 +40,12 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
-            visualRoadTripFragment.setArguments(bundle);
+            if (bundle.get("listPlaceByType") != null){
+                mListRoadFragment.setArguments(bundle);
+            }
+            else{
+                visualRoadTripFragment.setArguments(bundle);
+            }
 
         }
 
@@ -79,7 +84,9 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
         });
 
         if(bundle != null){
-            viewPager.setCurrentItem(3);
+            if( bundle.get("listPlaceChecked") != null) {
+                viewPager.setCurrentItem(3);
+            }
         }
     }
 

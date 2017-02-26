@@ -1,5 +1,7 @@
-package com.project.application.funnyroad.addplace.view.view;
+package com.project.application.funnyroad.addplace.view;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,11 +13,14 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +32,7 @@ import android.widget.Toast;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.Utility;
+import com.project.application.funnyroad.common.UtilityCheckPermissionGPS;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,6 +51,8 @@ import butterknife.OnClick;
 
 public class AddPlaceFragment extends Fragment implements LocationListener {
 
+    public static final int MY_PERMISSIONS_REQUEST_ACCESS = 2;
+
     private LocationManager lManager;
     private Location location;
 
@@ -54,8 +62,6 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
     TextView textView8;
     @BindView(R.id.textView9)
     TextView textView9;
-
-
 
 
     @BindView(R.id.imageViewUpload)
@@ -83,16 +89,18 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
 
     /*********************************************FIND POSITION********************************************************************/
     @OnClick(R.id.buttonDisplayPosition)
-    public void obtenirPosition(){
+    public void obtenirPosition() {
+        UtilityCheckPermissionGPS.checkPermission(getContext());
         lManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 0, this);
     }
 
-    private void afficherLocation(){
+    private void afficherLocation() {
         textView7.setText(String.valueOf(location.getLatitude()));
         textView8.setText(String.valueOf(location.getLongitude()));
     }
 
     public void onLocationChanged(Location location) {
+        UtilityCheckPermissionGPS.checkPermission(getContext());
         // New location has now been determined
         this.location = location;
         //on l'affiche
@@ -109,7 +117,7 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
         Geocoder geo = new Geocoder(this.getActivity());
         try {
             //Ici on récupère la premiere adresse trouvée grace à la position que l'on a récupéré
-            List<Address> adresses = geo.getFromLocation(location.getLatitude(),location.getLongitude(), 1);
+            List<Address> adresses = geo.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
             if (adresses != null && adresses.size() == 1) {
                 Address adresse = adresses.get(0);
@@ -132,12 +140,12 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
 
 
     public void onProviderDisabled(String provider) {
+        UtilityCheckPermissionGPS.checkPermission(getContext());
         //Lorsque la source (GPS ou réseau GSM) est désactivé
         //on affiche un Toast pour le signaler à l'utilisateur
         Toast.makeText(this.getContext(),
                 String.format("La source \"%s\" a été désactivé", provider),
                 Toast.LENGTH_SHORT).show();
-        //et on spécifie au service que l'on ne souhaite plus avoir de mise à jour
         lManager.removeUpdates(this);
 
     }
@@ -174,12 +182,18 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
         switch (requestCode) {
             case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(userChoosenTask.equals("Take Photo"))
+                    if (userChoosenTask.equals("Take Photo"))
                         cameraIntent();
-                    else if(userChoosenTask.equals("Choose from Library"))
+                    else if (userChoosenTask.equals("Choose from Library"))
                         galleryIntent();
                 } else {
                     //code for deny
+                }
+                break;
+            case UtilityCheckPermissionGPS.MY_PERMISSIONS_REQUEST_ACCESS_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    obtenirPosition();
+
                 }
                 break;
         }

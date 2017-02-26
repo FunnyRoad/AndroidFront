@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Endroit;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,7 +48,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private String editDepart;
         private String editArrivee;
         private String[] listCities;
-        private ArrayList<Endroit> listEndroit;
+        private ArrayList<Place> listPlace;
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
         /*******************************************************/
@@ -75,10 +75,10 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
 
         }
 
-        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Endroit> listEndroit) {
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listPlace) {
             this.context = context;
             this.gMap= gMap;
-            this.listEndroit = listEndroit;
+            this.listPlace = listPlace;
         }
 
         /**
@@ -99,9 +99,9 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 //Construction de l'url à appeler
                 final StringBuilder url = new StringBuilder("http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr");
                 url.append("&origin=");
-                url.append(this.listEndroit.get(0).getLatitude()+","+this.listEndroit.get(0).getLongitude());
+                url.append(this.listPlace.get(0).getLatitude()+","+this.listPlace.get(0).getLongitude());
                 url.append("&destination=");
-                url.append(this.listEndroit.get(1).getLatitude()+","+this.listEndroit.get(1).getLongitude());
+                url.append(this.listPlace.get(1).getLatitude()+","+this.listPlace.get(1).getLongitude());
                 //url.append("marseille".replace(' ', '+'));
                 /*url.append("&waypoints=");
                 for(String s : listCities) {

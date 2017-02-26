@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.addplace.view.view;
+package com.project.application.funnyroad.addplace.view;
 
 import android.os.Bundle;
 

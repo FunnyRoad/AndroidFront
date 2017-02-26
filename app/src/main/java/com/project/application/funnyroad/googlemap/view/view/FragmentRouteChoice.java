@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.googlemap.view;
+package com.project.application.funnyroad.googlemap.view.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.project.application.funnyroad.R;
@@ -89,13 +88,6 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback 
             else {
                 buttonSubmit.setVisibility(View.VISIBLE);
                 gMap.getMapAsync(this);
-                //On transmet les données à l'activité suivante
-                /*final Intent intent = new Intent(getActivity(), googleMapActivity.class);
-                intent.putExtra("DEPART", meditDepart.getText().toString().trim());
-                intent.putExtra("ARRIVEE", meditArrivee.getText().toString().trim());
-
-                getActivity().startActivity(intent);
-                */
             }
         }
 
@@ -107,8 +99,10 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback 
     }
 
     @OnClick(R.id.submit)
-    public void goToRegister() {
+    public void goToNewRoadTrip() {
         Intent intent = new Intent(getActivity(), ActivityNewMRoadTrip.class);
+        intent.putExtra("DEPARTURE", meditDepart.getText().toString());
+        intent.putExtra("ARRIVAL", meditArrivee.getText().toString());
         startActivity(intent);
     }
 }

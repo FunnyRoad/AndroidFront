@@ -6,8 +6,6 @@ package com.project.application.funnyroad.login.view;
 
 public interface IServiceLogin {
 
-
-
     public void showLoading(boolean bool);
 
     public void invalidMail( String msg);

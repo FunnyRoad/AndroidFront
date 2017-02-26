@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.googlemap.view;
+package com.project.application.funnyroad.googlemap.view.view;
 
 import android.os.Bundle;
 import android.view.View;

@@ -26,8 +26,4 @@ public class ActivityLogin extends LayoutCommonActivity {
                 .commit();
     }
 
-
-
-
-
 }

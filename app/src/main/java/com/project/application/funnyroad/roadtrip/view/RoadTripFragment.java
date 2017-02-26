@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice;
+import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

@@ -14,13 +14,13 @@
         android:text="Monument"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBox" />
+        android:id="@+id/checkBoxMonument" />
 
     <CheckBox
         android:text="Musée"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBox2" />
+        android:id="@+id/checkBoxMuseum" />
 
     <CheckBox
         android:text="type1"
@@ -39,4 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox5" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone" />
+
+    <Button
+        android:text="Filtrer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonFilter"
+        android:layout_gravity="bottom" />
 </LinearLayout>

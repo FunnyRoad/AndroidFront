@@ -1,5 +1,9 @@
 package com.project.application.funnyroad.login.model;
 
+import com.project.application.funnyroad.home.model.RoadTrip;
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -8,43 +12,84 @@ import java.util.UUID;
 
 public class User {
 
-    private UUID id;
-    private String email;
+    private int id;
+    private String firebaseId;
+    private String mail;
+    private String firtName;
+    private String lastName;
+    private String username;
+    private Date birthDate;
     private String password;
-    private String name;
-    private String city;
-    private String sex;
-    private String birthday;
+    private ArrayList<RoadTrip> listRoadTrip;
 
-    public User(String email, String password, String name, String city,
-                String sex, String birthday) {
-        this.email = email;
+    public User(String firebaseId, String mail, String firtName, String lastName,
+                String username, Date birthDate, String password, ArrayList<RoadTrip> listRoadTrip)
+    {
+        this.firebaseId = firebaseId;
+        this.mail = mail;
+        this.firtName = firtName;
+        this.lastName = lastName;
+        this.username = username;
+        this.birthDate = birthDate;
         this.password = password;
-        this.name = name;
-        this.city = city;
-        this.sex = sex;
-        this.birthday = birthday;
+        this.listRoadTrip = listRoadTrip;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-
-
-    public String getEmail() {
-        return email;
+    public String getFirebaseId() {
+        return firebaseId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFirebaseId(String firebaseId) {
+        this.firebaseId = firebaseId;
     }
 
+    public String getMail() {
+        return mail;
+    }
 
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getFirtName() {
+        return firtName;
+    }
+
+    public void setFirtName(String firtName) {
+        this.firtName = firtName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public String getPassword() {
         return password;
@@ -54,44 +99,11 @@ public class User {
         this.password = password;
     }
 
-
-
-    public String getName() {
-        return name;
+    public ArrayList<RoadTrip> getListRoadTrip() {
+        return listRoadTrip;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setListRoadTrip(ArrayList<RoadTrip> listRoadTrip) {
+        this.listRoadTrip = listRoadTrip;
     }
-
-
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
 }
