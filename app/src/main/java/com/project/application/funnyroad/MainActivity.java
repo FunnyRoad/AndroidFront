@@ -2,9 +2,11 @@ package com.project.application.funnyroad;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,14 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.project.application.funnyroad.allroads.view.AllRoadTripActivity;
+import com.project.application.funnyroad.detailroadtrip.modele.Place;
 import com.project.application.funnyroad.lieu.view.LieuxFragment;
 import com.project.application.funnyroad.photos.view.PhotosFragment;
 import com.project.application.funnyroad.profil.view.ProfilFragment;
 import com.project.application.funnyroad.register.view.ActivityRegister;
 import com.project.application.funnyroad.roadtrip.view.RoadTripFragment;
 import com.project.application.funnyroad.urgence.view.UrgenceFragment;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

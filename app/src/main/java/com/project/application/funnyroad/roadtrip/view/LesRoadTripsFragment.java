@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.detailroadtrip.modele.Place;
 import com.project.application.funnyroad.roadtrip.view.model.RoadTrip;
 import com.project.application.funnyroad.roadtrip.view.presenter.LesRoadTripsAdapter;
 
@@ -54,7 +56,6 @@ public class  LesRoadTripsFragment extends Fragment {
 
         return view;
     }
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

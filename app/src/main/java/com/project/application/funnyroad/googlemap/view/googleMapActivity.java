@@ -6,6 +6,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,15 +27,9 @@ import butterknife.OnClick;
 
 public class googleMapActivity  extends Activity implements OnMapReadyCallback {
 
-
-
         private MapFragment gMap;
         String editDepart = "";
         String editArrivee = "";
-
-
-
-
 
         /**
          * {@inheritDoc}
@@ -42,6 +42,7 @@ public class googleMapActivity  extends Activity implements OnMapReadyCallback {
             //On récupère les composants graphiques
             gMap = ((MapFragment)getFragmentManager().findFragmentById(R.id.map));
             gMap.getMapAsync(this);
+
             //On récupère le départ et l'arrivée
             editDepart = getIntent().getStringExtra("DEPART");
             editArrivee = getIntent().getStringExtra("ARRIVEE");
