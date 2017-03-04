@@ -6,17 +6,7 @@ package com.project.application.funnyroad.login.view;
 
 public interface IServiceLogin {
 
-
-
-    public void showLoading(boolean bool);
-
-    public void invalidMail( String msg);
-
-    public void invalidPassword(String msg);
-
-    public void errorLogin(String msgError);
-
-    public void isLoginSuccess();
-
-
+    public void isLoginSuccess(int userId);
+    public void isLoginFailed(String msg);
+    public void createRoadTrip();
 }

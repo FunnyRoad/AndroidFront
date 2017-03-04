@@ -3,10 +3,35 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--<<<<<<< HEAD-->
+<!--=======-->
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:text="Aucun road trip à afficher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewListEmpty"
+        android:gravity="center"
+        android:visibility="gone" />-->
+
+<!-->>>>>>> ItinéraireMap-->
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:id="@+id/recycler_view_all_road_trip"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" />
+<!--<<<<<<< HEAD
+        android:layout_marginBottom="10dp" />-->
+<!--=======-->
+
+<!-->>>>>>> ItinéraireMap-->
 </LinearLayout>

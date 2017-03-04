@@ -1,18 +1,22 @@
 package com.project.application.funnyroad.detailroadtripnew.presenter;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+/**
+ * Created by oraberkane on 04/03/2017.
+ */
 
-import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Place;
+        import android.graphics.Bitmap;
+        import android.support.v7.widget.RecyclerView;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ImageView;
 
-import java.util.List;
+        import com.project.application.funnyroad.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+        import java.util.List;
+
+        import butterknife.BindView;
+        import butterknife.ButterKnife;
 
 /**
  * Created by oraberkane on 04/02/2017.
@@ -25,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTripAdapter.MyViewHolder> {
 
-    private List<Place> tripsList;
+    private List<Bitmap> photoRoadList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -42,17 +46,19 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    //Intent intent = new Intent(v.getContext(), RequestsActivity.class);
-                    //intent.putExtra("tripSelectedId",""+tripsList.get(position).getId_trip());
-                    //view.getContext().startActivity(intent);
+                    /*Intent intent = new Intent(v.getContext(), DetailsEndroitActivity.class);
+                    intent.putExtra("endroitSelected",photoRoadList.getClass());
+                    view.getContext().startActivity(intent);
+
+                   */
                 }
             });
         }
     }
 
 
-    public DetailsRoadTripAdapter(List<Place> tripsList) {
-        this.tripsList = tripsList;
+    public DetailsRoadTripAdapter(List<Bitmap> photoRoadList) {
+        this.photoRoadList = photoRoadList;
     }
 
     @Override
@@ -66,12 +72,15 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
     // remplir les champs d'un item de la recyclerView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        Place place = tripsList.get(position);
-        holder.photo.setImageBitmap(place.getPhoto());
+        Bitmap trip = photoRoadList.get(position);
+        holder.photo.setImageBitmap(trip);
     }
 
     @Override
     public int getItemCount() {
-        return tripsList.size();
+        return photoRoadList.size();
     }
 }
+
+
+

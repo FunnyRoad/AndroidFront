@@ -20,53 +20,115 @@
             android:textColor="@color/colorPrimary"
             android:layout_marginBottom="30dp" />
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entrez votre nom"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/register_name" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entrez votre prenom "
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/register_lastName" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Entrez votre nom"
+                android:inputType="textEmailAddress"
+                android:id="@+id/register_name"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entrez votre adresse"
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/register_adress_email" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Entrez votre mot de passe "
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/register_password"
-            android:layout_marginTop="0dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Entrez votre prenom "
+                android:inputType="textEmailAddress"
+                android:id="@+id/register_lastName"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirmez votre mot de passe "
-            android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/register_passwordConfirm" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="pseudo"
+                android:id="@+id/editTextPseudo" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mail"
+                android:inputType="textEmailAddress"
+                android:id="@+id/register_adress_email"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ville"
+                android:id="@+id/editTextCity" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/editTextBirthDay"
+                android:layout_weight="1"
+                android:hint="date de naissance" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Entrez votre mot de passe "
+                android:inputType="textEmailAddress"
+                android:id="@+id/register_password"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmez votre mot de passe "
+                android:inputType="textEmailAddress"
+                android:id="@+id/register_passwordConfirm"
+                android:layout_weight="1" />
+        </android.support.design.widget.TextInputLayout>
 
         <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/progressBar"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:layout_gravity="center_vertical|center" />
 
         <LinearLayout
             android:orientation="horizontal"

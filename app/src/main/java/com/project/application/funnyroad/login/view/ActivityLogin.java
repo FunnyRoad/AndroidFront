@@ -15,7 +15,7 @@ public class ActivityLogin extends LayoutCommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentLogin mLoginFragment = new FragmentLogin();
+        FragmentLogin2 mLoginFragment = new FragmentLogin2();
 
         //desactiver la toolbar
         mToolbar.setVisibility(View.GONE);
@@ -25,9 +25,5 @@ public class ActivityLogin extends LayoutCommonActivity {
                 .add(R.id.container_fragment, mLoginFragment)
                 .commit();
     }
-
-
-
-
 
 }

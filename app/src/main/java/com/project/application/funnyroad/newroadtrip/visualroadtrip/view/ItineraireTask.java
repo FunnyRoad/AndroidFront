@@ -48,7 +48,11 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private String editDepart;
         private String editArrivee;
         private String[] listCities;
+//<<<<<<< HEAD
         private ArrayList<Place> listEndroit;
+/*=======
+        private ArrayList<Place> listPlace;
+>>>>>>> ItinéraireMap*/
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
 
         /*******************************************************/
@@ -75,10 +79,17 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
 
         }
 
+//<<<<<<< HEAD
         public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listEndroit) {
             this.context = context;
             this.gMap= gMap;
             this.listEndroit = listEndroit;
+/*=======
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listPlace) {
+            this.context = context;
+            this.gMap= gMap;
+            this.listPlace = listPlace;
+>>>>>>> ItinéraireMap*/
         }
 
         /**
@@ -99,9 +110,15 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 //Construction de l'url à appeler
                 final StringBuilder url = new StringBuilder("http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr");
                 url.append("&origin=");
+//<<<<<<< HEAD
                 url.append(this.listEndroit.get(0).getLatitude()+","+this.listEndroit.get(0).getLongitude());
                 url.append("&destination=");
                 url.append(this.listEndroit.get(1).getLatitude()+","+this.listEndroit.get(1).getLongitude());
+/*=======
+                url.append(this.listPlace.get(0).getLatitude()+","+this.listPlace.get(0).getLongitude());
+                url.append("&destination=");
+                url.append(this.listPlace.get(1).getLatitude()+","+this.listPlace.get(1).getLongitude());
+>>>>>>> ItinéraireMap*/
                 //url.append("marseille".replace(' ', '+'));
                 /*url.append("&waypoints=");
                 for(String s : listCities) {

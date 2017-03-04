@@ -11,7 +11,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.project.application.funnyroad.R;
+//<<<<<<< HEAD
 
+/*=======
+>>>>>>> ItinéraireMap*/
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
@@ -26,9 +29,13 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
 
 
     private SupportMapFragment gMap;
+//<<<<<<< HEAD
     static int i = 0;
 
     ArrayList<Place> listEndroits;
+/*=======
+    ArrayList<Place> listPlaces;
+>>>>>>> ItinéraireMap*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,9 +47,16 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
 
         Log.d("TAG", "onCreateView: retour au fragment visualRoadTrip ");
         gMap = ((SupportMapFragment)this.getChildFragmentManager().findFragmentById(R.id.visualMap));
+//<<<<<<< HEAD
         Bundle bundle = getArguments();
         if(bundle != null) {
             listEndroits = bundle.getParcelableArrayList("listEndroitChecked");
+/*=======
+
+        Bundle bundle = getArguments();
+        if(bundle != null) {
+            listPlaces = bundle.getParcelableArrayList("listEndroitChecked");
+>>>>>>> ItinéraireMap*/
             gMap.getMapAsync(this);
         }
 
@@ -55,6 +69,7 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+//<<<<<<< HEAD
         /*ArrayList<Place> l = new ArrayList<>();
         Place e1 = new Place("Tour effeil" ,"un truc de fou cet endroit" , 48.8584 , 2.2945);
         Place e2 = new Place("Palais beaux arts" ," le monde aux années 80" , 48.866667 , 2.333333);
@@ -66,6 +81,10 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
 
             Log.d("onMapReady", "onMapReady: bundle rempli"+"premier element: "+listEndroits.get(0)+" deuxieme element: " + listEndroits.get(1));
             new ItineraireTask(this.getContext(), googleMap, listEndroits).execute();
+/*=======
+            Log.d("onMapReady", "onMapReady: bundle rempli"+"premier element: "+ listPlaces.get(0)+" deuxieme element: " + listPlaces.get(1));
+            new ItineraireTask(this.getContext(), googleMap, listPlaces).execute();
+>>>>>>> ItinéraireMap*/
 
     }
 }

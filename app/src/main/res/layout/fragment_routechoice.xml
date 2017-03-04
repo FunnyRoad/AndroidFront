@@ -59,6 +59,30 @@
             android:textColor="@android:color/holo_purple" />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
+
+        <TextView
+            android:text="Nom du roadtrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView14"
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextNameRoadTrip"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
@@ -70,6 +94,7 @@
         android:layout_width="match_parent"
         android:layout_weight="3"
         android:layout_height="430dp">
+
 
         <fragment
             android:id="@+id/choiceMap"
@@ -85,4 +110,5 @@
             android:layout_gravity="bottom"
             android:visibility="gone" />
     </FrameLayout>
+
 </LinearLayout>

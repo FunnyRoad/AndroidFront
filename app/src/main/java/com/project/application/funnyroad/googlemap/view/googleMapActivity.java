@@ -17,12 +17,13 @@ import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.ItineraireTask;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by oraberkane on 04/02/2017.
+ * Created by Oa on 04/02/2017.
  */
 
 public class googleMapActivity  extends Activity implements OnMapReadyCallback {

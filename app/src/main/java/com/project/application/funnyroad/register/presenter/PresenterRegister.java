@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.register.presenter;
 
+import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.register.service.IWebServiceRegister;
 import com.project.application.funnyroad.register.view.IServiceRegister;
 
@@ -16,14 +17,9 @@ public class PresenterRegister {
 
     private IServiceRegister mIServiceRegister;
 
-
-
  //initialisation du web service
-    IWebServiceRegister mWebService = new RestAdapter.Builder()
-            .setEndpoint("lienVersServeur")
-            .setLogLevel(RestAdapter.LogLevel.FULL)
-            .build()
-            .create(IWebServiceRegister.class);
+    IWebServiceRegister mWebService = ConnexionWebService.restAdapter
+                                        .create(IWebServiceRegister.class);
 
 
     public PresenterRegister(IServiceRegister iServiceRegister) {
@@ -50,25 +46,19 @@ public class PresenterRegister {
 
     /******************************PASSWORD****************************/
     public boolean verifyPassword(String pwd, String pwdConfirm) {
-        Pattern p = Pattern.compile("^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$");
-        Matcher m = p.matcher(pwd);
         if (pwd.length() < 6) {
             mIServiceRegister.passwordInvalid("le mot de passe doit contenir au minimum 6 caractères");
             return false;
         }
-        if (m.matches()) {
-            return true;
-        }
+
         if (pwd.equals(pwdConfirm)) {
             return true;
         }
         if (!(pwd.equals(pwdConfirm))) {
             mIServiceRegister.confirmPasswordInvalid("le mot de passe de confirmation ne correspond pas au mot de passe");
             return false;
-        } else {
-            mIServiceRegister.passwordInvalid("le mot de passe doit contenir au moins une lettre, un chiffre et doit être supérieurs à 6 caractères");
-            return false;
         }
+        return true;
     }
 
 
@@ -76,14 +66,14 @@ public class PresenterRegister {
 
 
     /******************************ENREGISTREMENT****************************/
-    public void register(String name, String lastName, String adress, String pwd, String pwdConfirm, String email) {
+    public void register(String email, String name, String lastName, String pseudo, String birthDay, String pwd, String pwdConfirm) {
         if (verifyEmail(email) && verifyPassword(pwd, pwdConfirm)) {
            /* mIServiceRegister.showLoading(true);
             mWebService.createUser(name, lastName, adress, pwd, pwdConfirm, email, new Callback<String>() {
                 @Override
-                public void success(String id, Response response) {
+                public void success(User user, Response response) {
                     mIServiceRegister.showLoading(false);
-                    if (!(id.equals("-1"))) {
+                    if (user.getId() != null ) {
                         //putId(mContext, id);
                         mIServiceRegister.registrationSuccess();
                     } else {

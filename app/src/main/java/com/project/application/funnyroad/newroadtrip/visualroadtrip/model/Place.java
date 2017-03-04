@@ -1,9 +1,20 @@
 package com.project.application.funnyroad.newroadtrip.visualroadtrip.model;
 
 import android.annotation.SuppressLint;
+/*<<<<<<< HEAD
+import android.os.Parcel;
+import android.os.Parcelable;*/
+
+//=======
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.project.application.funnyroad.addplace.model.Picture;
+
+import java.util.ArrayList;
+
+//>>>>>>> ItinéraireMap
 /**
  * Created by oraberkane on 14/02/2017.
  */
@@ -11,12 +22,31 @@ import android.os.Parcelable;
 @SuppressLint("ParcelCreator")
 public class Place implements Parcelable {
 
+//<<<<<<< HEAD
 
+//=======
+    private int id;
+//>>>>>>> ItinéraireMap*/
     private String name;
     private String description;
     private double longitude;
     private double latitude;
+//<<<<<<< HEAD
 
+//=======
+    private double grade;
+    private String type;
+    private ArrayList<Picture> pictures;
+
+    public Place(String name , double latitude, double longitude ,String description, double grade ,String type ){
+        this.name = name;
+        this.description = description;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.grade = grade;
+        this.type = type;
+    }
+//>>>>>>> ItinéraireMap
 
     public Place(String name, String description, double latitude, double longitude) {
         this.name = name;
@@ -35,6 +65,13 @@ public class Place implements Parcelable {
         readFromParcel(in);
     }
 
+//<<<<<<< HEAD
+//=======
+    public Place(){
+
+    }
+
+//>>>>>>> ItinéraireMap
 
     public static final Parcelable.Creator<Place> CREATOR = new Parcelable.Creator<Place>() {
         public Place createFromParcel(Parcel in) {
@@ -63,6 +100,17 @@ public class Place implements Parcelable {
 
     }
 
+//<<<<<<< HEAD
+//=======
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+//>>>>>>> ItinéraireMap
     public String getName() {
         return name;
     }
@@ -95,6 +143,34 @@ public class Place implements Parcelable {
         this.latitude = latitude;
     }
 
+//<<<<<<< HEAD
+//=======
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public ArrayList<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(ArrayList<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+//>>>>>>> ItinéraireMap
     @Override
     public int describeContents() {
         return 0;

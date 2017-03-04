@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice;
+import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +48,7 @@ public class RoadTripFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+/*//<<<<<<< HEAD
 
         tabLayout.setVisibility(View.VISIBLE);
         viewPager.setVisibility(View.VISIBLE);
@@ -95,5 +96,10 @@ public class RoadTripFragment extends Fragment {
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
+    }*/
+//=======
+        // Vous pouvez changer le titre dans la toolbar de vos differents fragments
+        getActivity().setTitle("Road Trips");
     }
+//>>>>>>> ItinéraireMap*/
 }

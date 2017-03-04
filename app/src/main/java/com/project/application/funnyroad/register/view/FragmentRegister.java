@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.project.application.funnyroad.MainActivity;
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.login.view.ActivityLogin;
 import com.project.application.funnyroad.register.presenter.PresenterRegister;
 
@@ -35,6 +35,18 @@ public class FragmentRegister extends Fragment implements IServiceRegister {
     @BindView(R.id.register_lastName)
     EditText mregister_lastName;
 
+    @BindView(R.id.editTextPseudo)
+    EditText mregister_pseudo;
+
+    @BindView(R.id.register_adress_email)
+    EditText mregister_adress_email; // l'email de l'utilisateur
+
+    @BindView(R.id.editTextCity)
+    EditText mregister_city;
+
+    @BindView(R.id.editTextBirthDay)
+    EditText mregister_birthDay;
+
     @BindView(R.id.register_password)
     EditText mregister_password;
 
@@ -47,16 +59,12 @@ public class FragmentRegister extends Fragment implements IServiceRegister {
     @BindView(R.id.register_cancel)
     Button mregister_cancel;
 
-    @BindView(R.id.register_adress_email)
-    EditText mregister_adress_email; // l'email de l'utilisateur
 
     @BindView(R.id.progressBar)
     ProgressBar mprogressBar; // l'email de l'utilisateur
 
     /****************PRESENTER*******************/
     private PresenterRegister mPresenterRegisterLogin;
-
-
 
 
     /*****************ONCREATE******************/
@@ -77,11 +85,9 @@ public class FragmentRegister extends Fragment implements IServiceRegister {
     @OnClick(R.id.register_ok)
     public void addUser() {
         //appel de la fonction connect qui verifie l'email et le password et fait appel au web service
-        mPresenterRegisterLogin.register(mregister_name.getText().toString(), mregister_lastName.getText().toString(), mregister_adress_email.getText().toString(), mregister_password.getText().toString(), mregister_passwordConfirm.getText().toString(),  mregister_adress_email.getText().toString() );
-    //    Intent intent = new Intent(getActivity(), ActivityLogin.class);
-      //  startActivity(intent);
-
-
+        mPresenterRegisterLogin.register(mregister_adress_email.getText().toString(), mregister_name.getText().toString(), mregister_lastName.getText().toString(),
+                mregister_pseudo.getText().toString(), mregister_birthDay.getText().toString(), mregister_password.getText().toString(),
+                mregister_passwordConfirm.getText().toString());
     }
 
 
@@ -136,7 +142,7 @@ public class FragmentRegister extends Fragment implements IServiceRegister {
     public void registrationSuccess() {
         // on met a jour le token
      //   registerPresenter.fcmRegistration();
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), ActivityHome2.class);
         startActivity(intent);
     }
 

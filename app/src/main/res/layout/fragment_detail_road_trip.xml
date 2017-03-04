@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical">
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="10dp">
+
+        android:layout_margin="5dp">
 
         <TextView
             android:text="Départ"
@@ -19,19 +22,24 @@
             android:id="@+id/Début"
             android:layout_weight="1" />
 
-        <TextView
-            android:text="TextView"
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
             android:id="@+id/textViewDetailDepart"
             android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+
+        android:layout_margin="5dp">
 
         <TextView
             android:text="Destination"
@@ -40,19 +48,24 @@
             android:id="@+id/textView10"
             android:layout_weight="1" />
 
-        <TextView
-            android:text="TextView"
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
             android:id="@+id/textViewDetailDestination"
             android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+
+        android:layout_margin="5dp">
 
         <TextView
             android:text="Description"
@@ -61,37 +74,88 @@
             android:id="@+id/textView12"
             android:layout_weight="1" />
 
-        <TextView
-            android:text="TextView"
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
             android:id="@+id/textViewDetailDescription"
             android:layout_weight="1" />
+
     </LinearLayout>
+
+    <Button
+        android:text="Mettre à jour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butUpload"
+        android:visibility="gone" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:visibility="gone" />
+
+    <TextView
+        android:text="Les places desservies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textAlignment="center"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:text="Aucun endroit à afficher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewListPlaceEmpty"
+        android:textAlignment="center"
+        android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/details_road_recyclerView" />
+        android:layout_height="195dp"
+        android:id="@+id/recycler_view_list_endroit"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="20dp" />
 
-    <Button
-        android:text="Ajouter un endroit"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addPlace"
-        android:layout_marginTop="60dp"
-        android:elevation="1dp" />
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-        android:id="@+id/im1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_disabled"
-        android:id="@+id/im2" />
+            <fragment
+                android:layout_width="match_parent"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/mapRoadTrip"
+                android:layout_height="300dp"
+                class="com.project.application.funnyroad.detailroadtripnew.view.WorkaroundMapFragment"/>
+
+            <Button
+                android:text="Ajouter une place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addPlace"
+                android:elevation="1dp"
+                android:gravity="bottom|center_horizontal" />
+
+            <Button
+                android:text="Supprimer road trip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/butDeleteRoadTrip"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
