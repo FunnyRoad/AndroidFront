@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
 
     <TextView
         android:text="TextView"
@@ -29,23 +30,90 @@
         android:id="@+id/progressBar"
         android:visibility="gone" />
 
-    <Button
-        android:text="afficher position"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonDisplayPosition" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView17"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView20"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/editTextDescriptionPlace"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="récupérer ma position "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDisplayPosition"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Ajouter cette place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonAddPlace"
+            android:layout_weight="1"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <Button
-        android:text="Parcourir"
+        android:text="Choisir une photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/uploadPhoto" />
+        android:id="@+id/uploadPhoto"
+        android:layout_marginTop="30dp"
+        android:visibility="gone" />
 
     <ImageView
-        android:layout_width="337dp"
-        android:layout_height="337dp"
+        android:layout_width="264dp"
+        android:layout_height="236dp"
         app:srcCompat="@drawable/ic_menu_photos"
         android:id="@+id/imageViewUpload"
         android:layout_gravity="center" />
+
+    <Button
+        android:text="Ajouter la photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butAddImageToPlace"
+        android:visibility="gone" />
 
 </LinearLayout>

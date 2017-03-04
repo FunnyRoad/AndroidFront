@@ -3,6 +3,7 @@ package com.project.application.funnyroad.newroadtrip.view;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,12 +42,13 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
             if (bundle.get("listPlaceByType") != null){
+                Log.d("ActivityNewRoadTrip", "onCreate: dans le if");
                 mListRoadFragment.setArguments(bundle);
             }
-            else{
+            else if (bundle.get("listPlaceChecked") != null){
+                Log.d("ActivityNewRoadTrip", "onCreate: dans le else");
                 visualRoadTripFragment.setArguments(bundle);
             }
-
         }
 
         getSupportFragmentManager()
@@ -85,6 +87,7 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
         if(bundle != null){
             if( bundle.get("listPlaceChecked") != null) {
+                Log.d("ActivityNewRoadTrip", "onCreate: dans le if changement de currentItem");
                 viewPager.setCurrentItem(3);
             }
         }

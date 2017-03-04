@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.project.application.funnyroad.home.model.Departure;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import org.w3c.dom.Document;
@@ -88,6 +89,16 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
             this.editDepart = depart;
             this.editArrivee = arrival;
         }
+
+        private Departure departure;
+        public ItineraireTask(final Context context, final GoogleMap gMap, ArrayList<Place> listPlace, Departure depart, String arrival) {
+            this.context = context;
+            this.gMap= gMap;
+            this.listPlace = listPlace;
+            this.departure = depart;
+            this.editArrivee = arrival;
+        }
+
         /**
          * {@inheritDoc}
          */
@@ -106,16 +117,17 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 //Construction de l'url à appeler
                 final StringBuilder url = new StringBuilder("http://maps.googleapis.com/maps/api/directions/xml?sensor=false&language=fr");
                 url.append("&origin=");
-                url.append(this.editDepart);
+                url.append(this.departure.getLatitude()+","+this.departure.getLongitude());
                 //url.append(this.listPlace.get(0).getLatitude()+","+this.listPlace.get(0).getLongitude());
                 url.append("&destination=");
-                url.append(this.editArrivee);
+                url.append(this.editArrivee.replaceAll(" " , "%20"));
                 //url.append(this.listPlace.get(1).getLatitude()+","+this.listPlace.get(1).getLongitude());
-                url.append("&waypoints=");
+                /*url.append("&waypoints=");
                 for(Place e : listPlace) {
                     url.append(e.getLatitude()+","+e.getLongitude()+"|");
                 }
                 url.deleteCharAt(url.length()-1);
+                */
                 Log.d("TAG", "doInBackground: " +url);
                 //Appel du web service
                 final InputStream stream = new URL(url.toString()).openStream();

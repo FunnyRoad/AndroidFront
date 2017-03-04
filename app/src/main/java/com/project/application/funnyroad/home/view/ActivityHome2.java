@@ -1,24 +1,35 @@
 package com.project.application.funnyroad.home.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice;
 import com.project.application.funnyroad.lieu.view.LieuxFragment;
+import com.project.application.funnyroad.login.view.ActivityLogin;
+import com.project.application.funnyroad.login.view.FragmentLogin2;
 import com.project.application.funnyroad.photos.view.PhotosFragment;
-import com.project.application.funnyroad.profil.view.ProfilFragment;
+import com.project.application.funnyroad.profil.view.view.ProfilFragment;
 import com.project.application.funnyroad.urgence.view.UrgenceFragment;
 
 import butterknife.BindView;
@@ -29,7 +40,8 @@ import butterknife.OnClick;
  * Created by you on 24/02/2017.
  */
 
-public class ActivityHome2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ActivityHome2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        GoogleApiClient.OnConnectionFailedListener{
 
 
 
@@ -39,6 +51,7 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawer;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    GoogleApiClient mGoogleApiClient;
 
 
     @Override
@@ -94,17 +107,29 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
             fragment = new FragmentHome();
         }
         else if (id == R.id.nav_profil) {
-
             fragment = new ProfilFragment();
-        } else if (id == R.id.nav_urgence) {
+        }
+        else if (id == R.id.nav_urgence) {
             fragment = new UrgenceFragment();
-        } else if (id == R.id.nav_photos) {
-
+        }
+        else if (id == R.id.nav_photos) {
             fragment = new PhotosFragment();
-        } else if (id == R.id.nav_lieux) {
-
+        }
+        else if (id == R.id.nav_lieux) {
             fragment = new LieuxFragment();
         }
+
+        else if (id == R.id.nav_sign_out){
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
+                            Intent intent = new Intent(getApplicationContext(), ActivityLogin.class);
+                            startActivity(intent);                        }
+                    });
+
+        }
+
         if (fragment != null) {
             FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
@@ -119,5 +144,36 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
     public void goToAddRoadTrip(){
         Intent intent = new Intent(this , ActivityNewRoaTripRouteChoice.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(connectionResult.getErrorMessage());
+        builder.setCancelable(true);
+        builder.setPositiveButton("Fermer" , new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        mGoogleApiClient.connect();
+
     }
 }

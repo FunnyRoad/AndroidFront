@@ -67,9 +67,9 @@ public class RoadTripSuggestedAdapter extends RecyclerView.Adapter<RoadTripSugge
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
         RoadTrip roadTrip = tripsList.get(position);
-        holder.textViewBegin.setText(roadTrip.getBegin());
+        holder.textViewBegin.setText(roadTrip.getBegin().getLatitude()+" " + roadTrip.getBegin().getLatitude());
         holder.textViewDestination.setText(roadTrip.getDestination());
-        holder.textViewDescription.setText(roadTrip.getDescription());
+        holder.textViewDescription.setText(roadTrip.getName());
     }
 
     @Override

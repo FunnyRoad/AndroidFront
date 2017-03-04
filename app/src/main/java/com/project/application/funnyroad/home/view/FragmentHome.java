@@ -35,7 +35,7 @@ public class FragmentHome extends Fragment {
     DrawerLayout drawer;*/
 
     @BindView(R.id.pager)
-    ViewPager viewPager;
+    public ViewPager viewPager;
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
 

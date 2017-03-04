@@ -35,12 +35,12 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback 
     /****************ATTRIBUTS*******************/
     @BindView(R.id.editDepart)
     public EditText meditDepart;
-
     @BindView(R.id.editArrivee)
     public EditText meditArrivee;
-
     @BindView(R.id.submit)
     Button buttonSubmit;
+    @BindView(R.id.editTextNameRoadTrip)
+    EditText editTextNameRoadTrip;
 
     private SupportMapFragment gMap;
 
@@ -85,6 +85,9 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback 
             else if("".equals(meditArrivee.getText().toString().trim())) {
                 Toast.makeText(getActivity(), "Merci de saisir un lieu d'arrivée", Toast.LENGTH_SHORT).show();
             }
+            else if ("".equals(editTextNameRoadTrip.getText().toString().trim())) {
+                Toast.makeText(getActivity(), "Merci de saisir un nom du roadtrip", Toast.LENGTH_SHORT).show();
+            }
             else {
                 buttonSubmit.setVisibility(View.VISIBLE);
                 gMap.getMapAsync(this);
@@ -103,6 +106,7 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback 
         Intent intent = new Intent(getActivity(), ActivityNewMRoadTrip.class);
         intent.putExtra("DEPARTURE", meditDepart.getText().toString());
         intent.putExtra("ARRIVAL", meditArrivee.getText().toString());
+        intent.putExtra("NAMEROADTRIP", editTextNameRoadTrip.getText().toString());
         startActivity(intent);
     }
 }

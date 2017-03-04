@@ -25,14 +25,22 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.addplace.presenter.PresenterAddPlace;
 import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.common.UtilityCheckPermissionGPS;
+import com.project.application.funnyroad.detailroadtripnew.view.DetailRoadTripActivity;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -49,7 +57,7 @@ import butterknife.OnClick;
  * Created by you on 18/02/2017.
  */
 
-public class AddPlaceFragment extends Fragment implements LocationListener {
+public class AddPlaceFragment extends Fragment implements LocationListener, AdapterView.OnItemSelectedListener, IServiceAddPlace {
 
     public static final int MY_PERMISSIONS_REQUEST_ACCESS = 2;
 
@@ -62,16 +70,27 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
     TextView textView8;
     @BindView(R.id.textView9)
     TextView textView9;
-
-
     @BindView(R.id.imageViewUpload)
     ImageView ivImage;
+    @BindView(R.id.spinner)
+    Spinner spinner;
+    @BindView(R.id.editTextDescriptionPlace)
+    EditText editTextDescriptionPlace;
+    @BindView(R.id.buttonAddPlace)
+    Button buttonAddPlace;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.uploadPhoto)
+    Button uploadPhoto;
+    @BindView(R.id.butAddImageToPlace)
+    Button butAddImageToPlace;
 
     private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
     private Button btnSelect;
     private String userChoosenTask;
-
-
+    private String typePlace;
+    private PresenterAddPlace presenterAddPlace;
+    private Place placeAdded;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,11 +98,35 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
         View view = inflater.inflate(R.layout.fragment_add_place, container, false);
 
         ButterKnife.bind(this, view);
+
+        presenterAddPlace = new PresenterAddPlace(this);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.type_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(this);
+
         //On récupère le service de localisation
         lManager = (LocationManager) this.getActivity().getSystemService(Context.LOCATION_SERVICE);
 
 
+
         return view;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
+        typePlace = (String) parent.getItemAtPosition(pos);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
 
@@ -122,10 +165,8 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
             if (adresses != null && adresses.size() == 1) {
                 Address adresse = adresses.get(0);
                 //Si le geocoder a trouver une adresse, alors on l'affiche
-                textView9.setText(String.format("%s, %s %s",
-                        adresse.getAddressLine(0),
-                        adresse.getPostalCode(),
-                        adresse.getLocality()));
+                textView9.setText(adresse.getLocality());
+                buttonAddPlace.setVisibility(View.VISIBLE);
             } else {
                 //sinon on affiche un message d'erreur
                 textView9.setText("L'adresse n'a pu être déterminée");
@@ -134,8 +175,6 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
             e.printStackTrace();
             textView9.setText("L'adresse n'a pu être déterminée");
         }
-
-
     }
 
 
@@ -161,21 +200,24 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
     }
 
 
+/************************************************* ajouter la place dans la base de données *****************/
 
+    @OnClick(R.id.buttonAddPlace)
+    public void addPlace(){
+        Place place = new Place(textView9.getText().toString() , Double.valueOf(textView7.getText().toString()) ,
+                Double.valueOf(textView8.getText().toString()) , editTextDescriptionPlace.getText().toString() ,0 , typePlace);
 
+        presenterAddPlace.addPlace(place);
+
+    }
 
 
 /***************************************************AJOUT DUNE PHOTO*****************************************************/
 
     @OnClick(R.id.uploadPhoto)
     public void goToUploadPhoto(){
-
-        //Intent intent = new Intent(this.getContext() , AddPhotoActivity.class);
-        //startActivity(intent);
         selectImage();
     }
-
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -274,6 +316,7 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
             e.printStackTrace();
         }
 
+        butAddImageToPlace.setVisibility(View.VISIBLE);
         ivImage.setImageBitmap(thumbnail);
     }
 
@@ -288,8 +331,57 @@ public class AddPlaceFragment extends Fragment implements LocationListener {
                 e.printStackTrace();
             }
         }
-
+        butAddImageToPlace.setVisibility(View.VISIBLE);
         ivImage.setImageBitmap(bm);
     }
 
+
+    @Override
+    public void showLoading(boolean bool) {
+        if(bool){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else{
+            progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void addPlaceSuccess(Place place) {
+        placeAdded = place;
+        Intent intent = getActivity().getIntent();
+        int roadTripId = intent.getIntExtra("roadTripId", -1);
+        presenterAddPlace.addPlaceToRoadTrip(roadTripId , place.getId());
+    }
+
+    @Override
+    public void addPlaceFailed(String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(msg);
+        builder.setCancelable(true);
+        builder.setPositiveButton("Fermer" , new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    @Override
+    public void addPlaceToRoadTripSuccess(){
+        uploadPhoto.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.butAddImageToPlace)
+    public void addImageToPlace(){
+        presenterAddPlace.addImageToPlace(placeAdded.getId());
+    }
+
+    @Override
+    public void addImageToPlaceSuccess(){
+        Intent intent = new Intent(getActivity() , DetailRoadTripActivity.class);
+        startActivity(intent);
+    }
 }

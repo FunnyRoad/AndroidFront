@@ -32,13 +32,15 @@
 
 
 
-        <activity android:name=".home.view.ActivityHome2">
+        <activity android:name=".login.view.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".home.view.ActivityHome2"></activity>
 
         <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
         </activity>
@@ -56,7 +58,6 @@
 
         <activity android:name=".addplace.view.AddPlaceActivity"></activity>
         <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
-        <activity android:name=".allroads.view.AllRoadTripActivity"></activity>
 
         <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
     </application>

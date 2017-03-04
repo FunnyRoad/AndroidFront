@@ -23,6 +23,12 @@
             android:id="@+id/nav_urgence"
             android:icon="@drawable/ic_menu_urgence"
             android:title="Urgence" />
+
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/ic_menu_profil"
+            android:title="Déconnexion" />
+
     </group>
 
 </menu>

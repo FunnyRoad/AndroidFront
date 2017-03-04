@@ -25,9 +25,9 @@ public class PresenterRoadTripSuggested{
         mIServiceRoadTripSuggested = iServiceRoadTripSuggested;
     }
 
-    public void getAllRoadsTripByCity(){
+    public void getAllRoadsTripByCity(String idPosition){
         mIServiceRoadTripSuggested.showLoading(true);
-        iWebServiceRoadTripSuggested.allRoadTripSuggested("", new Callback<ArrayList<RoadTrip>>() {
+        iWebServiceRoadTripSuggested.allRoadTripSuggested(idPosition, new Callback<ArrayList<RoadTrip>>() {
             @Override
             public void success(ArrayList<RoadTrip> roadTrips, Response response) {
                 mIServiceRoadTripSuggested.showLoading(false);

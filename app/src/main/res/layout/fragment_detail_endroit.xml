@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp">
+    android:layout_margin="20dp"
+    android:gravity="center">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -16,12 +17,15 @@
             android:id="@+id/textView11"
             android:layout_weight="1" />
 
-        <TextView
-            android:text="TextView"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
             android:id="@+id/textViewNameEndroit"
             android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -36,12 +40,35 @@
             android:id="@+id/Description"
             android:layout_weight="1" />
 
-        <TextView
-            android:text="TextView"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
             android:id="@+id/textViewDescriptionEndroit"
             android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView21"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerDetailPlace"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <ProgressBar
@@ -62,7 +89,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="391dp"
         android:id="@+id/recycler_view_list_photo_endroit"
         android:layout_margin="10dp" />
 

@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.common.Utility;
+import com.project.application.funnyroad.home.model.RoadTrip;
+import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListRoadTripAdapter;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
@@ -41,6 +44,7 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
     PresenterListRoadTrip presenterListRoadTrip;
     String departure;
     String arrival;
+    String nameRoadTrip;
     ArrayList<Place> listPlaceChecked;
 
     @Override
@@ -55,11 +59,12 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         presenterListRoadTrip = new PresenterListRoadTrip(this);
 
         // recevoir le depart et l'arrivée
-        departure = getActivity().getIntent().getStringExtra("DEPARTURE") ;
-        arrival = getActivity().getIntent().getStringExtra("ARRIVAL") ;
+        departure = getActivity().getIntent().getStringExtra("DEPARTURE");
+        arrival = getActivity().getIntent().getStringExtra("ARRIVAL");
+        nameRoadTrip = getActivity().getIntent().getStringExtra("NAMEROADTRIP");
 
         // presenter qui appel le web service pour recevoir la liste des endroits entre ville depart et arrivee
-        presenterListRoadTrip.getListPlaces(departure, arrival);
+        //presenterListRoadTrip.getListPlaces(departure, arrival);
 
         List<Place> listPlaces = new ArrayList<>();
 
@@ -68,7 +73,10 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         Place e3 = new Place("Parc asterix" ," joli endroit", 50.62925 , 3.057256000000052);
 
         listPlaces.add(e1); listPlaces.add(e2); listPlaces.add(e3);
-
+        listRoadTripAdapter = new ListRoadTripAdapter(listPlaces);
+        recycler_view_list_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recycler_view_list_endroit.setItemAnimator(new DefaultItemAnimator());
+        recycler_view_list_endroit.setAdapter(listRoadTripAdapter);
 
 
         return view;
@@ -81,7 +89,8 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         for(Place e : listPlaceChecked){
             listEndroitCheckedId.add(e.getId());
         }
-        presenterListRoadTrip.createRoadTrip("roadTripTest" , departure , arrival ,1, listEndroitCheckedId);
+        //RoadTrip roadTrip = new RoadTrip(nameRoadTrip , departure , arrival , listEndroitCheckedId , Utility.getIdUser(getActivity()));
+        //presenterListRoadTrip.createRoadTrip(roadTrip);
 
     }
 

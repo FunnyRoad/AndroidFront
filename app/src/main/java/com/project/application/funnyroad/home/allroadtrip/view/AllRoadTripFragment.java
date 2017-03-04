@@ -47,9 +47,9 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
         ButterKnife.bind(this, view );
 
         PresenterAllRoadTrip presenterAllRoadTrip = new PresenterAllRoadTrip(this);
-        //presenterAllRoadTrip.getAllRoadTrip();
+        presenterAllRoadTrip.getAllRoadTrip();
 
-        RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
+        /*RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
         RoadTrip roadTrip2 = new RoadTrip("lens" , "marseille" , "découvrir et s'amuser");
         RoadTrip roadTrip3 = new RoadTrip("sochaux" , "montpellier" , "découvrir et s'amuser");
         ArrayList<RoadTrip> listRoadTrip = new ArrayList<>();
@@ -59,6 +59,7 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
         recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
         recycler_view_all_road_trip.setAdapter(mAdapter);
+        */
 
         return view;
     }

@@ -1,5 +1,7 @@
 package com.project.application.funnyroad.home.allroadtrip.presenter;
 
+import android.util.Log;
+
 import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.home.allroadtrip.service.IWebServiceAllRoadTrip;
 import com.project.application.funnyroad.home.allroadtrip.view.IServiceAllRoadTrip;
@@ -32,14 +34,16 @@ public class PresenterAllRoadTrip {
         iWebServiceAllRoadTrip.allRoadTrip(new Callback<ArrayList<RoadTrip>>() {
             @Override
             public void success(ArrayList<RoadTrip> roadTrips, Response response) {
-                mIServiceAllRoadTrip.getAllRoadTrip(roadTrips);
+                mIServiceAllRoadTrip.showLoading(false);
                 if(roadTrips.size() == 0){
                     mIServiceAllRoadTrip.listRoadTripEmpty();
                 }
+                mIServiceAllRoadTrip.getAllRoadTrip(roadTrips);
             }
 
             @Override
             public void failure(RetrofitError error) {
+                mIServiceAllRoadTrip.showLoading(false);
                 mIServiceAllRoadTrip.loadingListError(error.getMessage());
             }
         });

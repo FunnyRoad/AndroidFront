@@ -9,7 +9,7 @@ import retrofit.RestAdapter;
 public class ConnexionWebService {
 
     public static RestAdapter restAdapter = new RestAdapter.Builder()
-                                        .setEndpoint("vps376653.ovh.net:8080")
+                                        .setEndpoint("http://vps376653.ovh.net:8080")
                                         .setLogLevel(RestAdapter.LogLevel.FULL)
                                         .build();
 }

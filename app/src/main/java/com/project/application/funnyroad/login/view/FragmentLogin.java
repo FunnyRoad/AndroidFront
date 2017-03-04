@@ -1,3 +1,4 @@
+/*
 package com.project.application.funnyroad.login.view;
 
 import android.content.DialogInterface;
@@ -22,15 +23,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+*/
 /**
  * Created by oraberkane on 01/02/2017.
- */
+ *//*
+
 
 public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /****************ATTRIBUTS*******************/
+    */
+/****************ATTRIBUTS*******************//*
+
     @BindView(R.id.login_mail)
     public EditText mlogin_mail;
 
@@ -44,7 +49,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
     private PresenterLogin mPresenterLogin;
 
 
-    /***********************************/
+    */
+/***********************************//*
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,7 +69,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /****************CLIC QUR LE BOUTON CONNEXION*******************/
+    */
+/****************CLIC QUR LE BOUTON CONNEXION*******************//*
+
     @OnClick(R.id.login_connexion)
     public void goToHome() {
         //appel de la fonction connect qui verifie l'email et le password et fait appel au web service
@@ -74,7 +83,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /*****************CLIC SUR LE BOUTON INSCRIPTION**********************/
+    */
+/*****************CLIC SUR LE BOUTON INSCRIPTION**********************//*
+
 
     @OnClick(R.id.login_register)
     public void goToRegister() {
@@ -82,7 +93,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
         startActivity(intent);
     }
 
-    /***************************************/
+    */
+/***************************************//*
+
     @Override
     public void showLoading(boolean bool) {
         if (bool) {
@@ -93,7 +106,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
     }
 
 
-    /***********************************/
+    */
+/***********************************//*
+
     @Override
     public void invalidMail(String msg) {
         mlogin_mail.setError(msg);
@@ -102,7 +117,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /***********************************/
+    */
+/***********************************//*
+
     @Override
     public void invalidPassword(String msg) {
         mlogin_password.setError(msg);
@@ -110,7 +127,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /***********************************/
+    */
+/***********************************//*
+
     @Override
     public void errorLogin(String msgError) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -128,7 +147,9 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 
-    /***********************************/
+    */
+/***********************************//*
+
     @Override
     public void isLoginSuccess() {
         //mPresenterLogin.fcmRegistration();
@@ -138,3 +159,4 @@ public class FragmentLogin extends Fragment implements IServiceLogin {
 
 
 }
+*/

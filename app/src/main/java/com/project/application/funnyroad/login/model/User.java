@@ -2,6 +2,7 @@ package com.project.application.funnyroad.login.model;
 
 import com.project.application.funnyroad.home.model.RoadTrip;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -10,29 +11,53 @@ import java.util.UUID;
  * Created by oraberkane on 02/02/2017.
  */
 
-public class User {
+public class User implements Serializable{
 
     private int id;
     private String firebaseId;
     private String mail;
-    private String firtName;
+    private String firstName;
     private String lastName;
     private String username;
     private Date birthDate;
-    private String password;
+    private String city;
     private ArrayList<RoadTrip> listRoadTrip;
 
-    public User(String firebaseId, String mail, String firtName, String lastName,
-                String username, Date birthDate, String password, ArrayList<RoadTrip> listRoadTrip)
+    public User(int id , String mail, String firebaseId, String firstName, String lastName,
+                String username, Date birthDate,String city)
     {
+        this.id = id;
         this.firebaseId = firebaseId;
         this.mail = mail;
-        this.firtName = firtName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.birthDate = birthDate;
-        this.password = password;
-        this.listRoadTrip = listRoadTrip;
+        this.city = city;
+    }
+
+    public User(int id , String mail, String firebaseId, String firstName, String lastName,
+                String username, Date birthDate)
+    {
+        this.id = id;
+        this.firebaseId = firebaseId;
+        this.mail = mail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.birthDate = birthDate;
+    }
+
+    public User(String mail, String firebaseId, String firstName, String lastName,
+                String username, Date birthDate,String city)
+    {
+        this.firebaseId = firebaseId;
+        this.mail = mail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.birthDate = birthDate;
+        this.city = city;
     }
 
     public int getId() {
@@ -60,11 +85,11 @@ public class User {
     }
 
     public String getFirtName() {
-        return firtName;
+        return firstName;
     }
 
-    public void setFirtName(String firtName) {
-        this.firtName = firtName;
+    public void setFirtName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -91,12 +116,12 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCity() {
+        return city;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public ArrayList<RoadTrip> getListRoadTrip() {

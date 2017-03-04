@@ -14,6 +14,6 @@ import retrofit.http.Path;
 
 public interface IWebServiceRoadTripSuggested{
 
-    @GET("/roadtrips/{city}")
-    public void allRoadTripSuggested(@Path("city") String city , Callback<ArrayList<RoadTrip>> callback);
+    @GET("/roadtrips/{cityId}")
+    public void allRoadTripSuggested(@Path("cityId") String cityId , Callback<ArrayList<RoadTrip>> callback);
 }

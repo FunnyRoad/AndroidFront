@@ -49,12 +49,10 @@ public class PresenterListRoadTrip {
         });
     }
 
-    public void createRoadTrip(String name, String departure , String arrival,  int idOwner,
-                               ArrayList<Integer> listPlaces )
+    public void createRoadTrip(RoadTrip roadTrip)
     {
-
         mIServiceListRoad.showLoading(true);
-        iWebServiceListRoadTrip.createRoadTrip(name, departure, arrival, idOwner, listPlaces, new Callback<RoadTrip>() {
+        iWebServiceListRoadTrip.createRoadTrip(roadTrip, new Callback<RoadTrip>() {
             @Override
             public void success(RoadTrip roadTrip, Response response) {
                 mIServiceListRoad.showLoading(false);
