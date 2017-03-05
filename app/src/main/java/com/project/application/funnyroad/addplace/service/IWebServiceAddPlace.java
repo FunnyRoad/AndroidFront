@@ -6,11 +6,14 @@ import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import retrofit.Callback;
 import retrofit.http.Body;
+import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
 import retrofit.http.Path;
+import retrofit.mime.TypedFile;
 
 /**
- * Created by Oa on 28/02/2017.
+ * Created by you on 28/02/2017.
  */
 
 public interface IWebServiceAddPlace {
@@ -19,8 +22,9 @@ public interface IWebServiceAddPlace {
     public void addPlace(@Body Place place , Callback<Place> callback);
 
     @POST("/roadtrip/{roadId}/place/{placeId}")
-    public void addPlaceToRoadtrip(@Path("roadId") int roadId , @Path("placeId") int placeId , Callback<RoadTrip> callback);
+    public void addPlaceToRoadtrip(@Path("roadId") int roadId , @Path("placeId") int placeId , Callback<String> callback);
 
+    @Multipart
     @POST("/place/{placeId}/picture")
-    public void addImageToPlace(@Path("placeId") int placeId , Callback<Picture> callback);
+    public void addImageToPlace(@Path("placeId") int placeId, @Part("picture") TypedFile file, Callback<Picture> callback);
 }

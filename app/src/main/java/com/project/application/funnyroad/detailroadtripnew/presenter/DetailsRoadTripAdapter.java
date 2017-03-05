@@ -1,22 +1,18 @@
 package com.project.application.funnyroad.detailroadtripnew.presenter;
 
-/**
- * Created by oraberkane on 04/03/2017.
- */
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-        import android.graphics.Bitmap;
-        import android.support.v7.widget.RecyclerView;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
+import com.project.application.funnyroad.R;
 
-        import com.project.application.funnyroad.R;
+import java.util.List;
 
-        import java.util.List;
-
-        import butterknife.BindView;
-        import butterknife.ButterKnife;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by oraberkane on 04/02/2017.
@@ -81,6 +77,3 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
         return photoRoadList.size();
     }
 }
-
-
-

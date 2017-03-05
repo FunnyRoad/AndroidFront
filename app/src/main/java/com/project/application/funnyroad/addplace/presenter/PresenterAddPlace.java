@@ -10,9 +10,10 @@ import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedFile;
 
 /**
- * Created by Oa on 28/02/2017.
+ * Created by you on 28/02/2017.
  */
 
 public class PresenterAddPlace {
@@ -44,9 +45,9 @@ public class PresenterAddPlace {
 
     public void addPlaceToRoadTrip(int roadTripId , int placeId){
         mIServiceAddPlace.showLoading(true);
-        iWebServiceListRoadTrip.addPlaceToRoadtrip(roadTripId, placeId, new Callback<RoadTrip>() {
+        iWebServiceListRoadTrip.addPlaceToRoadtrip(roadTripId, placeId, new Callback<String>() {
             @Override
-            public void success(RoadTrip roadTrip, Response response) {
+            public void success(String msgResponse, Response response) {
                 mIServiceAddPlace.showLoading(false);
                 mIServiceAddPlace.addPlaceToRoadTripSuccess();
             }
@@ -59,9 +60,9 @@ public class PresenterAddPlace {
         });
     }
 
-    public void addImageToPlace(int idPlace){
+    public void addImageToPlace(int idPlace, TypedFile typedFile){
         mIServiceAddPlace.showLoading(true);
-        iWebServiceListRoadTrip.addImageToPlace(idPlace, new Callback<Picture>() {
+        iWebServiceListRoadTrip.addImageToPlace(idPlace,typedFile, new Callback<Picture>() {
             @Override
             public void success(Picture picture, Response response) {
                 mIServiceAddPlace.showLoading(false);

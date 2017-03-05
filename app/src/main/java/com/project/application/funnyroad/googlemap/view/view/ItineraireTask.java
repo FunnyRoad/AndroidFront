@@ -17,9 +17,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.google.android.gms.location.places.GeoDataApi;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -49,7 +46,6 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         private String editDepart;
         private String editArrivee;
         private final ArrayList<LatLng> lstLatLng = new ArrayList<LatLng>();
-        private ArrayList<Place> listPlaces = new ArrayList<Place>();
 
         /*******************************************************/
         /** METHODES / FONCTIONS.
@@ -162,7 +158,6 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 lng += dlng;
 
                 lstLatLng.add(new LatLng((double)lat/1E5, (double)lng/1E5));
-
             }
         }
 

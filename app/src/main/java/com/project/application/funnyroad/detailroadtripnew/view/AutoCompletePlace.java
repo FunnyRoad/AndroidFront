@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.googlemap.view;
+package com.project.application.funnyroad.detailroadtripnew.view;
 
 /**
  * Created by sameur on 27/02/2017.

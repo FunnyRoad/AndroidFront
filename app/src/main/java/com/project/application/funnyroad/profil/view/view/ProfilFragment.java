@@ -20,6 +20,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -64,6 +66,8 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
     ImageView imageProfil;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView(R.id.buttSave)
+    Button buttSave;
 
     PresenterProfil presenterProfil;
 
@@ -79,11 +83,12 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
 
         ButterKnife.bind(this , view);
 
+        this.getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         presenterProfil = new PresenterProfil(this);
 
-        //presenterProfil.getInformationUser(Utility.getIdUser(getActivity()));
-
-        value = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("idUser" , -1);
+        Utility.storeIdUser(getActivity() , 14);
+        value = Utility.getIdUser(getActivity());
         Log.d("TAG", "onCreateView: id : "+ value);
         editTextEmail.setText(Utility.getInformationUser(getActivity() , "email"));
         editTextFirstName.setText(Utility.getInformationUser(getActivity() , "personName"));
@@ -99,13 +104,6 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
     @OnClick(R.id.buttSave)
     public void updateProfil(){
         String firebaseId = Utility.getInformationUser(getActivity() , "firebaseId");
-        Date d = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 1);
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
-        String s = simpleDate.format(cal.getTime());
-        Date dd = new Date(s);
-        Log.d("TAG", "updateProfil: Date format : " + dd);
         User user = new User(value , editTextEmail.getText().toString() , firebaseId ,
                 editTextFirstName.getText().toString(), editTextLastName.getText().toString() ,
                 editTextUserName.getText().toString() , null );
@@ -130,6 +128,11 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
 
     @Override
     public void showInformationsUser(User user){
+        Utility.storeInformationUser(getActivity() , "email" , user.getMail());
+        Utility.storeInformationUser(getActivity() , "personName" , user.getFirtName());
+        Utility.storeInformationUser(getActivity() , "lastName" , user.getLastName());
+        Utility.storeInformationUser(getActivity() , "userName" , user.getUsername());
+
         editTextFirstName.setText(user.getFirtName());
         editTextLastName.setText(user.getLastName());
         editTextEmail.setText(user.getMail());
@@ -140,6 +143,8 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
             editTextLastName.setEnabled(false);
             editTextEmail.setEnabled(false);
             editTextUserName.setEnabled(false);
+            buttSave.setVisibility(View.GONE);
+
         }
 
         if (!(path.equals(""))){

@@ -3,26 +3,21 @@ package com.project.application.funnyroad.common;
         import android.annotation.TargetApi;
         import android.app.Activity;
         import android.content.Context;
-//<<<<<<< HEAD
-        import android.content.DialogInterface;
-        import android.content.pm.PackageManager;
-        import android.os.Build;
-//=======
         import android.content.ContextWrapper;
         import android.content.DialogInterface;
         import android.content.SharedPreferences;
         import android.content.pm.PackageManager;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
+        import android.location.Address;
+        import android.location.Geocoder;
         import android.os.Build;
         import android.preference.PreferenceManager;
-//>>>>>>> ItinéraireMap
         import android.support.v4.app.ActivityCompat;
         import android.support.v4.content.ContextCompat;
         import android.support.v7.app.AlertDialog;
 
-//<<<<<<< HEAD
-//=======
+        import com.project.application.funnyroad.home.model.Departure;
         import com.project.application.funnyroad.login.model.User;
 
         import java.io.File;
@@ -30,10 +25,11 @@ package com.project.application.funnyroad.common;
         import java.io.FileOutputStream;
         import java.io.IOException;
         import java.util.HashSet;
+        import java.util.List;
         import java.util.Set;
 
-//>>>>>>> ItinéraireMap
-
+/**
+ */
 public class Utility {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
 
@@ -69,8 +65,6 @@ public class Utility {
             return true;
         }
     }
-//<<<<<<< HEAD
-//=======
 
     public static void storeIdUser(Activity activity , int idUser){
 
@@ -136,5 +130,53 @@ public class Utility {
         }
         return directory.getAbsolutePath();
     }
-//>>>>>>> ItinéraireMap
+
+    public static String getAdressByLatLng(Activity activity , double latitude , double longitude){
+        String namePlace = "";
+        Geocoder geocoder = new Geocoder(activity);
+        try {
+                //Ici on récupère la premiere adresse trouvée grace à la position que l'on a récupéré
+                List<Address> adresses = geocoder.getFromLocation(latitude, longitude, 1);
+                if (adresses != null && adresses.size() == 1) {
+                    Address adresse = adresses.get(0);
+                    namePlace = adresse.getLocality() + " " + adresse.getCountryName();
+                    return namePlace;
+                    //Si le geocoder a trouver une adresse, alors on l'affiche
+                } else {
+                    //sinon on affiche un message d'erreur
+                }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return namePlace;
+    }
+
+    public static Departure getLocationFromAddress(Activity activity ,String strAddress){
+
+        Geocoder coder = new Geocoder(activity);
+        List<Address> address;
+        Departure p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address==null) {
+                return null;
+            }
+            Address location=address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new Departure((double) (location.getLatitude() * 1E6),
+                    (double) (location.getLongitude() * 1E6) , "");
+
+            return p1;
+        }
+        catch(IOException e){
+            e.getMessage();
+        }
+
+        return p1;
+    }
 }

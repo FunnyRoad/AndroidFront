@@ -1,13 +1,22 @@
 package com.project.application.funnyroad.home.allroadtrip.presenter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.detailroadtripnew.view.DetailRoadTripActivity;
 import com.project.application.funnyroad.home.model.RoadTrip;
 
@@ -23,6 +32,8 @@ import butterknife.ButterKnife;
 public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.MyViewHolder> {
 
     private List<RoadTrip> tripsList;
+    private Activity activity;
+    private GoogleApiClient googleApiClient;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -51,8 +62,10 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
     }
 
 
-    public AllRoadTripAdapter(List<RoadTrip> tripsList) {
+    public AllRoadTripAdapter(List<RoadTrip> tripsList , Activity activity , GoogleApiClient googleApiClient) {
         this.tripsList = tripsList;
+        this.activity = activity;
+        this.googleApiClient = googleApiClient;
     }
 
     @Override
@@ -62,14 +75,35 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
         return new MyViewHolder(itemView);
     }
 
+    String namePlace ="";
+
     // remplir les champs d'un item de la recyclerView
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position){
+    public void onBindViewHolder(final MyViewHolder holder, int position){
         RoadTrip roadTrip = tripsList.get(position);
         if(roadTrip.getBegin() != null) {
-            holder.textViewBegin.setText(roadTrip.getBegin().getLatitude() + " " + roadTrip.getBegin().getLongitude());
+            holder.textViewBegin.setText(Utility.getAdressByLatLng(this.activity ,roadTrip.getBegin().getLatitude() , roadTrip.getBegin().getLongitude() ));
         }
-        holder.textViewDestination.setText(roadTrip.getDestination());
+        if (!(roadTrip.getDestination().equals("") )){
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(googleApiClient, roadTrip.getDestination());
+            placeResult.setResultCallback(new ResultCallback<PlaceBuffer>() {
+                @Override
+                public void onResult(PlaceBuffer places) {
+                    if (!places.getStatus().isSuccess()) {
+                        Log.d("allRoadTripAdapter", "Place query did not complete. Error: " +
+                                places.getStatus().toString());
+                        return;
+                    }
+                    // Selecting the first object buffer.
+                    final Place place = places.get(0);
+                    namePlace = place.getName().toString();
+                    holder.textViewDestination.setText(namePlace);
+                    //Log.d("allRoadTripAdapter", "onResult: " + place.getId() + " "+ namePlace);
+                }
+            });
+        }
+
         holder.textViewDescription.setText(roadTrip.getName());
     }
 

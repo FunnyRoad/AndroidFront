@@ -6,7 +6,7 @@ import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
 
 /**
- * Created by Oa on 20/02/2017.
+ * Created by you on 20/02/2017.
  */
 
 public class DetailsEndroitActivity extends LayoutCommonActivity {

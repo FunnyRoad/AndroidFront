@@ -40,6 +40,7 @@ import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.login.presenter.PresenterLogin;
+import com.project.application.funnyroad.profil.view.presenter.PresenterProfil;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -92,13 +93,13 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
         ArrayList<Integer> listPlace = new ArrayList<Integer>();
         listPlace.add(1);
 
-        /*Departure d1 = new Departure(50.633333 , 3.066667 , null);
-        Departure d2 = new Departure( 48.856614 , 2.3522219000000177 , null);
-        Departure d3 = new Departure( 43.610769 , 3.8767159999999876 , null);
+        Departure d1 = new Departure(50.633333 , 3.066667 , null);
+        //Departure d2 = new Departure( 48.856614 , 2.3522219000000177 , null);
+        //Departure d3 = new Departure( 43.610769 , 3.8767159999999876 , null);
 
-        presenterLogin.createRoadTrip( new RoadTrip("roadTrip1" , 14 , d1,
-                "ChIJARsZE-Fv5kcRr1x6No4iL28" , listPlace , null) );
-        presenterLogin.createRoadTrip( new RoadTrip("roadTrip2" ,14 , d2,
+        //presenterLogin.createRoadTrip( new RoadTrip("roadTrip5" , 48 , d1,
+        //        "ChIJARsZE-Fv5kcRr1x6No4iL28" , listPlace , null) );
+        /*presenterLogin.createRoadTrip( new RoadTrip("roadTrip2" ,14 , d2,
                 "ChIJgcpR9-gnVQ0RiXo5ewOGY3k" , listPlace , null) );
         presenterLogin.createRoadTrip( new RoadTrip("roadTrip3" , 14 , d3,
                 "ChIJZb1_yQvmpBIRsMmjIeD6AAM" , listPlace , null) );
@@ -182,11 +183,18 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             Utility.storeInformationUser(getActivity(), "personName" , personName);
             Utility.storeInformationUser(getActivity(), "userName" , userName);
 
-            Log.d(TAG, "handleSignInResult: recup: "+Utility.getInformationUser(getActivity() ,"email" ));
             // on sauvegarde firebaseId DANS LAPPLICATION
             Utility.storeFirebaseId(getActivity(), firebaseId);
             User user = new User(email, firebaseId, personName, lastName, userName, null, "");
-            presenterLogin.connect(user);
+            Log.d(TAG, "handleSignInResult: recup: "+Utility.getInformationUser(getActivity() ,"firebaseId" ));
+            if(Utility.getFirebaseId(getActivity()) == null){
+                Log.d(TAG, "handleSignInResult: firebaseid est null");
+                presenterLogin.connect(user);
+            }
+            else{
+                Intent intent = new Intent(getActivity() , ActivityHome2.class);
+                startActivity(intent);
+            }
 
         }
         else {

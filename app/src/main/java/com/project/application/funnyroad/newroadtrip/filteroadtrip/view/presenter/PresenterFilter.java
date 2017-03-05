@@ -1,9 +1,9 @@
 package com.project.application.funnyroad.newroadtrip.filteroadtrip.view.presenter;
 
 import com.project.application.funnyroad.common.ConnexionWebService;
+import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.service.IWebServiceFilter;
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.view.IServiceFiltreRoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.service.IWebServiceFilter;
 
 import java.util.ArrayList;
 

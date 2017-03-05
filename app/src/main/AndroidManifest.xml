@@ -21,25 +21,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!--<<<<<<< HEAD
-=======-->
         <!-- <meta-data
              android:name="com.google.android.geo.API_KEY"
              android:value="AIzaSyAXhBdyKxUo_cb-EkSgWJQTdqR0QjLcqes" />
          -->
         <!-- google maps v2 et la clé -->
-        <!-->>>>>>> ItinéraireMap-->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+        <!--<meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyD7e9WnZzmSMOP2kwrvPsGbdR7s0GIb-gQ"/>  -->
 
-        <!-- google places and the key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC4U7mZR5d7Sf2lp4bhq8aCd_d8h_e6A20" />
+            android:value="AIzaSyDDq6MYe4h91FrhUBNZCmd1xpmQxGkDYqo" />
 
         <activity android:name=".login.view.ActivityLogin">
-            <!-->>>>>>> ItinéraireMap-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,51 +42,29 @@
             </intent-filter>
         </activity>
 
-<!--<<<<<<< HEAD
-        <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
-        </activity>
-
-
-
-        <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
-        </activity>-->
-<!--=======-->
         <activity android:name=".home.view.ActivityHome2"></activity>
 
         <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
         </activity>
 
-<!-->>>>>>> ItinéraireMap-->
 
 
-        <!--<<<<<<< HEAD-->
-                <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
-                 </activity>   -->
-
-        <activity android:name=".addplace.view.view.AddPlaceActivity"></activity>
-        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
-        <!--=======-->
         <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
         </activity>
 
         <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice">
         </activity>
-        <!-->>>>>>> ItinéraireMap-->
 
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
          </activity>   -->
 
-        <!--<<<<<<< HEAD-->
-        <!--  <activity android:name=".allroads.view.AllRoadTripActivity"></activity>-->
-          <!--=======-->
-                      <activity android:name=".addplace.view.AddPlaceActivity"></activity>
-                      <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>-->
-                      <!-->>>>>>> ItinéraireMap-->
+        <activity android:name=".addplace.view.AddPlaceActivity"></activity>
+        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
 
-               <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
-           </application>
+        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
+    </application>
 
 
 
 
-       </manifest>
+</manifest>

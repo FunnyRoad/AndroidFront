@@ -35,6 +35,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewDescription"
             android:layout_weight="1" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="43dp"
+            android:layout_height="38dp"
+            android:id="@+id/button2" />
     </LinearLayout>
 
 </LinearLayout>

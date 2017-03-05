@@ -8,7 +8,7 @@ import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 import java.util.ArrayList;
 
 /**
- * Created by Oa on 23/02/2017.
+ * Created by you on 23/02/2017.
  */
 
 public interface IServiceDetailRoadTrip {
@@ -22,4 +22,5 @@ public interface IServiceDetailRoadTrip {
     public void goToListRoadTrip();
     public void deleteRoadTripFailed(String msg);
     public void getInformationRoadTrip(RoadTrip roadTrip);
+    public void fillFragment(RoadTrip roadTrip);
 }

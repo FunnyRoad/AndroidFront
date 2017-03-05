@@ -68,16 +68,29 @@ public class PresenterDetailRoadTrip {
 
     public void deleteRoadTrip(int id){
         mIServiceDetailRoadTrip.showLoading(true);
-        iWebServiceDetailRoadTrip.deleteRoadTrip(id, new Callback<String>() {
+        iWebServiceDetailRoadTrip.deleteRoadTrip(id, new Callback<Object>() {
             @Override
-            public void success(String s, Response response) {
+            public void success(Object s, Response response) {
                 mIServiceDetailRoadTrip.showLoading(false);
-                if (s.equals("heve been removed")){
-                    mIServiceDetailRoadTrip.goToListRoadTrip();
-                }
-                else{
-                    mIServiceDetailRoadTrip.deleteRoadTripFailed("le road trip n'a pas été supprimé");
-                }
+                mIServiceDetailRoadTrip.goToListRoadTrip();
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                mIServiceDetailRoadTrip.showLoading(false);
+                mIServiceDetailRoadTrip.getListFailed(error.getMessage());
+            }
+        });
+    }
+
+    public void getRoadTripById(int id){
+        mIServiceDetailRoadTrip.showLoading(true);
+        iWebServiceDetailRoadTrip.getRoadTripById(id, new Callback<RoadTrip>() {
+            @Override
+            public void success(RoadTrip roadTrip, Response response) {
+                mIServiceDetailRoadTrip.showLoading(false);
+                mIServiceDetailRoadTrip.fillFragment(roadTrip);
             }
 
             @Override

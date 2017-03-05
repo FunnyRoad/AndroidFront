@@ -3,17 +3,14 @@ package com.project.application.funnyroad.newroadtrip.view;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
-//<<<<<<< HEAD
-//import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
-//=======
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.view.FiltreRoadTripFragment;
-//>>>>>>> ItinéraireMap
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
@@ -44,10 +41,6 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
-//<<<<<<< HEAD
-            visualRoadTripFragment.setArguments(bundle);
-/*
-=======
             if (bundle.get("listPlaceByType") != null){
                 Log.d("ActivityNewRoadTrip", "onCreate: dans le if");
                 mListRoadFragment.setArguments(bundle);
@@ -56,7 +49,6 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
                 Log.d("ActivityNewRoadTrip", "onCreate: dans le else");
                 visualRoadTripFragment.setArguments(bundle);
             }
->>>>>>> ItinéraireMap*/
         }
 
         getSupportFragmentManager()
@@ -94,14 +86,10 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
         });
 
         if(bundle != null){
-//<<<<<<< HEAD
-            viewPager.setCurrentItem(3);
-/*=======
             if( bundle.get("listPlaceChecked") != null) {
                 Log.d("ActivityNewRoadTrip", "onCreate: dans le if changement de currentItem");
                 viewPager.setCurrentItem(3);
             }
->>>>>>> ItinéraireMap*/
         }
     }
 

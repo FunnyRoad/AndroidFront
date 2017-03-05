@@ -30,6 +30,9 @@ public interface IWebServiceDetailRoadTrip{
     @PUT("/roadtrip")
     public void updateRoadTrip(@Body RoadTrip newRoadTrip , Callback<RoadTrip> callback);
 
-    @DELETE("roadtrip/{id}")
-    public void deleteRoadTrip(@Path("id") int id , Callback<String> callback);
+    @DELETE("/roadtrip/{id}")
+    public void deleteRoadTrip(@Path("id") int id , Callback<Object> callback);
+
+    @GET("/roadtrip/{id}")
+    public void getRoadTripById(@Path("id") int id , Callback<RoadTrip> callback);
 }

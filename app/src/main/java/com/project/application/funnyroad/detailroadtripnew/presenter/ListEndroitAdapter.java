@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.detailEndroit.view.DetailsEndroitActivity;
+import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,6 +30,7 @@ import butterknife.ButterKnife;
 public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.MyViewHolder> {
 
     private List<Place> placeList;
+    private RoadTrip roadTrip;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -45,7 +48,8 @@ public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Intent intent = new Intent(v.getContext(), DetailsEndroitActivity.class);
-                    intent.putExtra("endroitSelected", placeList.get(position));
+                    intent.putExtra("endroitSelected", (Serializable) placeList.get(position));
+                    intent.putExtra("roadTripId" , roadTrip.getId());
                     view.getContext().startActivity(intent);
                 }
             });
@@ -53,8 +57,9 @@ public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.
     }
 
 
-    public ListEndroitAdapter(List<Place> placeList) {
+    public ListEndroitAdapter(List<Place> placeList , RoadTrip roadTrip) {
         this.placeList = placeList;
+        this.roadTrip = roadTrip;
     }
 
     @Override

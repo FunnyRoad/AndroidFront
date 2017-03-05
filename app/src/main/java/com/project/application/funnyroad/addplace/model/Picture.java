@@ -1,7 +1,7 @@
 package com.project.application.funnyroad.addplace.model;
 
 /**
- * Created by Oa on 28/02/2017.
+ * Created by you on 28/02/2017.
  */
 
 public class Picture {

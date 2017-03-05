@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.presenter.PresenterFilter;
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.view.IServiceFiltreRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
@@ -29,7 +28,7 @@ import butterknife.OnClick;
 
 public class FiltreRoadTripFragment extends Fragment implements IServiceFiltreRoadTrip{
 
-   /* @BindView(R.id.checkBoxMonument)
+    @BindView(R.id.checkBoxMonument)
     CheckBox checkBoxMonument;
     @BindView(R.id.checkBoxMuseum)
     CheckBox checkBoxMuseum;
@@ -37,7 +36,7 @@ public class FiltreRoadTripFragment extends Fragment implements IServiceFiltreRo
     CheckBox checkBox3;
     @BindView(R.id.checkBox4)
     CheckBox checkBox4;
-    @BindView(R.id.checkBox5)*/
+    @BindView(R.id.checkBox5)
     CheckBox checkBox5;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -57,7 +56,7 @@ public class FiltreRoadTripFragment extends Fragment implements IServiceFiltreRo
         return view;
     }
 
-   /* @OnClick(R.id.buttonFilter)
+    @OnClick(R.id.buttonFilter)
     public void filter(){
         ArrayList<String> listFilterChecked = new ArrayList<>();
         if (checkBoxMonument.isChecked()){
@@ -78,7 +77,7 @@ public class FiltreRoadTripFragment extends Fragment implements IServiceFiltreRo
 
         presenterFilter.getPlacesByFilters(listFilterChecked);
 
-    }*/
+    }
 
     @Override
     public void showLoading(boolean bool) {
