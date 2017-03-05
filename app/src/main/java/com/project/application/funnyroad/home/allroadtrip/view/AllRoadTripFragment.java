@@ -13,7 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.home.allroadtrip.presenter.AllRoadTripAdapter;
 import com.project.application.funnyroad.home.allroadtrip.presenter.PresenterAllRoadTrip;
@@ -28,7 +34,8 @@ import butterknife.ButterKnife;
  * Created by you on 23/02/2017.
  */
 
-public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip{
+public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip,GoogleApiClient.OnConnectionFailedListener,
+        GoogleApiClient.ConnectionCallbacks {
 
     @BindView(R.id.recycler_view_all_road_trip)
     RecyclerView recycler_view_all_road_trip;
@@ -36,6 +43,8 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
     ProgressBar progressBar;
     @BindView(R.id.textViewListEmpty)
     TextView textViewListEmpty;
+    private GoogleApiClient mGoogleApiClient;
+    private PresenterAllRoadTrip presenterAllRoadTrip;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +55,13 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
         Log.d("ALLroadtrip", "onCreateView: ");
         ButterKnife.bind(this, view );
 
-        PresenterAllRoadTrip presenterAllRoadTrip = new PresenterAllRoadTrip(this);
+        presenterAllRoadTrip = new PresenterAllRoadTrip(this);
         presenterAllRoadTrip.getAllRoadTrip();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
+                .addApi(Places.GEO_DATA_API)
+                .addConnectionCallbacks(this)
+                .build();
 
         /*RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
         RoadTrip roadTrip2 = new RoadTrip("lens" , "marseille" , "découvrir et s'amuser");
@@ -76,7 +90,7 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
 
     @Override
     public void getAllRoadTrip(ArrayList<RoadTrip> listRoadTrip) {
-        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip);
+        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip , getActivity() ,mGoogleApiClient);
         recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
         recycler_view_all_road_trip.setAdapter(mAdapter);
@@ -101,4 +115,48 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        Log.d("AllRoadTripFragment", "Google Places API connected.");
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.d("AllRoadTripFragment", "Google Places API connection failed with error code: "
+                + connectionResult.getErrorCode());
+
+        Toast.makeText(this.getContext(), "Google Places API connection failed with error code:" +
+                        connectionResult.getErrorCode(),
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.d("AllRoadTripFragment", "Google Places API connection suspended.");
+    }
+
+    @Override
+    public void onStart() {
+        if( ! mGoogleApiClient.isConnected()){
+            Log.d("AllRoadTripFragment", "onStart: googleapi pas connecté");
+            mGoogleApiClient.connect();
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenterAllRoadTrip.getAllRoadTrip();
+    }
+
+    @Override
+    public void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+
 }

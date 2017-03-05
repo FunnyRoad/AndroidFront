@@ -13,22 +13,18 @@
         <TextView
             android:text="Départ"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_purple"
-            android:fontFamily="sans-serif-condensed" />
+            android:textStyle="bold" />
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/editDepart"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
-            android:lines="1"
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="@android:color/holo_purple" />
+            android:lines="1" />
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,23 +36,18 @@
         <TextView
             android:text="Arrivée"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_purple"
-            android:fontFamily="sans-serif-condensed" />
+            android:textStyle="bold" />
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/editArrivee"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
-            android:lines="1"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="18sp"
-            android:textColor="@android:color/holo_purple" />
+            android:lines="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,14 +78,11 @@
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Rechercher"
-        android:background="@android:color/holo_purple" />
+        android:text="Rechercher"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_weight="3"
-        android:layout_height="430dp">
-
+        android:layout_height="386dp">
 
         <fragment
             android:id="@+id/choiceMap"

@@ -3,11 +3,13 @@ package com.project.application.funnyroad.common;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.project.application.funnyroad.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by oraberkane on 01/02/2017.

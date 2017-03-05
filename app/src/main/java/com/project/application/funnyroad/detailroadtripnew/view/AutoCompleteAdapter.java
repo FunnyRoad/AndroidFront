@@ -1,8 +1,9 @@
-package com.project.application.funnyroad.googlemap.view;
+package com.project.application.funnyroad.detailroadtripnew.view;
 
 import android.content.Context;
 import android.text.TextPaint;
 import android.text.style.CharacterStyle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by sameur on 27/02/2017.
+ * Created by oa on 27/02/2017.
  */
 
 public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
@@ -74,7 +75,7 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
                 }
 
                 clear();
-
+                Log.d("autocomplete", "performFiltering: " + constraint.toString());
                 displayPredictiveResults(constraint.toString());
 
                 return null;
@@ -94,7 +95,6 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
                         new ResultCallback<AutocompletePredictionBuffer>() {
                             @Override
                             public void onResult(AutocompletePredictionBuffer buffer) {
-
                                 if(buffer == null)
                                     return;
 

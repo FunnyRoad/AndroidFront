@@ -1,42 +1,40 @@
 package com.project.application.funnyroad.newroadtrip.visualroadtrip.model;
 
 import android.annotation.SuppressLint;
-/*<<<<<<< HEAD
-import android.os.Parcel;
-import android.os.Parcelable;*/
-
-//=======
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.project.application.funnyroad.addplace.model.Picture;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-//>>>>>>> ItinéraireMap
 /**
  * Created by oraberkane on 14/02/2017.
  */
 
 @SuppressLint("ParcelCreator")
-public class Place implements Parcelable {
+public class Place implements Parcelable, Serializable {
 
-//<<<<<<< HEAD
-
-//=======
     private int id;
-//>>>>>>> ItinéraireMap*/
     private String name;
     private String description;
     private double longitude;
     private double latitude;
-//<<<<<<< HEAD
-
-//=======
     private double grade;
     private String type;
     private ArrayList<Picture> pictures;
+
+    public Place(int id , String name , double latitude, double longitude ,String description, double grade ,String type ){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.grade = grade;
+        this.type = type;
+    }
 
     public Place(String name , double latitude, double longitude ,String description, double grade ,String type ){
         this.name = name;
@@ -46,7 +44,6 @@ public class Place implements Parcelable {
         this.grade = grade;
         this.type = type;
     }
-//>>>>>>> ItinéraireMap
 
     public Place(String name, String description, double latitude, double longitude) {
         this.name = name;
@@ -65,13 +62,10 @@ public class Place implements Parcelable {
         readFromParcel(in);
     }
 
-//<<<<<<< HEAD
-//=======
     public Place(){
 
     }
 
-//>>>>>>> ItinéraireMap
 
     public static final Parcelable.Creator<Place> CREATOR = new Parcelable.Creator<Place>() {
         public Place createFromParcel(Parcel in) {
@@ -85,6 +79,7 @@ public class Place implements Parcelable {
     };
 
     public void readFromParcel(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         description = in.readString();
         latitude = in.readDouble();
@@ -93,6 +88,7 @@ public class Place implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(description);
         dest.writeDouble(latitude);
@@ -100,8 +96,6 @@ public class Place implements Parcelable {
 
     }
 
-//<<<<<<< HEAD
-//=======
     public int getId(){
         return id;
     }
@@ -110,7 +104,6 @@ public class Place implements Parcelable {
         this.id = id;
     }
 
-//>>>>>>> ItinéraireMap
     public String getName() {
         return name;
     }
@@ -143,8 +136,6 @@ public class Place implements Parcelable {
         this.latitude = latitude;
     }
 
-//<<<<<<< HEAD
-//=======
 
     public double getGrade() {
         return grade;
@@ -170,7 +161,6 @@ public class Place implements Parcelable {
         this.pictures = pictures;
     }
 
-//>>>>>>> ItinéraireMap
     @Override
     public int describeContents() {
         return 0;
@@ -179,10 +169,14 @@ public class Place implements Parcelable {
     @Override
     public String toString() {
         return "Place{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
+                ", grade=" + grade +
+                ", type='" + type + '\'' +
+                ", pictures=" + pictures +
                 '}';
     }
 }

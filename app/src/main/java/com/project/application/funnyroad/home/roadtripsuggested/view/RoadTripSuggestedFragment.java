@@ -126,7 +126,7 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
     @Override
     public void getAllRoadTripSuggested(ArrayList<RoadTrip> listRoadTrip) {
-        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip);
+        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip , getActivity(), null);
         recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
         recycler_view_all_road_trip.setAdapter(mAdapter);

@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -40,6 +42,7 @@ import com.project.application.funnyroad.addplace.presenter.PresenterAddPlace;
 import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.common.UtilityCheckPermissionGPS;
 import com.project.application.funnyroad.detailroadtripnew.view.DetailRoadTripActivity;
+import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.io.ByteArrayOutputStream;
@@ -52,9 +55,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit.mime.TypedFile;
 
 /**
- * Created by Oa on 18/02/2017.
+ * Created by you on 18/02/2017.
  */
 
 public class AddPlaceFragment extends Fragment implements LocationListener, AdapterView.OnItemSelectedListener, IServiceAddPlace {
@@ -91,6 +95,7 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
     private String typePlace;
     private PresenterAddPlace presenterAddPlace;
     private Place placeAdded;
+    TypedFile typedFile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -310,14 +315,16 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
             fo = new FileOutputStream(destination);
             fo.write(bytes.toByteArray());
             fo.close();
+            typedFile = new TypedFile("multipart/form-data",destination);
+            butAddImageToPlace.setVisibility(View.VISIBLE);
+            ivImage.setImageBitmap(thumbnail);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        butAddImageToPlace.setVisibility(View.VISIBLE);
-        ivImage.setImageBitmap(thumbnail);
     }
 
     @SuppressWarnings("deprecation")
@@ -327,14 +334,37 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
         if (data != null) {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), data.getData());
+                Uri uriImageSelected = data.getData();
+                typedFile = new TypedFile("multipart/form-data",new File( getRealPathFromURI(uriImageSelected)));
+                butAddImageToPlace.setVisibility(View.VISIBLE);
+                ivImage.setImageBitmap(bm);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        butAddImageToPlace.setVisibility(View.VISIBLE);
-        ivImage.setImageBitmap(bm);
+
+
     }
 
+    /**
+     * Recuperer le chemin de la photo selectionnée
+     * @param contentURI
+     * @return
+     */
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getActivity().getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
 
     @Override
     public void showLoading(boolean bool) {
@@ -376,12 +406,12 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
 
     @OnClick(R.id.butAddImageToPlace)
     public void addImageToPlace(){
-        presenterAddPlace.addImageToPlace(placeAdded.getId());
+        presenterAddPlace.addImageToPlace(placeAdded.getId() , typedFile);
     }
 
     @Override
     public void addImageToPlaceSuccess(){
-        Intent intent = new Intent(getActivity() , DetailRoadTripActivity.class);
+        Intent intent = new Intent(getActivity() , ActivityHome2.class);
         startActivity(intent);
     }
 }

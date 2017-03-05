@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:gravity="center">
+    android:gravity="top|center"
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -82,15 +82,29 @@
         android:text="pas de photos pour cet place"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/textViewListEmpty"
+        android:id="@+id/textViewListPhotoEmpty"
         android:textAlignment="center"
         android:gravity="center"
         android:visibility="gone" />
 
+    <Button
+        android:text="Mettre à jour la place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonUploadPlace"
+        android:visibility="gone" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="391dp"
         android:id="@+id/recycler_view_list_photo_endroit"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:layout_height="200dp" />
+
+    <Button
+        android:text="Supprimer la place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonDeletePlace"
+        android:visibility="gone" />
 
 </LinearLayout>

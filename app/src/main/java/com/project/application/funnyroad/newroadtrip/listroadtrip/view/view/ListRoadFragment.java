@@ -1,29 +1,16 @@
 package com.project.application.funnyroad.newroadtrip.listroadtrip.view.view;
 
-//<<<<<<< HEAD
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
-/*=======
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
->>>>>>> ItinéraireMap*/
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//<<<<<<< HEAD
-
-import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
-
-/*=======
 import android.widget.ProgressBar;
 
 import com.project.application.funnyroad.R;
@@ -33,7 +20,6 @@ import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListRoadTripAdapter;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
->>>>>>> ItinéraireMap*/
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
@@ -47,13 +33,6 @@ import butterknife.OnClick;
  * Created by oraberkane on 03/02/2017.
  */
 
-//<<<<<<< HEAD
-public class ListRoadFragment extends Fragment {
-
-    @BindView(R.id.recycler_view_list_endroit)
-    RecyclerView recycler_view_list_endroit;
-    //ListRoadTripAdapter listRoadTripAdapter;
-/*=======
 public class ListRoadFragment extends Fragment implements IServiceListRoad {
 
     @BindView(R.id.recycler_view_list_endroit)
@@ -67,7 +46,6 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
     String arrival;
     String nameRoadTrip;
     ArrayList<Place> listPlaceChecked;
->>>>>>> ItinéraireMap*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,9 +56,6 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         // On bind la view du fragment pour l'utiliser avec ButterKnife.
         ButterKnife.bind(this,view);
 
-//<<<<<<< HEAD
-        List<Place> listEndroits = new ArrayList<>();
-/*=======
         presenterListRoadTrip = new PresenterListRoadTrip(this);
 
         // recevoir le depart et l'arrivée
@@ -92,38 +67,23 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         //presenterListRoadTrip.getListPlaces(departure, arrival);
 
         List<Place> listPlaces = new ArrayList<>();
->>>>>>> ItinéraireMap*/
 
         Place e1 = new Place("Tour effeil" ,"un truc de fou cet endroit" , 48.8584 , 2.2945);
         Place e2 = new Place("Palais beaux arts" ," le monde aux années 80" , 48.866667 , 2.333333);
         Place e3 = new Place("Parc asterix" ," joli endroit", 50.62925 , 3.057256000000052);
 
-//<<<<<<< HEAD
-        listEndroits.add(e1); listEndroits.add(e2); listEndroits.add(e3);
-
-        //listRoadTripAdapter = new ListRoadTripAdapter(listEndroits);
-/*=======
         listPlaces.add(e1); listPlaces.add(e2); listPlaces.add(e3);
         listRoadTripAdapter = new ListRoadTripAdapter(listPlaces);
->>>>>>> ItinéraireMap*/
         recycler_view_list_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recycler_view_list_endroit.setItemAnimator(new DefaultItemAnimator());
-       // recycler_view_list_endroit.setAdapter(listRoadTripAdapter);
+        recycler_view_list_endroit.setAdapter(listRoadTripAdapter);
 
-//<<<<<<< HEAD
-/*=======
 
->>>>>>> ItinéraireMap*/
         return view;
     }
 
     @OnClick(R.id.buttonAdd)
     public void sendCheckedBox(){
-//<<<<<<< HEAD
-       // ArrayList<Place> listEndroitChecked = listRoadTripAdapter.listChecked;
-        Bundle bundle = new Bundle();
-       // bundle.putParcelableArrayList("listEndroitChecked" , listEndroitChecked);
-/*=======
         listPlaceChecked = listRoadTripAdapter.listChecked;
         ArrayList<Integer> listEndroitCheckedId = new ArrayList<>();
         for(Place e : listPlaceChecked){
@@ -155,13 +115,10 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
     public void gotToVisual(){
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("listPlaceChecked" , listPlaceChecked);
->>>>>>> ItinéraireMap*/
         Intent i = new Intent(getActivity() , ActivityNewMRoadTrip.class);
         i.putExtras(bundle);
         startActivity(i);
     }
-//<<<<<<< HEAD
-/*=======
 
     @Override
     public void errorLoading(String msg) {
@@ -177,5 +134,4 @@ public class ListRoadFragment extends Fragment implements IServiceListRoad {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
->>>>>>> ItinéraireMap*/
 }

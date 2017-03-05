@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * Created by Oa on 21/01/2017.
+ * Created by you on 21/01/2017.
  */
 
 public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAdapter.MyViewHolder> {

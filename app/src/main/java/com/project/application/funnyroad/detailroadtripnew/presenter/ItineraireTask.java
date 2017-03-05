@@ -229,18 +229,10 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                     polylines.add(latLng);
                 }
 
-                for(LatLng l : lstLatLng ){
-                    Log.d("tableulgt", "onPostExecute: " + l.toString());
-                }
                 //On déclare un marker vert que l'on placera sur le départ
                 final MarkerOptions markerA = new MarkerOptions();
                 markerA.position(lstLatLng.get(0));
                 markerA.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-
-                /*final MarkerOptions markerZ = new MarkerOptions();
-                markerZ.position(lstLatLng.get(0));
-                markerZ.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-                */
 
                 //On déclare un marker rouge que l'on mettra sur l'arrivée
                 final MarkerOptions markerB = new MarkerOptions();
@@ -248,13 +240,11 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
                 //On met à jour la carte
-                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lstLatLng.get(0), 10));
+                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lstLatLng.get(0), 6));
                 gMap.addMarker(markerA);
                 gMap.addPolyline(polylines);
                 gMap.addMarker(markerB);
                 Log.d("TAG", "onPostExecute: fini");
-                /*gMap.addPolyline(polylines);
-                gMap.addMarker(markerB);*/
             }
         }
     }
