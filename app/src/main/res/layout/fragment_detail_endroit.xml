@@ -15,7 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView11"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <EditText
             android:layout_width="match_parent"
@@ -24,21 +26,27 @@
             android:text="Name"
             android:ems="10"
             android:id="@+id/textViewNameEndroit"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Description"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"  />
 
         <EditText
             android:layout_width="match_parent"
@@ -47,21 +55,27 @@
             android:text="Name"
             android:ems="10"
             android:id="@+id/textViewDescriptionEndroit"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView21"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -85,14 +99,19 @@
         android:id="@+id/textViewListPhotoEmpty"
         android:textAlignment="center"
         android:gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium" />
 
     <Button
         android:text="Mettre à jour la place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonUploadPlace"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:background="@color/colorPrimaryDark"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
@@ -106,6 +125,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonDeletePlace"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:background="@color/colorPrimaryDark"/>
 
 </LinearLayout>

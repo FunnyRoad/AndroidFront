@@ -3,25 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:backgroundTint="@color/colorPrimaryDark">
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/placeName" />
+        android:id="@+id/placeName"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/placeAddress"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -49,7 +55,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/gradeValue"/>
+            android:id="@+id/gradeValue"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
     </LinearLayout>
 

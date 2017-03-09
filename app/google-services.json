@@ -83,6 +83,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1002170437465-3tv1u7j1nkf8pmk1v0dq4gc711qm7l1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.application.funnyroad",
+            "certificate_hash": "ae572795584863169da10ff9f0afc4b078933782"
+          }
+        },
+        {
           "client_id": "1002170437465-sj4c4jhtqp96mtuq6mfhdibuo47fi1l2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

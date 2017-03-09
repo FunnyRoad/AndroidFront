@@ -27,7 +27,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" >
 
             <TextView
                 android:text="Prénom"
@@ -35,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView16"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -44,7 +48,9 @@
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextFirstName"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
 
         </LinearLayout>
 
@@ -59,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView15"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -68,7 +76,9 @@
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextLastName"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +92,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView18"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -91,7 +103,9 @@
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextEMail"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +119,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView19"
                 android:layout_weight="1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -114,7 +130,9 @@
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextUserName"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium" />
         </LinearLayout>
 
         <Button
@@ -122,7 +140,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttSave"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 

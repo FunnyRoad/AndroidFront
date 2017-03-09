@@ -7,41 +7,51 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewBegin"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDestination"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDescription"
-            android:layout_weight="0.50" />
+            android:layout_weight="0.50"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"  />
 
         <Button
             android:layout_width="43dp"
             android:layout_height="61dp"
             android:id="@+id/buttonNotFollow"
             android:background="@android:drawable/ic_menu_delete"
-            android:layout_weight="0.06" />
+            android:layout_weight="0.06"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
 
     </LinearLayout>

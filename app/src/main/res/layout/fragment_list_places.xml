@@ -8,7 +8,10 @@
         android:text="Ajouter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonAdd" />
+        android:id="@+id/buttonAdd"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:background="@color/colorPrimaryDark"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
