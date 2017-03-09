@@ -1,4 +1,4 @@
-package com.project.application.funnyroad.home.allroadtrip.presenter;
+package com.project.application.funnyroad.home.roadtripfollow.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +19,9 @@ import com.google.android.gms.location.places.Places;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.detailroadtripnew.view.DetailRoadTripActivity;
+import com.project.application.funnyroad.home.allroadtrip.presenter.PresenterAllRoadTrip;
 import com.project.application.funnyroad.home.model.RoadTrip;
+import com.project.application.funnyroad.home.roadtripfollow.view.IServiceFollowRoadTrip;
 
 import java.util.List;
 
@@ -30,12 +32,13 @@ import butterknife.ButterKnife;
  * Created by you on 23/02/2017.
  */
 
-public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.MyViewHolder>  {
+public class FollowRoadTripAdapter extends RecyclerView.Adapter<FollowRoadTripAdapter.MyViewHolder>  {
 
     private List<RoadTrip> tripsList;
     private Activity activity;
     private GoogleApiClient googleApiClient;
     private String namePlace = "" ;
+    private IServiceFollowRoadTrip iServiceFollowRoadTrip;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -45,19 +48,21 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
         TextView textViewDestination;
         @BindView(R.id.textViewDescription)
         TextView textViewDescription;
-        @BindView(R.id.buttonFollow)
-        Button buttonFollow;
+        @BindView(R.id.buttonNotFollow)
+        Button buttonNotFollow;
 
         public MyViewHolder(final View view) {
             super(view);
             ButterKnife.bind(this, view);
-            buttonFollow.setOnClickListener(this);
-            view.setOnClickListener(new View.OnClickListener() {
 
+            buttonNotFollow.setOnClickListener(this);
+
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Intent intent = new Intent(v.getContext(), DetailRoadTripActivity.class);
+                    intent.putExtra("isComeFromFollow" , true);
                     intent.putExtra("roadTripSelected",tripsList.get(position));
                     activity.startActivity(intent);
                 }
@@ -68,25 +73,28 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
 
         @Override
         public void onClick(View v) {
-            PresenterAllRoadTrip presenterAllRoadTrip = new PresenterAllRoadTrip(activity);
+            PresenterRoadTripFollow presenterFollowRoadTrip = new PresenterRoadTripFollow(activity , iServiceFollowRoadTrip);
             int position = getAdapterPosition();
-            if(v.getId() == buttonFollow.getId()) {
-                presenterAllRoadTrip.addUserToGuestList( Utility.getIdUser(activity) , tripsList.get(position).getId());
+            Log.d("USERID", "onClick: " + Utility.getIdUser(activity));
+            if(v.getId() == buttonNotFollow.getId()){
+                presenterFollowRoadTrip.deleteFollowRoadTrip( Utility.getIdUser(activity) , tripsList.get(position).getId());
             }
         }
     }
 
 
-    public AllRoadTripAdapter(List<RoadTrip> tripsList , Activity activity , GoogleApiClient googleApiClient) {
+    public FollowRoadTripAdapter(List<RoadTrip> tripsList , Activity activity , GoogleApiClient googleApiClient ,
+                                 IServiceFollowRoadTrip iServiceFollowRoadTrip) {
         this.tripsList = tripsList;
         this.activity = activity;
         this.googleApiClient = googleApiClient;
+        this.iServiceFollowRoadTrip = iServiceFollowRoadTrip;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.prototype_all_road_trip , parent, false);
+                .inflate(R.layout.prototype_all_road_trip_follow , parent, false);
         return new MyViewHolder(itemView);
     }
 

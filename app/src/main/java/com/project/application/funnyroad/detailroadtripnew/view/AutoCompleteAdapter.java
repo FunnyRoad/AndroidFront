@@ -13,11 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBuffer;
 import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -89,7 +91,6 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
     }
 
     private void displayPredictiveResults(String query) {
-
         Places.GeoDataApi.getAutocompletePredictions(mGoogleApiClient, query, null, new AutocompleteFilter.Builder().build())
                 .setResultCallback (
                         new ResultCallback<AutocompletePredictionBuffer>() {
@@ -97,14 +98,29 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
                             public void onResult(AutocompletePredictionBuffer buffer) {
                                 if(buffer == null)
                                     return;
-
                                 if(buffer.getStatus().isSuccess()) {
                                     for(AutocompletePrediction prediction : buffer) {
                                         //Add as a new item to avoid IllegalArgumentsException when buffer is released
-                                        add(new AutoCompletePlace(prediction.getPlaceId(), prediction.getFullText(null).toString()));
+                                        final AutoCompletePlace autoCompletePlace = new AutoCompletePlace(prediction.getPlaceId(), prediction.getFullText(null).toString());
+                                        add(autoCompletePlace);
+                                        PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                                                .getPlaceById(mGoogleApiClient, prediction.getPlaceId());
+                                        placeResult.setResultCallback(new ResultCallback<PlaceBuffer>() {
+                                            @Override
+                                            public void onResult(PlaceBuffer places) {
+                                                if (!places.getStatus().isSuccess()) {
+                                                    return;
+                                                }
+                                                // Selecting the first object buffer.
+                                                final Place place = places.get(0);
+                                                Log.d("AutoCompleteAdapter", "onResult: " + place.getLatLng().latitude +" " +place.getLatLng().longitude );
+                                                autoCompletePlace.setLatitude(place.getLatLng().latitude);
+                                                autoCompletePlace.setLongitude(place.getLatLng().longitude );
+                                                //add(new AutoCompletePlace(place.getLatLng().latitude, place.getLatLng().longitude));
+                                            }
+                                        });
                                     }
                                 }
-
                                 //Prevent memory leak by releasing buffer
                                 buffer.release();
                             }

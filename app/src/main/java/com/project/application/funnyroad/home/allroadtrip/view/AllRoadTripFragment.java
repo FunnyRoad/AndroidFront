@@ -80,10 +80,10 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
 
     @Override
     public void showLoading(boolean bool) {
-        if(bool) {
+        if(bool){
             progressBar.setVisibility(View.VISIBLE);
         }
-        else {
+        else{
             progressBar.setVisibility(View.GONE);
         }
     }
@@ -94,6 +94,8 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
         recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
         recycler_view_all_road_trip.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -149,7 +151,7 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
     @Override
     public void onResume() {
         super.onResume();
-        presenterAllRoadTrip.getAllRoadTrip();
+        //presenterAllRoadTrip.getAllRoadTrip();
     }
 
     @Override

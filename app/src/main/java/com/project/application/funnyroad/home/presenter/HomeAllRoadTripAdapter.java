@@ -19,12 +19,6 @@ import butterknife.ButterKnife;
 /**
  * Created by oraberkane on 04/02/2017.
  */
-
-
-/**
- * Created by you on 21/01/2017.
- */
-
 public class HomeAllRoadTripAdapter extends RecyclerView.Adapter<HomeAllRoadTripAdapter.MyViewHolder> {
 
     private List<RoadTrip> tripsList;

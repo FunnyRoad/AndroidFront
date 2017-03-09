@@ -6,8 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.project.application.funnyroad.home.view.FragmentHome"
     tools:showIn="@layout/app_bar_main"
     android:weightSum="1">
 
@@ -28,8 +26,9 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="372dp"
-        android:layout_weight="0.99">
+        android:layout_height="match_parent"
+        android:layout_weight="0.99"
+        android:layout_marginTop="50dp">
 
     </FrameLayout>
 

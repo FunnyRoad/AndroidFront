@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.project.application.funnyroad.home.allroadtrip.view.AllRoadTripFragment;
-import com.project.application.funnyroad.home.friends.view.FriendsFragment;
+import com.project.application.funnyroad.home.roadtripfollow.view.FollowRoadTripFragment;
 import com.project.application.funnyroad.home.roadtripsuggested.view.RoadTripSuggestedFragment;
 
 
@@ -32,8 +32,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 RoadTripSuggestedFragment fragmentRoadTripSuggested = new RoadTripSuggestedFragment();
                 return fragmentRoadTripSuggested;
             case 2:
-                FriendsFragment fragmentFriends = new FriendsFragment();
-                return fragmentFriends;
+                FollowRoadTripFragment fragmentFollowRoadTrip = new FollowRoadTripFragment();
+                return fragmentFollowRoadTrip;
             default:
                 return null;
         }

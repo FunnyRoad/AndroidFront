@@ -50,6 +50,7 @@ public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.
                     Intent intent = new Intent(v.getContext(), DetailsEndroitActivity.class);
                     intent.putExtra("endroitSelected", (Serializable) placeList.get(position));
                     intent.putExtra("roadTripId" , roadTrip.getId());
+                    intent.putExtra("roadTripOwner" , roadTrip.getOwner().getId());
                     view.getContext().startActivity(intent);
                 }
             });

@@ -38,10 +38,12 @@
 
         <Button
             android:layout_width="43dp"
-            android:layout_height="38dp"
-            android:id="@+id/buttonFollow"
-            android:background="@android:drawable/ic_input_add"
-            android:layout_weight="0.02" />
+            android:layout_height="61dp"
+            android:id="@+id/buttonNotFollow"
+            android:background="@android:drawable/ic_menu_delete"
+            android:layout_weight="0.06" />
+
+
     </LinearLayout>
 
 </LinearLayout>

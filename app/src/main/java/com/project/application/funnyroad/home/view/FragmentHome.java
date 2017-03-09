@@ -13,26 +13,17 @@ import android.view.ViewGroup;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.home.allroadtrip.view.AllRoadTripFragment;
-import com.project.application.funnyroad.home.friends.view.FriendsFragment;
+import com.project.application.funnyroad.home.roadtripfollow.view.FollowRoadTripFragment;
 import com.project.application.funnyroad.home.roadtripsuggested.view.RoadTripSuggestedFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by you on 23/02/2017.
+ * Created by oa on 23/02/2017.
  */
 
 public class FragmentHome extends Fragment {
-
-    /*@BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.main_layout)
-    CoordinatorLayout mainLayout;
-    @BindView(R.id.nav_view)
-    NavigationView navigationView;
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawer;*/
 
     @BindView(R.id.pager)
     public ViewPager viewPager;
@@ -46,45 +37,28 @@ public class FragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.content_main, container, false);
         ButterKnife.bind(this, view);
 
-
-        /*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this.getActivity(), drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                super.onDrawerSlide(drawerView, slideOffset);
-                float moveFactor = (navigationView.getWidth() * slideOffset);
-
-                mainLayout.setTranslationX(moveFactor);
-            }
-        };
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);*/
-
         /********** les tab layout **************/
         tabLayout.setVisibility(View.VISIBLE);
         viewPager.setVisibility(View.VISIBLE);
 
         AllRoadTripFragment mAllRoadFragment = new AllRoadTripFragment();
         RoadTripSuggestedFragment mRoadTripSuggestedFragment = new RoadTripSuggestedFragment();
-        FriendsFragment mFriendsFragment = new FriendsFragment();
+        FollowRoadTripFragment mFollowRoadTripFragment = new FollowRoadTripFragment();
 
-        getFragmentManager()
+        getChildFragmentManager()
                 .beginTransaction()
                 .add(R.id.content_frame, mAllRoadFragment)
                 .add(R.id.content_frame, mRoadTripSuggestedFragment)
-                .add(R.id.content_frame, mFriendsFragment )
+                .add(R.id.content_frame, mFollowRoadTripFragment)
                 .commit();
 
         tabLayout.addTab(tabLayout.newTab().setText("Les roads trips"));
         tabLayout.addTab(tabLayout.newTab().setText("Roads trips recommandés"));
-        tabLayout.addTab(tabLayout.newTab().setText("Amis"));
+        tabLayout.addTab(tabLayout.newTab().setText("Road trips suivis"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final PagerAdapter adapter = new PagerAdapter
-                (getFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -122,45 +96,5 @@ public class FragmentHome extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-    /*@SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    // 3.4 and 3.8
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Fragment fragment = null;
-
-        if (id == R.id.nav_road_trip) {
-            fragment = new RoadTripFragment();
-        }
-        else if (id == R.id.nav_profil) {
-            tabLayout.setVisibility(View.GONE);
-            viewPager.setVisibility(View.GONE);
-            fragment = new ProfilFragment();
-        } else if (id == R.id.nav_urgence) {
-            tabLayout.setVisibility(View.GONE);
-            viewPager.setVisibility(View.GONE);
-            fragment = new UrgenceFragment();
-        } else if (id == R.id.nav_photos) {
-            tabLayout.setVisibility(View.GONE);
-            viewPager.setVisibility(View.GONE);
-            fragment = new PhotosFragment();
-        } else if (id == R.id.nav_lieux) {
-            tabLayout.setVisibility(View.GONE);
-            viewPager.setVisibility(View.GONE);
-            fragment = new LieuxFragment();
-        }
-        if (fragment != null) {
-            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
-
 
 }

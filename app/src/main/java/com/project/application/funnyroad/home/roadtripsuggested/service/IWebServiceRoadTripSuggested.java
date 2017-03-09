@@ -6,14 +6,19 @@ import java.util.ArrayList;
 
 import retrofit.Callback;
 import retrofit.http.GET;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 
 /**
- * Created by you on 25/02/2017.
+ * Created by oa on 25/02/2017.
  */
 
 public interface IWebServiceRoadTripSuggested{
 
-    @GET("/roadtrips/{cityId}")
-    public void allRoadTripSuggested(@Path("cityId") String cityId , Callback<ArrayList<RoadTrip>> callback);
+    @GET("/roadtrip/nearest/{latitude}/{longitude}/{distance}")
+    public void allRoadTripSuggested(@Path("latitude") double latitude, @Path("longitude") double longitude,
+                                     @Path("distance") double distance, Callback<ArrayList<RoadTrip>> callback);
+
+    @PUT("/guest/{guestId}/roadTrip/{roadtripId}")
+    public void addGuestToRoad(@Path("guestId") int id , @Path("roadtripId") int roadtripId, Callback<Object> callback );
 }

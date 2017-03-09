@@ -81,7 +81,7 @@
     <TextView
         android:text="pas de photos pour cet place"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:id="@+id/textViewListPhotoEmpty"
         android:textAlignment="center"
         android:gravity="center"
@@ -98,7 +98,8 @@
         android:layout_width="match_parent"
         android:id="@+id/recycler_view_list_photo_endroit"
         android:layout_margin="10dp"
-        android:layout_height="200dp" />
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:text="Supprimer la place"
