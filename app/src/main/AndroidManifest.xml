@@ -34,7 +34,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDDq6MYe4h91FrhUBNZCmd1xpmQxGkDYqo" />
 
-        <activity android:name=".home.view.ActivityHome2">
+        <activity android:name=".login.view.ActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".login.view.ActivityLogin"></activity>
+        <activity android:name=".home.view.ActivityHome2"></activity>
 
         <activity android:name="com.project.application.funnyroad.register.view.ActivityRegister">
         </activity>
