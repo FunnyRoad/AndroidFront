@@ -9,10 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.detailroadtrip.modele.Place;
 import com.project.application.funnyroad.roadtrip.view.model.RoadTrip;
 import com.project.application.funnyroad.roadtrip.view.presenter.LesRoadTripsAdapter;
 
@@ -34,7 +32,7 @@ public class  LesRoadTripsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_les_road_trips, container, false);
+        View view = inflater.inflate(R.layout.fragment_the_road_trips, container, false);
 
         ButterKnife.bind(this, view);
 

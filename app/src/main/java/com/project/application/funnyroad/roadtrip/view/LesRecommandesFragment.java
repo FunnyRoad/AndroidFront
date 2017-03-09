@@ -23,7 +23,7 @@ public class LesRecommandesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_les_recommandes, container, false);
+        View view = inflater.inflate(R.layout.fragment_recommanded_road_trips, container, false);
 
         ButterKnife.bind(this, view);
 

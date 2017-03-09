@@ -102,7 +102,7 @@ public class Place implements Parcelable {
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "CustomPlace{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +

@@ -17,7 +17,7 @@ public class LieuxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Retourne votre fichier layout
         // Changer R.layout.yourlayoutfilename pour vos fragments
-        return inflater.inflate(R.layout.lieux_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_places, container, false);
     }
 
 

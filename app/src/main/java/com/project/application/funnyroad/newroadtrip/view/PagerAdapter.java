@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltreRoadTripFragment;
-import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
+import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltrePlacesFragment;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListPlacesFragment;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
 /**
@@ -26,10 +26,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                ListRoadFragment fragmentList = new ListRoadFragment();
+                ListPlacesFragment fragmentList = new ListPlacesFragment();
                 return fragmentList;
             case 1:
-                FiltreRoadTripFragment fragmentFiltre = new FiltreRoadTripFragment();
+                FiltrePlacesFragment fragmentFiltre = new FiltrePlacesFragment();
                 return fragmentFiltre;
             case 2:
                 VisualRoadTripFragment fragmentVisual = new VisualRoadTripFragment();

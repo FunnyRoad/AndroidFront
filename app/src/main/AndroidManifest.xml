@@ -49,7 +49,7 @@
         <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip">
         </activity>
 
-        <activity android:name="com.project.application.funnyroad.googlemap.view.ActivityNewRoaTripRouteChoice">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.ActivityNewRoadTripRouteChoice">
         </activity>
 
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">

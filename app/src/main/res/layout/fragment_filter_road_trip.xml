@@ -15,7 +15,8 @@
 
         <CheckBox
             android:id="@+id/aquarium"
-            android:layout_weight="20"/>
+            android:layout_weight="20"
+            android:text="Aquarium" />
     </TableRow>
 
     <TableRow>
@@ -33,15 +34,6 @@
 
     <TableRow>
 
-        <CheckBox
-            android:id="@+id/hindu_temple"
-            android:layout_weight="5"
-            android:text="Temple Hindu"/>
-
-        <CheckBox
-            android:id="@+id/mosque"
-            android:layout_weight="20"
-            android:text="Mosquée"/>
     </TableRow>
 
     <TableRow>
@@ -65,17 +57,21 @@
             android:text="Stade"/>
 
         <CheckBox
-            android:id="@+id/synagogue"
+            android:id="@+id/zoo"
             android:layout_weight="20"
-            android:text="Synagogue"/>
+            android:text="Zoo"/>
+    </TableRow>
+
+    <TableRow>
     </TableRow>
 
     <TableRow>
 
-        <CheckBox
-            android:id="@+id/zoo"
-            android:layout_weight="5"
-            android:text="Zoo"/>
-
+        <Button
+            android:id="@+id/buttonValidate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
     </TableRow>
 </TableLayout>

@@ -2,6 +2,7 @@ package com.project.application.funnyroad;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.project.application.funnyroad.allroads.view.AllRoadTripActivity;
 import com.project.application.funnyroad.detailroadtrip.modele.Place;
 import com.project.application.funnyroad.lieu.view.LieuxFragment;
+import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.photos.view.PhotosFragment;
 import com.project.application.funnyroad.profil.view.ProfilFragment;
 import com.project.application.funnyroad.register.view.ActivityRegister;
@@ -40,6 +42,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
 
         final CoordinatorLayout mainLayout = (CoordinatorLayout) findViewById(R.id.main_layout); // layout : app_bar_main.xml
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);

@@ -5,17 +5,21 @@ import android.view.View;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
+import com.project.application.funnyroad.newroadtrip.Variable;
 
 
 /**
  * Created by oraberkane on 04/02/2017.
  */
 
-public class ActivityNewRoaTripRouteChoice extends LayoutCommonActivity {
+public class ActivityNewRoadTripRouteChoice extends LayoutCommonActivity {
 
         @Override
         protected void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
+            //Variable lesVariables = ((Variable) getApplicationContext());
+
             //setContentView(R.layout.fragment_routechoice);
             FragmentRouteChoice mFragmentRouteChoice = new FragmentRouteChoice();
 
