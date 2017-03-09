@@ -58,13 +58,26 @@ public class PlaceJSONParser {
         String placeId = "";
         String placeName = "";
         String placeGrade = "";
+        JSONArray placeTypes = new JSONArray();
         String placeType = "";
 
         try {
             placeId = jPlace.getString("place_id");
             placeName = jPlace.getString("name");
             placeGrade = String.valueOf(jPlace.getDouble("rating"));
-            placeType = jPlace.getJSONArray("types").getString(0);
+            placeTypes = jPlace.getJSONArray("types");
+            for (int i=0;i<placeTypes.length();i++){
+                switch ((String) placeTypes.get(i)) {
+                    case "amusement_park": placeType = (String) placeTypes.get(i);break;
+                    case "aquarium": placeType = (String) placeTypes.get(i);break;
+                    case "art_gallery": placeType = (String) placeTypes.get(i);break;
+                    case "campground": placeType = (String) placeTypes.get(i);break;
+                    case "museum": placeType = (String) placeTypes.get(i);break;
+                    case "park": placeType = (String) placeTypes.get(i);break;
+                    case "stadium": placeType = (String) placeTypes.get(i);break;
+                    case "zoo": placeType = (String) placeTypes.get(i);break;
+                }
+            }
 
             place.put("place_id", placeId);
             place.put("place_name", placeName);
