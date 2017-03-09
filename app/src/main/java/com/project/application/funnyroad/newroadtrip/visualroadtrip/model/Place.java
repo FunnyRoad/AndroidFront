@@ -168,9 +168,8 @@ public class Place implements Parcelable, Serializable {
 
     @Override
     public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "CustomPlace{" +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +

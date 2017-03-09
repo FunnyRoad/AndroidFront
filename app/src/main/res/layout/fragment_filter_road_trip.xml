@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:padding="15dp"
+    android:weightSum="100">
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/amusement_park"
+            android:layout_weight="5"
+            android:text="Parc d'attractions"/>
+
+        <CheckBox
+            android:id="@+id/aquarium"
+            android:layout_weight="20"
+            android:text="Aquarium" />
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/art_gallery"
+            android:layout_weight="5"
+            android:text="Galerie d'art"/>
+
+        <CheckBox
+            android:id="@+id/campground"
+            android:layout_weight="20"
+            android:text="Camping"/>
+    </TableRow>
+
+    <TableRow>
+
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/museum"
+            android:layout_weight="5"
+            android:text="Musée"/>
+
+        <CheckBox
+            android:id="@+id/park"
+            android:layout_weight="20"
+            android:text="Parc"/>
+    </TableRow>
+
+    <TableRow>
+
+        <CheckBox
+            android:id="@+id/stadium"
+            android:layout_weight="5"
+            android:text="Stade"/>
+
+        <CheckBox
+            android:id="@+id/zoo"
+            android:layout_weight="20"
+            android:text="Zoo"/>
+    </TableRow>
+
+    <TableRow>
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/buttonValidate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+    </TableRow>
+</TableLayout>

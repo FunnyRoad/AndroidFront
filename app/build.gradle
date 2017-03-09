@@ -4,8 +4,13 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
+//<<<<<<< HEAD
         applicationId "com.example.oraberkane.appliplatine"
         minSdkVersion 16
+/*=======
+        applicationId "com.project.application.funnyroad"
+        minSdkVersion 17
+>>>>>>> workAPI*/
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

@@ -75,7 +75,7 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Retourne votre fichier layout
         // Changer R.layout.yourlayoutfilename pour vos fragments
-        View view = inflater.inflate(R.layout.profil_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ButterKnife.bind(this , view);
 

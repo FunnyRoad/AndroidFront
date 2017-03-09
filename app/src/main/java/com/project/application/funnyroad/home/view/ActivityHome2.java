@@ -24,10 +24,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.project.application.funnyroad.R;
-import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoaTripRouteChoice;
+//import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice;
+import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice;
 import com.project.application.funnyroad.lieu.view.LieuxFragment;
 import com.project.application.funnyroad.login.view.ActivityLogin;
 import com.project.application.funnyroad.login.view.FragmentLogin2;
+import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.project.application.funnyroad.photos.view.PhotosFragment;
 import com.project.application.funnyroad.profil.view.view.ProfilFragment;
 import com.project.application.funnyroad.urgence.view.UrgenceFragment;
@@ -142,7 +144,7 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
 
     @OnClick(R.id.floatingActionButton)
     public void goToAddRoadTrip(){
-        Intent intent = new Intent(this , ActivityNewRoaTripRouteChoice.class);
+        Intent intent = new Intent(this , ActivityNewRoadTripRouteChoice.class);
         startActivity(intent);
     }
 

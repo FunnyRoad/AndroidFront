@@ -17,7 +17,7 @@ public class PhotosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Retourne votre fichier layout
         // Changer R.layout.yourlayoutfilename pour vos fragments
-        return inflater.inflate(R.layout.photos_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_photos, container, false);
     }
 
 

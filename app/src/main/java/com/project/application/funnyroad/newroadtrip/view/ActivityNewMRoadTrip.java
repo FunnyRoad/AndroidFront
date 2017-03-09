@@ -10,8 +10,8 @@ import android.view.View;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
-import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.view.FiltreRoadTripFragment;
-import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListRoadFragment;
+import com.project.application.funnyroad.newroadtrip.filteroadtrip.view.FiltrePlacesFragment;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.ListPlacesFragment;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
 import butterknife.BindView;
@@ -35,8 +35,8 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
         tabLayout.setVisibility(View.VISIBLE);
         viewPager.setVisibility(View.VISIBLE);
 
-        ListRoadFragment mListRoadFragment = new ListRoadFragment();
-        FiltreRoadTripFragment filtreRoadFragment = new FiltreRoadTripFragment();
+        ListPlacesFragment mListRoadFragment = new ListPlacesFragment();
+        FiltrePlacesFragment filtreRoadFragment = new FiltrePlacesFragment();
         VisualRoadTripFragment visualRoadTripFragment = new VisualRoadTripFragment();
 
         Bundle bundle = getIntent().getExtras();
