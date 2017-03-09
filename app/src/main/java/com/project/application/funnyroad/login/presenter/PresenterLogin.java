@@ -10,6 +10,7 @@ import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.login.service.IWebServiceLogin;
 import com.project.application.funnyroad.login.view.IServiceLogin;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -39,8 +40,6 @@ public class PresenterLogin {
         mIServiceLogin = iLoginService;
     }
 
-
-
     public void connect(User user) {
         iWebServiceLogin.userLogin(user, new Callback<User>() {
             @Override
@@ -54,7 +53,6 @@ public class PresenterLogin {
             }
         });
     }
-
 
     public void createRoadTrip(RoadTrip roadTrip)
     {
@@ -85,5 +83,32 @@ public class PresenterLogin {
         });
     }
 
+    public void getUsers(){
+        iWebServiceLogin.getUsers(new Callback<ArrayList<User>>() {
+            @Override
+            public void success(ArrayList<User> users, Response response) {
+                mIServiceLogin.verifyExistingUser(users);
+            }
 
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+    }
+
+    public void deleteUser(int id){
+        iWebServiceLogin.deleteteUser(id, new Callback<Object>() {
+            @Override
+            public void success(Object o, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+
+    }
 }

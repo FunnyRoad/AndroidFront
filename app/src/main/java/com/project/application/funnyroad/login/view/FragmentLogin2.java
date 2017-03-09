@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.login.view;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -79,6 +80,8 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     Button btnRevokeAccess;
 
     PresenterLogin presenterLogin;
+    private String firebaseIdRetrieve;
+    private User user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,19 +93,24 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
 
         presenterLogin = new PresenterLogin(this);
 
-        ArrayList<Integer> listPlace = new ArrayList<Integer>();
-        listPlace.add(1);
+        /*Departure d1 = new Departure(50.633333 , 3.066667 , null);
+        Departure d2 = new Departure( 48.856614 , 2.35222199 , null);
+        Departure d3 = new Departure( 43.610769 , 3.87671599 , null);
+        Departure d4 = new Departure( 50.3500000 , 3.5333300 , null);
 
-        Departure d1 = new Departure(50.633333 , 3.066667 , null);
-        //Departure d2 = new Departure( 48.856614 , 2.3522219000000177 , null);
-        //Departure d3 = new Departure( 43.610769 , 3.8767159999999876 , null);
+        ArrayList<Integer> listPlaces = new ArrayList<>();
+        listPlaces.add(4);
+        listPlaces.add(3);
 
-        //presenterLogin.createRoadTrip( new RoadTrip("roadTrip5" , 48 , d1,
-        //        "ChIJARsZE-Fv5kcRr1x6No4iL28" , listPlace , null) );
-        /*presenterLogin.createRoadTrip( new RoadTrip("roadTrip2" ,14 , d2,
-                "ChIJgcpR9-gnVQ0RiXo5ewOGY3k" , listPlace , null) );
-        presenterLogin.createRoadTrip( new RoadTrip("roadTrip3" , 14 , d3,
-                "ChIJZb1_yQvmpBIRsMmjIeD6AAM" , listPlace , null) );
+        RoadTrip roadTrip = new RoadTrip("RTTest1" , 14 , d1 , "ChIJgcpR9-gnVQ0RiXo5ewOGY3k" , listPlaces, null );
+        RoadTrip roadTrip2 = new RoadTrip("RTTest2" , 14 , d2 , "ChIJ_1J17G-7rhIRMBBBL5z2BgQ", listPlaces, null );
+        RoadTrip roadTrip3 = new RoadTrip("RTTest3" , 61 , d3 , "ChIJsZ3dJQevthIRAuiUKHRWh60" , listPlaces, null );
+        RoadTrip roadTrip4 = new RoadTrip("RTTest4" , 61 , d4 , "ChIJ5TCOcRaYpBIRCmZHTz37sEQ" , listPlaces, null );
+
+        presenterLogin.createRoadTrip(roadTrip);
+        presenterLogin.createRoadTrip(roadTrip2);
+        presenterLogin.createRoadTrip(roadTrip3);
+        presenterLogin.createRoadTrip(roadTrip4);
         */
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -110,7 +118,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this.getContext())
-                .enableAutoManage(this.getActivity(), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
@@ -161,6 +168,8 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             String userName = acct.getGivenName();
             String firebaseId = acct.getId();
 
+            firebaseIdRetrieve = firebaseId;
+
             String personPhotoUrl = "";
             if(acct.getPhotoUrl() != null)
                 personPhotoUrl = acct.getPhotoUrl().toString();
@@ -183,19 +192,11 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             Utility.storeInformationUser(getActivity(), "personName" , personName);
             Utility.storeInformationUser(getActivity(), "userName" , userName);
 
-            // on sauvegarde firebaseId DANS LAPPLICATION
+            // on sauvegarde firebaseId DANS L'APPLICATION
             Utility.storeFirebaseId(getActivity(), firebaseId);
-            User user = new User(email, firebaseId, personName, lastName, userName, null, "");
+            user = new User(email, firebaseId, personName, lastName, userName, null, "");
             Log.d(TAG, "handleSignInResult: recup: "+Utility.getInformationUser(getActivity() ,"firebaseId" ));
-            if(Utility.getFirebaseId(getActivity()) == null){
-                Log.d(TAG, "handleSignInResult: firebaseid est null");
-                presenterLogin.connect(user);
-            }
-            else{
-                Intent intent = new Intent(getActivity() , ActivityHome2.class);
-                startActivity(intent);
-            }
-
+            presenterLogin.getUsers();
         }
         else {
             // Signed out, show unauthenticated UI.
@@ -289,13 +290,13 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
 
     @Override
     public void isLoginSuccess(int userId) {
-        //Utility.storeIdUser(this.getActivity(),userId);
+        Utility.storeIdUser(getActivity(),userId);
         Log.d(TAG, "isLoginSuccess: id login: " + userId);
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        /*SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("idUser", userId );
         editor.commit();
-
+        */
         Intent intent = new Intent(getActivity() , ActivityHome2.class);
         startActivity(intent);
     }
@@ -319,5 +320,27 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     public void createRoadTrip() {
         Toast.makeText(getContext(), "road trip créer avec succes", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "createRoadTrip: roadtrip creer avec success");
+    }
+
+    @Override
+    public void verifyExistingUser(ArrayList<User> listUsers) {
+        boolean res = false;
+        int id = -1;
+        for(User u : listUsers){
+            if (u.getFirebaseId().equals(firebaseIdRetrieve)){
+                id = u.getId();
+                res = true;
+                break;
+            }
+        }
+        if(res){
+            Utility.storeIdUser(getActivity() , id);
+            Intent intent = new Intent(getContext() , ActivityHome2.class);
+            startActivity(intent);
+        }
+        else{
+            presenterLogin.connect(user);
+        }
+
     }
 }

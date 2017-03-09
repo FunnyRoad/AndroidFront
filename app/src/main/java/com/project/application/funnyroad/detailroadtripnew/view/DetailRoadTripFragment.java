@@ -65,7 +65,7 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     @BindView(R.id.textViewDetailDepart)
-    EditText textViewDetailDepart;
+    AutoCompleteTextView textViewDetailDepart;
     @BindView(R.id.textViewDetailDestination)
     AutoCompleteTextView textViewDetailDestination;
     @BindView(R.id.textViewDetailDescription)
@@ -80,16 +80,22 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
     Button butDeleteRoadTrip;
     @BindView(R.id.butUpload)
     Button butUpload;
+    @BindView(R.id.addPlace)
+    Button buttonAddPlace;
     @BindView(R.id.recycler_view_list_endroit)
     RecyclerView recycler_view_list_endroit;
 
-    RoadTrip roadTrip;
+    private RoadTrip roadTrip;
     private SupportMapFragment gMap;
     PresenterDetailRoadTrip presenterDetailRoadTrip;
     private GoogleApiClient mGoogleApiClient;
-    private GeocodeInverse geocodeInverse;
     private AutoCompleteAdapter autoCompleteAdapter;
     private AutoCompletePlace place;
+    private AutoCompletePlace placeBegin;
+    private boolean destinationChanged = false;
+    private boolean isComeFromFollowFragment;
+    private ArrayList<com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place> listPlace;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,18 +114,27 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
         autoCompleteAdapter = new AutoCompleteAdapter(this.getActivity());
 
         textViewDetailDestination.setAdapter(autoCompleteAdapter);
+        textViewDetailDepart.setAdapter(autoCompleteAdapter);
 
         textViewDetailDestination.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 place = (AutoCompletePlace) parent.getItemAtPosition(position);
                 textViewDetailDestination.setText(place.getDescription());
+                destinationChanged = true;
+            }
+        });
+
+        textViewDetailDepart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                place = (AutoCompletePlace) parent.getItemAtPosition(position);
+                textViewDetailDepart.setText(place.getDescription());
             }
         });
 
         mGoogleApiClient = new GoogleApiClient
                 .Builder(getActivity())
-                .enableAutoManage(this.getActivity() , 0 , this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
                 .addConnectionCallbacks(this)
@@ -128,6 +143,8 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
 
         Intent intent = getActivity().getIntent();
         if (intent != null) {
+            isComeFromFollowFragment = intent.getBooleanExtra("isComeFromFollow" , false);
+            // le road trip qu'on est entrain de visualiser
             roadTrip = (RoadTrip) intent.getSerializableExtra("roadTripSelected");
             fillFragment(roadTrip);
         }
@@ -166,11 +183,8 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
             textViewDetailDepart.setText("L'adresse n'a pu être déterminée");
         }
-
-        Utility.storeIdUser(getActivity() , 14);
 
         Log.d("DetailRoad", "onCreateView: " +roadTrip.getOwner().getId() +" "+ Utility.getIdUser(getActivity()));
         textViewDetailDescription.setText(roadTrip.getName());
@@ -180,7 +194,8 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
             textViewDetailDestination.setEnabled(false);
             textViewDetailDescription.setEnabled(false);
         }
-        else if (roadTrip.getOwner().getId() == Utility.getIdUser(getActivity())){
+        else if (roadTrip.getOwner().getId() == Utility.getIdUser(getActivity()) || isComeFromFollowFragment){
+            buttonAddPlace.setVisibility(View.VISIBLE);
             butUpload.setVisibility(View.VISIBLE);
             butDeleteRoadTrip.setVisibility(View.VISIBLE);
         }
@@ -191,7 +206,7 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
     @OnClick(R.id.addPlace)
     public void goToAddPlace(){
         Intent intent = new Intent(this.getContext() , AddPlaceActivity.class);
-        intent.putExtra("roadTripOwner" , roadTrip.getOwner().getId());
+        intent.putExtra("roadTrip" , roadTrip.getId());
         startActivity(intent);
     }
 
@@ -200,15 +215,17 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
         presenterDetailRoadTrip.deleteRoadTrip(roadTrip.getId());
     }
 
-    private ArrayList<com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place> listPlace;
-
     @OnClick(R.id.butUpload)
     public void uploadRoadTripInformation(){
-        textViewDetailDestination.setEnabled(false);
-        Departure d = Utility.getLocationFromAddress(getActivity(),textViewDetailDepart.getText().toString());
-        RoadTrip newRoadTrip = new RoadTrip(roadTrip.getId(), textViewDetailDescription.getText().toString(),
-                d, place.getId());
-        if( d != null && place.getId() != null) {
+        Departure d = Utility.getLocationFromAddress(getActivity() , textViewDetailDepart.getText().toString());
+        d.setLatitude(d.getLatitude() / Math.pow(10,6)); // on divise par un million pour avoir la bonne latitude et longitude
+        d.setLongitude(d.getLongitude() / Math.pow(10,6));
+        if (destinationChanged == false){
+            RoadTrip newRoadTrip = new RoadTrip(roadTrip.getId(), textViewDetailDescription.getText().toString(), d, roadTrip.getDestination() , null);
+            presenterDetailRoadTrip.updateRoadTrip(newRoadTrip);
+        }
+        else if(destinationChanged == true){
+            RoadTrip newRoadTrip = new RoadTrip(roadTrip.getId(), textViewDetailDescription.getText().toString(), d, place.getId() , null);
             presenterDetailRoadTrip.updateRoadTrip(newRoadTrip);
         }
         else{
@@ -234,7 +251,6 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
 
     @Override
     public void getListPlacesSuccess(ArrayList<com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place> places){
-        places.toString();
         listPlace = places;
         ListEndroitAdapter mListEndroitAdapter = new ListEndroitAdapter(places , roadTrip);
         recycler_view_list_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -285,17 +301,20 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
     }
 
     @Override
-    public void getInformationRoadTrip(RoadTrip roadTrip) {
-        textViewDetailDepart.setText(Utility.getAdressByLatLng(getActivity(),roadTrip.getBegin().getLatitude(),roadTrip.getBegin().getLongitude()));
-        textViewDetailDestination.setText(place.getDescription());
-        textViewDetailDescription.setText(roadTrip.getName());
+    public void getInformationRoadTrip(RoadTrip roadTripR) {
+        textViewDetailDepart.setText(Utility.getAdressByLatLng(getActivity(),roadTripR.getBegin().getLatitude(),roadTripR.getBegin().getLongitude()));
+        textViewDetailDestination.setText(textViewDetailDestination.getText());
+        textViewDetailDescription.setText(roadTripR.getName());
         // si on est pas proprietaire du road trip on desactive les editText
-        if(roadTrip.getId() != Utility.getIdUser(getActivity())){
+        if(roadTripR.getOwner().getId() != Utility.getIdUser(getActivity())){
             textViewDetailDepart.setEnabled(false);
             textViewDetailDestination.setEnabled(false);
             textViewDetailDescription.setEnabled(false);
         }
-        else if (roadTrip.getId() != Utility.getIdUser(getActivity())){
+        else if (roadTripR.getOwner().getId() == Utility.getIdUser(getActivity())){
+            textViewDetailDepart.setEnabled(true);
+            textViewDetailDestination.setEnabled(true);
+            textViewDetailDescription.setEnabled(true);
             butDeleteRoadTrip.setVisibility(View.VISIBLE);
         }
     }

@@ -1,5 +1,8 @@
 package com.project.application.funnyroad.home.roadtripsuggested.presenter;
 
+import android.app.Activity;
+import android.widget.Toast;
+
 import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.home.roadtripsuggested.service.IWebServiceRoadTripSuggested;
@@ -21,26 +24,49 @@ public class PresenterRoadTripSuggested{
                                                                     .create(IWebServiceRoadTripSuggested.class);
 
     IServiceRoadTripSuggested mIServiceRoadTripSuggested;
+    Activity activity;
+
     public PresenterRoadTripSuggested( IServiceRoadTripSuggested iServiceRoadTripSuggested){
         mIServiceRoadTripSuggested = iServiceRoadTripSuggested;
     }
 
-    public void getAllRoadsTripByCity(String idPosition){
+    public PresenterRoadTripSuggested(Activity activity){
+        this.activity = activity;
+    }
+
+    public void getAllRoadsTripByCity(double latitude , double longitude, double distance){
         mIServiceRoadTripSuggested.showLoading(true);
-        iWebServiceRoadTripSuggested.allRoadTripSuggested(idPosition, new Callback<ArrayList<RoadTrip>>() {
+        iWebServiceRoadTripSuggested.allRoadTripSuggested(latitude,longitude, distance,new Callback<ArrayList<RoadTrip>>() {
             @Override
             public void success(ArrayList<RoadTrip> roadTrips, Response response) {
                 mIServiceRoadTripSuggested.showLoading(false);
-                mIServiceRoadTripSuggested.getAllRoadTripSuggested(roadTrips);
                 if(roadTrips.size() == 0){
                     mIServiceRoadTripSuggested.listRoadTripEmpty();
                 }
+                else{
+                    mIServiceRoadTripSuggested.getAllRoadTripSuggested(roadTrips);
+                }
+
             }
             @Override
             public void failure(RetrofitError error) {
                 mIServiceRoadTripSuggested.loadingListError(error.getMessage());
             }
         });
+    }
 
+    public void addUserToGuestList(int idUser , int idRoadTrip){
+        iWebServiceRoadTripSuggested.addGuestToRoad(idUser, idRoadTrip, new Callback<Object>() {
+            @Override
+            public void success(Object o, Response response) {
+                Toast.makeText( activity, " Vous êtes bien ajouté aux followers du road trip !", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText( activity, " Vous suivez déjà ce road trip !", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }

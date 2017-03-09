@@ -1,6 +1,8 @@
 package com.project.application.funnyroad.home.allroadtrip.presenter;
 
+import android.app.Activity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.home.allroadtrip.service.IWebServiceAllRoadTrip;
@@ -23,11 +25,14 @@ public class PresenterAllRoadTrip {
             .create(IWebServiceAllRoadTrip.class);
 
     IServiceAllRoadTrip mIServiceAllRoadTrip;
-
+    Activity activity;
     public PresenterAllRoadTrip(IServiceAllRoadTrip iServiceAllRoadTrip){
         mIServiceAllRoadTrip = iServiceAllRoadTrip;
     }
 
+    public PresenterAllRoadTrip(Activity activity){
+        this.activity = activity;
+    }
 
     public void getAllRoadTrip(){
         mIServiceAllRoadTrip.showLoading(true);
@@ -45,6 +50,21 @@ public class PresenterAllRoadTrip {
             public void failure(RetrofitError error) {
                 mIServiceAllRoadTrip.showLoading(false);
                 mIServiceAllRoadTrip.loadingListError(error.getMessage());
+            }
+        });
+    }
+
+    public void addUserToGuestList(int idUser , int idRoadTrip){
+        iWebServiceAllRoadTrip.addGuestToRoad(idUser, idRoadTrip, new Callback<Object>() {
+            @Override
+            public void success(Object o, Response response) {
+                Toast.makeText( activity, " Vous êtes bien ajouté aux followers du road trip", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText( activity, " Vous n'êtes pas ajouté aux followers du road trip", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

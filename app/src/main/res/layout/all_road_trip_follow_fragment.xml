@@ -2,32 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="50dp"
-    android:weightSum="1">
+    android:layout_marginTop="60dp">
+
+    <TextView
+        android:text="Vous ne suivez aucun roadtrip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewListEmpty"
+        android:textAlignment="center"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:visibility="gone" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_gravity="center"
-        android:visibility="gone" />
-
-    <TextView
-        android:text="Aucun road trip à afficher"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-
-        android:id="@+id/textViewListEmpty"
-        android:gravity="center"
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:id="@+id/recycler_view_all_road_trip"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="2.73" />
+        android:id="@+id/recyclerViewFollow" />
 </LinearLayout>

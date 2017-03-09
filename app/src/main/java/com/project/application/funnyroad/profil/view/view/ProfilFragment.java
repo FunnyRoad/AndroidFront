@@ -12,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -37,9 +36,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -86,16 +82,16 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
         this.getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         presenterProfil = new PresenterProfil(this);
-
-        Utility.storeIdUser(getActivity() , 14);
         value = Utility.getIdUser(getActivity());
+
+        presenterProfil.getInformationUser(value); // on recupere les information de l'utilisateur a partir de la BD
+
         Log.d("TAG", "onCreateView: id : "+ value);
-        editTextEmail.setText(Utility.getInformationUser(getActivity() , "email"));
+        /*editTextEmail.setText(Utility.getInformationUser(getActivity() , "email"));
         editTextFirstName.setText(Utility.getInformationUser(getActivity() , "personName"));
         editTextLastName.setText(Utility.getInformationUser(getActivity() , "lastName"));
         editTextUserName.setText(Utility.getInformationUser(getActivity() , "userName"));
-
-
+        */
         loadImageFromStorage(path);
 
         return view;
@@ -128,12 +124,13 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
 
     @Override
     public void showInformationsUser(User user){
-        Utility.storeInformationUser(getActivity() , "email" , user.getMail());
-        Utility.storeInformationUser(getActivity() , "personName" , user.getFirtName());
+        /*Utility.storeInformationUser(getActivity() , "email" , user.getMail());
+        Utility.storeInformationUser(getActivity() , "personName" , user.getFirtsName());
         Utility.storeInformationUser(getActivity() , "lastName" , user.getLastName());
         Utility.storeInformationUser(getActivity() , "userName" , user.getUsername());
+        */
 
-        editTextFirstName.setText(user.getFirtName());
+        editTextFirstName.setText(user.getFirtsName());
         editTextLastName.setText(user.getLastName());
         editTextEmail.setText(user.getMail());
         editTextUserName.setText(user.getUsername());

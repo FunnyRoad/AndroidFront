@@ -22,7 +22,7 @@ public interface IWebServiceAddPlace {
     public void addPlace(@Body Place place , Callback<Place> callback);
 
     @POST("/roadtrip/{roadId}/place/{placeId}")
-    public void addPlaceToRoadtrip(@Path("roadId") int roadId , @Path("placeId") int placeId , Callback<String> callback);
+    public void addPlaceToRoadtrip(@Path("roadId") int roadId , @Path("placeId") int placeId , Callback<Object> callback);
 
     @Multipart
     @POST("/place/{placeId}/picture")

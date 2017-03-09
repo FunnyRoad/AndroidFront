@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.addplace.model.Picture;
 import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.detailEndroit.presenter.DetailsEndroitAdapter;
 import com.project.application.funnyroad.detailEndroit.presenter.PresenterDetailPlace;
@@ -92,9 +93,14 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
             roadTripOwner = i.getIntExtra("roadTripOwner", -1);
             roadTripId = i.getIntExtra("roadTripId" , -1);
             Log.d("TAG", "onCreateView: roadtrip id : "+ roadTripId);
+            Log.d("TAG", "onCreateView: user id : "+ Utility.getIdUser(getActivity()));
+            Log.d("TAG", "onCreateView: roadtrip owner id : "+ roadTripOwner);
+
             textViewNameEndroit.setText(place.getName());
             textViewDescriptionEndroit.setText(place.getDescription());
             spinnerDetailPlace.setSelection(adapter.getPosition(place.getType()));
+
+            presenterDetailPlace.getPictures(place.getId());
 
             if (roadTripOwner != Utility.getIdUser(getActivity())){
                 textViewNameEndroit.setEnabled(false);
@@ -112,8 +118,7 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
 
         }
 
-
-        Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+        /*Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
         Bitmap bmp = Bitmap.createBitmap(200, 100, conf); // this creates a MUTABLE bitmap
 
         ArrayList<Bitmap> list = new ArrayList<>();
@@ -123,7 +128,7 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
         recycler_view_list_photo_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
         recycler_view_list_photo_endroit.setItemAnimator(new DefaultItemAnimator());
         recycler_view_list_photo_endroit.setAdapter(mAdapter);
-
+        */
         return view;
     }
 
@@ -207,5 +212,19 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
         Intent intent = new Intent(this.getActivity() , DetailRoadTripActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
+    }
+
+    @Override
+    public void getListPictureModel(ArrayList<Picture> list) {
+        DetailsEndroitAdapter mAdapter = new DetailsEndroitAdapter(list , getContext());
+        recycler_view_list_photo_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        recycler_view_list_photo_endroit.setItemAnimator(new DefaultItemAnimator());
+        recycler_view_list_photo_endroit.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void displayImage(Bitmap bitmap) {
+
     }
 }

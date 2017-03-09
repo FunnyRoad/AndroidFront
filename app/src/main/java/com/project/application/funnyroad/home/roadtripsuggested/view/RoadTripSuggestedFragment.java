@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -39,6 +40,7 @@ import com.project.application.funnyroad.common.UtilityCheckPermissionGPS;
 import com.project.application.funnyroad.home.allroadtrip.presenter.AllRoadTripAdapter;
 import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.home.roadtripsuggested.presenter.PresenterRoadTripSuggested;
+import com.project.application.funnyroad.home.roadtripsuggested.presenter.RoadTripSuggestedAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,42 +50,48 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by you on 23/02/2017.
+ * Created by oa on 23/02/2017.
  */
 
-public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadTripSuggested ,GoogleApiClient.OnConnectionFailedListener  {
+public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadTripSuggested ,GoogleApiClient.OnConnectionFailedListener,
+        GoogleApiClient.ConnectionCallbacks  {
 
 
-    @BindView(R.id.recycler_view_all_road_trip)
-    RecyclerView recycler_view_all_road_trip;
+    @BindView(R.id.recyclerViewRoadTripSuggested)
+    RecyclerView recyclerViewRoadTripSuggested;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.textViewListEmpty)
     TextView textViewListEmpty;
 
     private GoogleApiClient mGoogleApiClient;
-    private static final int GOOGLE_API_CLIENT_ID = 0;
     private static final int PERMISSION_REQUEST_CODE = 100;
 
-    PresenterRoadTripSuggested presenterRoadTripSuggested;
+    private PresenterRoadTripSuggested presenterRoadTripSuggested;
+    private double latitudeUser;
+    private double longitudeUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
 
-        View view = inflater.inflate(R.layout.all_road_trip_fragment,container,false);
+        View view = inflater.inflate(R.layout.all_road_trip_suggested_fragment,container,false);
 
         ButterKnife.bind(this, view );
 
-        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
+        Log.d("RoadSuggest", "onCreateView: ");
+
+        presenterRoadTripSuggested = new PresenterRoadTripSuggested(this);
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
                 .addApi(Places.PLACE_DETECTION_API)
+                .addApi(Places.GEO_DATA_API)
+                .addConnectionCallbacks(this)
                 .build();
 
         if (mGoogleApiClient.isConnected()){
             Log.d("RoadTripSuggest", "onCreateView: dans le if");
-            if (ContextCompat.checkSelfPermission(this.getActivity(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this.getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this.getActivity(),
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSION_REQUEST_CODE);
@@ -92,12 +100,10 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
                 callPlaceDetectionApi();
             }
         }
-        /*else{
-            Log.d("RoadTripSuggest", "onCreateView: dans le else");
+        else{
+            Log.d("RoadTripSuggest", "onCreateView: dans le grand else");
             callPlaceDetectionApi();
-        }*/
-
-         presenterRoadTripSuggested = new PresenterRoadTripSuggested(this);
+        }
 
         /*RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
         RoadTrip roadTrip2 = new RoadTrip("lens" , "marseille" , "découvrir et s'amuser");
@@ -126,10 +132,10 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
     @Override
     public void getAllRoadTripSuggested(ArrayList<RoadTrip> listRoadTrip) {
-        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip , getActivity(), null);
-        recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_all_road_trip.setAdapter(mAdapter);
+        RoadTripSuggestedAdapter mAdapter = new RoadTripSuggestedAdapter(listRoadTrip , getActivity(), mGoogleApiClient);
+        recyclerViewRoadTripSuggested.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerViewRoadTripSuggested.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewRoadTripSuggested.setAdapter(mAdapter);
     }
 
     @Override
@@ -157,6 +163,9 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("RoadTRIPSUGGEST", "Google Places API connection failed with error code: "
+                + connectionResult.getErrorCode());
+
         Toast.makeText(getActivity(), "Google Places API connection failed with error code:" + connectionResult.getErrorCode(),
                 Toast.LENGTH_LONG).show();
     }
@@ -181,13 +190,44 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
         result.setResultCallback(new ResultCallback<PlaceLikelihoodBuffer>() {
             @Override
             public void onResult(PlaceLikelihoodBuffer likelyPlaces) {
-                //String placeIdUser = likelyPlaces.get(0).getPlace().getId();
-                //presenterRoadTripSuggested.getAllRoadsTripByCity(placeIdUser);
-                for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-                    Log.i("RoadTripSuggested", String.format("Place '%s' with " + "likelihood: %g",placeLikelihood.getPlace().getName()));
-                }
+                Log.d("RoadTripSuggest", "onResult: " +likelyPlaces.get(0).getPlace().getName() +" " + likelyPlaces.get(1).getPlace().getName() );
+                latitudeUser = likelyPlaces.get(0).getPlace().getLatLng().latitude;
+                longitudeUser = likelyPlaces.get(0).getPlace().getLatLng().longitude;
+                Log.d("RoadTripSuggest", "onCreateView: " + latitudeUser +" " +longitudeUser );
+                presenterRoadTripSuggested.getAllRoadsTripByCity(latitudeUser , longitudeUser , 250 );
                 likelyPlaces.release();
             }
         });
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onStart() {
+        if( ! mGoogleApiClient.isConnected()){
+            Log.d("AllRoadTripFragment", "onStart: googleapi pas connecté");
+            mGoogleApiClient.connect();
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //presenterAllRoadTrip.getAllRoadTrip();
+    }
+
+    @Override
+    public void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
     }
 }

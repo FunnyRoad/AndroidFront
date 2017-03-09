@@ -119,8 +119,6 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
         //On récupère le service de localisation
         lManager = (LocationManager) this.getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-
-
         return view;
     }
 
@@ -380,7 +378,7 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
     public void addPlaceSuccess(Place place) {
         placeAdded = place;
         Intent intent = getActivity().getIntent();
-        int roadTripId = intent.getIntExtra("roadTripId", -1);
+        int roadTripId = intent.getIntExtra("roadTrip", -1);
         presenterAddPlace.addPlaceToRoadTrip(roadTripId , place.getId());
     }
 
@@ -411,7 +409,7 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
 
     @Override
     public void addImageToPlaceSuccess(){
-        Intent intent = new Intent(getActivity() , ActivityHome2.class);
-        startActivity(intent);
+        //Intent intent = new Intent(getActivity() , ActivityHome2.class);
+        //startActivity(intent);
     }
 }

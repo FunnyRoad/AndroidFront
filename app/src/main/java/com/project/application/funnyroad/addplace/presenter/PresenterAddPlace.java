@@ -45,9 +45,9 @@ public class PresenterAddPlace {
 
     public void addPlaceToRoadTrip(int roadTripId , int placeId){
         mIServiceAddPlace.showLoading(true);
-        iWebServiceListRoadTrip.addPlaceToRoadtrip(roadTripId, placeId, new Callback<String>() {
+        iWebServiceListRoadTrip.addPlaceToRoadtrip(roadTripId, placeId, new Callback<Object>() {
             @Override
-            public void success(String msgResponse, Response response) {
+            public void success(Object msgResponse, Response response) {
                 mIServiceAddPlace.showLoading(false);
                 mIServiceAddPlace.addPlaceToRoadTripSuccess();
             }

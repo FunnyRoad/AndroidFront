@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.detailEndroit.presenter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.addplace.model.Picture;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,7 +28,8 @@ import butterknife.ButterKnife;
 
 public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAdapter.MyViewHolder> {
 
-    private List<Bitmap> endroitList;
+    private List<Picture> endroitList;
+    private Context ctx;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // récuperation des composants utilisé pour chaque item de la recyclerview
@@ -51,8 +55,9 @@ public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAd
     }
 
 
-    public DetailsEndroitAdapter(List<Bitmap> endroitList) {
+    public DetailsEndroitAdapter(List<Picture> endroitList , Context ctx) {
         this.endroitList = endroitList;
+        this.ctx = ctx;
     }
 
     @Override
@@ -66,8 +71,9 @@ public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAd
     // remplir les champs d'un item de la recyclerView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        Bitmap endroitPhoto = endroitList.get(position);
-        holder.photo.setImageBitmap(endroitPhoto);
+        int id = endroitList.get(position).getId();
+        String type = endroitList.get(position).getType();
+        Picasso.with(ctx).load("http://vps376653.ovh.net:8080/picture/"+id +"."+type).resize(600, 200).into(holder.photo);
     }
 
     @Override

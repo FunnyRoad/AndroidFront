@@ -23,12 +23,9 @@
             android:id="@+id/Début"
             android:layout_weight="1" />
 
-        <EditText
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:ems="10"
             android:id="@+id/textViewDetailDepart"
             android:layout_weight="1" />
 
@@ -70,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="null"
             android:ems="10"
             android:id="@+id/textViewDetailDescription"
             android:layout_weight="1" />
@@ -129,7 +126,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/addPlace"
                 android:elevation="1dp"
-                android:gravity="bottom|center_horizontal" />
+                android:gravity="bottom|center_horizontal"
+                android:visibility="gone" />
 
             <fragment
                 android:layout_width="match_parent"

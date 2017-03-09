@@ -16,6 +16,7 @@ package com.project.application.funnyroad.common;
         import android.support.v4.app.ActivityCompat;
         import android.support.v4.content.ContextCompat;
         import android.support.v7.app.AlertDialog;
+        import android.util.Log;
 
         import com.project.application.funnyroad.home.model.Departure;
         import com.project.application.funnyroad.login.model.User;
@@ -32,7 +33,7 @@ package com.project.application.funnyroad.common;
  */
 public class Utility {
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
-
+    public static int idUserStored;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static boolean checkPermission(final Context context)
     {
@@ -67,17 +68,20 @@ public class Utility {
     }
 
     public static void storeIdUser(Activity activity , int idUser){
-
-        SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        idUserStored = idUser;
+        Log.d("Utility", "isLoginSuccess: id login: " + idUser);
+        /*SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("idUser", idUser );
         editor.commit();
+        */
     }
 
     public static int getIdUser(Activity activity){
         SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
         int idUser = sharedPref.getInt("idUser", -1);
-        return idUser;
+        Log.d("Utility", "getIdUser: id login: après " + idUserStored);
+        return idUserStored;
     }
 
     public static void storeFirebaseId(Activity activity , String firebaseId){

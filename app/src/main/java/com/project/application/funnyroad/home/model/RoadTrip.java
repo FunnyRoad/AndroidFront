@@ -49,11 +49,12 @@ public class RoadTrip implements Serializable {
         this.owner = owner;
     }
 
-    public RoadTrip(int id , String name , Departure begin, String destination) {
+    public RoadTrip(int id , String name , Departure begin, String destination , ArrayList<Integer> places) {
         this.id = id;
         this.name = name;
         this.departure = begin;
         this.arrival = destination;
+        this.places = places;
     }
 
     public int getId() {
