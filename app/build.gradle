@@ -4,14 +4,9 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-//<<<<<<< HEAD
-        applicationId "com.example.oraberkane.appliplatine"
-        minSdkVersion 16
-/*=======
         applicationId "com.project.application.funnyroad"
-        minSdkVersion 17
->>>>>>> workAPI*/
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

@@ -15,11 +15,79 @@
       },
       "oauth_client": [
         {
+          "client_id": "1002170437465-mjrbeuc9b93u8bngtginou7s96s6s040.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oraberkane.appliplatine",
+            "certificate_hash": "9dc06622007fded60ee2e0343107e37fc18082fa"
+          }
+        },
+        {
+          "client_id": "1002170437465-av7amvn68v0o802d03g7ghj3itrmulrt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oraberkane.appliplatine",
+            "certificate_hash": "ae572795584863169da10ff9f0afc4b078933782"
+          }
+        },
+        {
+          "client_id": "1002170437465-ne3dsqcrgbsacdn72a2ghn7e4mbo6nu2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oraberkane.appliplatine",
+            "certificate_hash": "44e53727fa3cfef701ee20de60afbfd302197a96"
+          }
+        },
+        {
           "client_id": "1002170437465-og93c1ejb7oqdqg1d6ospfjsuititj9c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.oraberkane.appliplatine",
             "certificate_hash": "54cdccf52b7b7d37332a48118fc989d8555ccd9c"
+          }
+        },
+        {
+          "client_id": "1002170437465-d9vmrlv97u98hibr2rhk31u68b214dhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8RnjE9nhTCW28ofAQd9kc3Akxq2nz7Ag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002170437465-d9vmrlv97u98hibr2rhk31u68b214dhn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002170437465:android:f275f0d5284c7530",
+        "android_client_info": {
+          "package_name": "com.project.application.funnyroad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002170437465-sj4c4jhtqp96mtuq6mfhdibuo47fi1l2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.application.funnyroad",
+            "certificate_hash": "9dc06622007fded60ee2e0343107e37fc18082fa"
           }
         },
         {

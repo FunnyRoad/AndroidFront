@@ -17,9 +17,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#4B0082"
+            android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="FunnyRoadTrip" />
+            android:titleTextColor="@color/colorPrimaryDark"
+            app:title="FunnyRoad" />
 
     </android.support.design.widget.AppBarLayout>
 

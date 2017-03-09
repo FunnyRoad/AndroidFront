@@ -11,7 +11,7 @@
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
         android:id="@+id/toolbar"
-        app:title="Nom..." />
+        app:title="" />
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
