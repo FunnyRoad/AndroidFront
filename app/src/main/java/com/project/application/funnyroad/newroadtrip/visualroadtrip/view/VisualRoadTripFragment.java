@@ -34,20 +34,21 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // On récupère la view du fragment
-        View view = inflater.inflate(R.layout.fragment_visual_road,container,false);
 
         variables = (Variable) getActivity().getApplicationContext();
 
+        // On récupère la view du fragment
+        View view = inflater.inflate(R.layout.fragment_visual_road,container,false);
+        //View view = variables.getMap();
         // On bind la view du fragment pour l'utiliser avec ButterKnife.
         ButterKnife.bind(this,view);
 
         Log.d("TAG", "onCreateView: retour au fragment visualRoadTrip ");
-        gMap = ((SupportMapFragment)this.getChildFragmentManager().findFragmentById(R.id.visualMap));
+        //gMap = ((SupportMapFragment) this.getFragmentManager().findFragmentById(R.id.visualMap));
         Bundle bundle = getArguments();
         //if(bundle != null) {
         //    listPlacesChecked = bundle.getParcelableArrayList("listPlacesChecked");
-        gMap.getMapAsync(this);
+        //gMap.getMapAsync(this);
         //}
 
 
@@ -74,6 +75,8 @@ public class VisualRoadTripFragment extends Fragment implements OnMapReadyCallba
         //gMap = variables.getMap();
         //gMap.
         //gMap.getMapAsync(this);
-        //new ItineraireTask(getActivity(), googleMap, variables.getPlaceDeparture().getName().toString(),variables.getPlaceArrival().toString()).execute();
+        new ItineraireTask(getActivity(), variables.getMap(),
+                variables.getPlaceDeparture().getName().toString(),
+                variables.getPlaceArrival().toString()).execute();
     }
 }

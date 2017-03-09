@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +46,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -68,6 +71,7 @@ public class ListPlacesFragment extends Fragment {
 
     List<LatLng> listPointsForNewTrack = new ArrayList<LatLng>();
 
+    List<String> listId = new ArrayList<String>();
     List<CustomPlace> listPlaces = new ArrayList<CustomPlace>();
 
     List<CustomPlace> listPlacesWithFilter = new ArrayList<CustomPlace>();
@@ -90,6 +94,9 @@ public class ListPlacesFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         variables = (Variable) getActivity().getApplicationContext();
+
+        this.listPlaces.clear();
+        this.listId.clear();
 
         this.listPointsOnTrack = variables.getPlacesOnTrack();
 
@@ -217,26 +224,21 @@ public class ListPlacesFragment extends Fragment {
             for (int i=0; i<list.size(); i++) {
                 HashMap<String,String> hmPlace = list.get(i);
 
-                String placeId = hmPlace.get("place_id");
-                String placeName = hmPlace.get("place_name");
-                String placeGrade;
-                if (hmPlace.get("place_grade") != null)
-                    placeGrade = hmPlace.get("place_grade");
-                else
-                    placeGrade = "-1.0";
-                String placeType;
-                if (hmPlace.get("place_type") != null)
-                    placeType = hmPlace.get("place_type");
-                else
-                    placeType = "";
+                if (!hmPlace.isEmpty()) {
+                    String placeId = hmPlace.get("place_id");
+                    String placeName = hmPlace.get("place_name");
+                    String placeGrade = hmPlace.get("place_grade");
+                    String placeType = hmPlace.get("place_type");
 
-                listPlaces.add(new CustomPlace(placeId,placeName,placeGrade,placeType));
-                //listPlacesWithFilter.add(new CustomPlace(placeId,placeName,placeGrade,placeType));
+                    if (!listId.contains(placeId)) {
+                        listPlaces.add(new CustomPlace(placeId, placeName, placeGrade, placeType));
+                        listId.add(placeId);
+                    }
+                }
             }
 
             //variables.setListPlacesFromQuery(listPlaces);
             //variables.setListPlacesWithFilter(listPlacesWithFilter);
-
             listPlacesAdapter = new ListPlacesAdapter(getActivity(),listPlaces);
             recycler_view_list_places.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             recycler_view_list_places.setItemAnimator(new DefaultItemAnimator());
@@ -268,5 +270,19 @@ public class ListPlacesFragment extends Fragment {
             });
         }
         variables.setIdPlacesOnTrack(listPlacesChecked);
+        variables.setPointsToDraw(listPointsForNewTrack);
+        /*
+        Fragment fragment = new VisualRoadTripFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.visualMap, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_fragment, new VisualRoadTripFragment())
+                .commit();
+                */
     }
 }

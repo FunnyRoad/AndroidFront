@@ -47,8 +47,6 @@ public class googleMapActivity  extends Activity implements OnMapReadyCallback {
             editDepart = getIntent().getStringExtra("DEPART");
             editArrivee = getIntent().getStringExtra("ARRIVEE");
 
-            //Appel de la méthode asynchrone
-            //new ItineraireTask(this, gMap, editDepart, editArrivee).execute();
             ButterKnife.bind(this);
         }
 

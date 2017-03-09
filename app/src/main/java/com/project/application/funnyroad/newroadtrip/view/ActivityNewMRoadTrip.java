@@ -53,7 +53,7 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText("Liste"));
         tabLayout.addTab(tabLayout.newTab().setText("Filtre"));
-        tabLayout.addTab(tabLayout.newTab().setText("Visual"));
+        tabLayout.addTab(tabLayout.newTab().setText("Visuel"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

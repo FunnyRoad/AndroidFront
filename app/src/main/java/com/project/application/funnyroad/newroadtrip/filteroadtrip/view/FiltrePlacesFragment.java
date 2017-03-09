@@ -62,7 +62,6 @@ public class FiltrePlacesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (cbAmusementPark.isChecked()){
-                    //variables.re
                     if (variables.existType("amusement_park")) {
                         return;
                     }

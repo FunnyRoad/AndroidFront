@@ -133,13 +133,14 @@ public class FragmentRouteChoice extends Fragment implements OnMapReadyCallback,
             }
         });
 
-        gMap = ((SupportMapFragment)this.getChildFragmentManager().findFragmentById(R.id.choiceMap));
+        gMap = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.choiceMap));
 
         return view;
+
     }
 
 
-    /****************CLIC QUR LE BOUTON CONNEXION*******************/
+    /****************CLIC SUR LE BOUTON DE RECHERCHE*******************/
     @OnClick(R.id.btnSearch)
     public void goToMap() {
         if("".equals(meditDepart.getText().toString().trim())) {

@@ -76,6 +76,12 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
         @Override
         protected void onPreExecute() {
             Toast.makeText(context, TOAST_MSG, Toast.LENGTH_LONG).show();
+
+            if (this.variables.getPointsToDraw().size() != 0) {
+                for (int i=0;i<variables.getPointsToDraw().size();i++) {
+                    this.lstLatLng.add(variables.getPointsToDraw().get(i));
+                }
+            }
         }
 
         /***
