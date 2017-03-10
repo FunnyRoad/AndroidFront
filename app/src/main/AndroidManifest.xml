@@ -58,8 +58,10 @@
         <!--======= <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
  -->
 
-         <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
+        </activity>
 
+        <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityCreateNewRoadTrip">
         </activity>
 
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">

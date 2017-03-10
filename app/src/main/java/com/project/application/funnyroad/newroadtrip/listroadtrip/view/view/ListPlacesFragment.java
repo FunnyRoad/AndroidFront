@@ -281,6 +281,12 @@ public class ListPlacesFragment extends Fragment {
         variables.setPointsToDraw(listPointsForNewTrack);
 
         Intent intent = new Intent(getActivity(), ActivityCreateNewRoadTrip.class);
+        Bundle bundle = new Bundle();
+        for (int i=0;i<listPlacesChecked.size();i++) {
+            bundle.putString("place_name",listPlacesChecked.get(i).getPlaceName());
+            bundle.putString("place_grade", listPlacesChecked.get(i).getPlaceGrade());
+            bundle.putString("place_type", listPlacesChecked.get(i).getPlaceType());
+        }
         startActivity(intent);
 
         /*

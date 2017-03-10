@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:showIn="@layout/app_bar_main"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
@@ -41,6 +42,8 @@
         app:srcCompat="@android:drawable/ic_input_add"
         android:id="@+id/floatingActionButton"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimary" />
 
 </LinearLayout>
