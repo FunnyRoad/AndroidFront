@@ -11,14 +11,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:background="@color/colorPrimaryDark"/>
 
     <TextView
         android:text="Aucun road trip à afficher"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
         android:id="@+id/textViewListEmpty"
         android:gravity="center"
         android:visibility="gone" />

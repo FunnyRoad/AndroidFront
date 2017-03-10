@@ -7,7 +7,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="549dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="INSCRIPTION"
@@ -30,7 +31,10 @@
                 android:hint="Entrez votre nom"
                 android:inputType="textEmailAddress"
                 android:id="@+id/register_name"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -43,7 +47,10 @@
                 android:hint="Entrez votre prenom "
                 android:inputType="textEmailAddress"
                 android:id="@+id/register_lastName"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -54,7 +61,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="pseudo"
-                android:id="@+id/editTextPseudo" />
+                android:id="@+id/editTextPseudo"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -67,7 +77,10 @@
                 android:hint="Mail"
                 android:inputType="textEmailAddress"
                 android:id="@+id/register_adress_email"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -78,7 +91,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ville"
-                android:id="@+id/editTextCity" />
+                android:id="@+id/editTextCity"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -92,7 +108,10 @@
                 android:ems="10"
                 android:id="@+id/editTextBirthDay"
                 android:layout_weight="1"
-                android:hint="date de naissance" />
+                android:hint="date de naissance"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -106,7 +125,10 @@
                 android:inputType="textEmailAddress"
                 android:id="@+id/register_password"
                 android:layout_marginTop="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -119,7 +141,10 @@
                 android:hint="Confirmez votre mot de passe "
                 android:inputType="textEmailAddress"
                 android:id="@+id/register_passwordConfirm"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </android.support.design.widget.TextInputLayout>
 
         <ProgressBar
@@ -141,14 +166,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:id="@+id/register_ok" />
+                android:id="@+id/register_ok"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
 
             <Button
                 android:text="Annuler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/register_cancel"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:background="@color/colorPrimaryDark"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
