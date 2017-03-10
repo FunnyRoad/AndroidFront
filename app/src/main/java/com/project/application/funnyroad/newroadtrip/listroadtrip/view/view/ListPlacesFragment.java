@@ -31,6 +31,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListPlacesAdapter;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.PlaceJSONParser;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
@@ -84,6 +85,8 @@ public class ListPlacesFragment extends Fragment {
     Place placeDeparture;
     Place placeArrival;
 
+    PresenterListRoadTrip presenterListRoadTrip = new PresenterListRoadTrip();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,6 +113,8 @@ public class ListPlacesFragment extends Fragment {
     }
 
     public void setThePlaces() {
+
+
         for (int i=0;i<this.listPointsOnTrack.size();i++) {
             StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
             sb.append("location=" + this.listPointsOnTrack.get(i).latitude + "," + this.listPointsOnTrack.get(i).longitude);
@@ -123,6 +128,7 @@ public class ListPlacesFragment extends Fragment {
 
         // Invokes the "doInBackground()" method of the class PlaceTask
         for (int i=0;i<this.listUrl.size();i++) {
+            //for (int j=0;j<)
             startMyTask(new PlacesTask(), this.listUrl.get(i));
         }
     }

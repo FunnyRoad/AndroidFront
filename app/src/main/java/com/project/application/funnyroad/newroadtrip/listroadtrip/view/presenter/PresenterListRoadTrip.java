@@ -68,4 +68,23 @@ public class PresenterListRoadTrip {
         });
 
     }
+
+    public void getNearPlaces(Double latitude, Double longitude, Integer distance)
+    {
+        mIServiceListRoad.showLoading(true);
+        iWebServiceListRoadTrip.getNearPlaces(latitude, longitude, distance, new Callback<ArrayList<Place>>() {
+            @Override
+            public void success(ArrayList<Place> places, Response response) {
+                mIServiceListRoad.showLoading(false);
+                mIServiceListRoad.gotToVisual();
+            }
+
+
+            @Override
+            public void failure(RetrofitError error) {
+                mIServiceListRoad.showLoading(false);
+                mIServiceListRoad.errorLoading(error.getMessage());
+            }
+        });
+    }
 }
