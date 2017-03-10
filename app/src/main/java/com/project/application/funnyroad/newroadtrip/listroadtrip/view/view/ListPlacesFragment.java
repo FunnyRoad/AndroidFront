@@ -34,6 +34,7 @@ import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.PlaceJSONParser;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
+import com.project.application.funnyroad.newroadtrip.view.ActivityCreateNewRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
@@ -85,7 +86,7 @@ public class ListPlacesFragment extends Fragment {
     Place placeDeparture;
     Place placeArrival;
 
-    PresenterListRoadTrip presenterListRoadTrip = new PresenterListRoadTrip();
+    //PresenterListRoadTrip presenterListRoadTrip = new PresenterListRoadTrip();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -262,9 +263,10 @@ public class ListPlacesFragment extends Fragment {
 
     @OnClick(R.id.buttonAdd)
     public void sendCheckedBox(){
-        ArrayList<String> listPlacesChecked = listPlacesAdapter.listChecked;
+        final ArrayList<CustomPlace> listPlacesChecked = listPlacesAdapter.listChecked;
         for (int i=0;i<listPlacesChecked.size();i++) {
-            PendingResult<PlaceBuffer> placeTemp = Places.GeoDataApi.getPlaceById(variables.getGoogleApiClient(), listPlacesChecked.get(i));
+            variables.getListPlaceChosen().add(listPlacesChecked.get(i));
+            PendingResult<PlaceBuffer> placeTemp = Places.GeoDataApi.getPlaceById(variables.getGoogleApiClient(), listPlacesChecked.get(i).getPlaceId());
             placeTemp.setResultCallback(new ResultCallback<PlaceBuffer>() {
                 @Override
                 public void onResult(@NonNull PlaceBuffer places) {
@@ -275,8 +277,12 @@ public class ListPlacesFragment extends Fragment {
                 }
             });
         }
-        variables.setIdPlacesOnTrack(listPlacesChecked);
+        //variables.setIdPlacesOnTrack(listPlacesChecked);
         variables.setPointsToDraw(listPointsForNewTrack);
+
+        Intent intent = new Intent(getActivity(), ActivityCreateNewRoadTrip.class);
+        startActivity(intent);
+
         /*
         Fragment fragment = new VisualRoadTripFragment();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

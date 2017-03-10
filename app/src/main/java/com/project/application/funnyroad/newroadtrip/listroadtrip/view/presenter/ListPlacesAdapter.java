@@ -38,7 +38,7 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
 
     private Variable variables;
 
-    public ArrayList<String> listChecked = new ArrayList<String>();
+    public ArrayList<CustomPlace> listChecked = new ArrayList<CustomPlace>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -69,12 +69,12 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
             if(v.getId() == checkBox.getId()){
                 if (checkBox.isChecked()){
                     Log.d("checked", "onClick: ");
-                    listChecked.add(listPlaces.get(position).getPlaceId());
+                    listChecked.add(listPlaces.get(position));
                     listPlaces.get(position).setPlaceChecked(true);
                 }
                 if (!checkBox.isChecked()){
                     Log.d("unchecked", "onClick: ");
-                    listChecked.remove(listPlaces.get(position).getPlaceId());
+                    listChecked.remove(listPlaces.get(position));
                     listPlaces.get(position).setPlaceChecked(false);
                 }
             }

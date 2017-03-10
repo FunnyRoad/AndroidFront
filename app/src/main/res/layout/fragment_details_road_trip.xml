@@ -13,12 +13,14 @@
         android:id="@+id/textView5"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:fontFamily="sans-serif-medium" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/details_road_recyclerView"
@@ -26,7 +28,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:reverseLayout="true"
-            android:scrollbars="horizontal"/>
+            android:scrollbars="horizontal"
+            android:background="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 

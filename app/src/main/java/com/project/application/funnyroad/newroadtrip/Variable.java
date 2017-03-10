@@ -47,6 +47,8 @@ public class Variable extends Application {
 
     public List<LatLng> pointsToDraw = new ArrayList<LatLng>();
 
+    public List<CustomPlace> listPlaceChosen = new ArrayList<CustomPlace>();
+
     public GoogleApiClient googleApiClient;
 
     public GoogleMap gMap;
@@ -130,6 +132,14 @@ public class Variable extends Application {
 
     public void addPointToDraw(LatLng latLng) {
         this.pointsToDraw.add(latLng);
+    }
+
+    public List<CustomPlace> getListPlaceChosen() {
+        return listPlaceChosen;
+    }
+
+    public void setListPlaceChosen(List<CustomPlace> listPlaceChosen) {
+        this.listPlaceChosen = listPlaceChosen;
     }
 
     public HashMap<String,Boolean> getMapTypes() {
