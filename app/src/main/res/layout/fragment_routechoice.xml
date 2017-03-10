@@ -2,7 +2,8 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp"
+    android:background="@color/colorPrimaryDark">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -16,8 +17,8 @@
             android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@android:color/holo_purple"
-            android:fontFamily="sans-serif-condensed" />
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <AutoCompleteTextView
             android:id="@+id/editDepart"
@@ -27,15 +28,16 @@
             android:maxLines="1"
             android:inputType="text"
             android:lines="1"
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="@android:color/holo_purple" />
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Arrivée"
@@ -43,8 +45,8 @@
             android:layout_weight="0.4"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@android:color/holo_purple"
-            android:fontFamily="sans-serif-condensed" />
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <AutoCompleteTextView
             android:id="@+id/editArrivee"
@@ -54,28 +56,24 @@
             android:maxLines="1"
             android:inputType="text"
             android:lines="1"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-medium"
             android:textSize="18sp"
-            android:textColor="@android:color/holo_purple" />
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Rechercher"
-        android:background="@android:color/holo_purple" />
+        android:fontFamily="sans-serif-condensed"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_weight="3"
         android:layout_height="430dp">
-
-        <fragment
-            android:id="@+id/choiceMap"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
         <Button
             android:text="Valider"
@@ -83,6 +81,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/submit"
             android:layout_gravity="bottom"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="sans-serif-medium"/>
+
+        <fragment
+            android:id="@+id/choiceMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 </LinearLayout>

@@ -14,5 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:id="@+id/textView3"
-        android:background="#FF6C07"/>
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium" />
 </android.support.design.widget.CoordinatorLayout>

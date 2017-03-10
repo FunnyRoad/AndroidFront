@@ -35,4 +35,17 @@ public interface IWebServiceListRoadTrip {
 
     @POST("/roadtrip")
     public void createRoadTrip(@Body RoadTrip roadTrip, Callback<RoadTrip> callback);
+
+    /**
+     * renvoie la liste des places proches d'un point sur l'itinéraire
+     * @param latitude
+     * @param longitude
+     * @param distance
+     * @param listPlaces
+     */
+    @GET("/place/nearest/{latitude}/{longitude}/{distance}")
+    public void getNearPlaces(@Path("latitude") Double latitude,
+                              @Path("longitude") Double longitude,
+                              @Path("distance") Integer distance,
+                              Callback<ArrayList<Place>> listPlaces);
 }

@@ -3,25 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7" />
+        android:id="@+id/textView7"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"  />
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8" />
+        android:id="@+id/textView8"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"  />
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView9" />
+        android:id="@+id/textView9"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"  />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -33,14 +40,17 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView17"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -53,14 +63,17 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView20"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
         <EditText
             android:layout_width="match_parent"
@@ -69,7 +82,9 @@
             android:text="Name"
             android:ems="10"
             android:id="@+id/editTextDescriptionPlace"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium" />
 
     </LinearLayout>
 
@@ -91,7 +106,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonAddPlace"
             android:layout_weight="1"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
     </LinearLayout>
 
     <Button
@@ -100,7 +118,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/uploadPhoto"
         android:layout_marginTop="5dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:background="@color/colorPrimaryDark"/>
 
     <ImageView
         android:layout_width="264dp"
@@ -114,6 +135,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/butAddImageToPlace"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:background="@color/colorPrimaryDark"/>
 
 </LinearLayout>

@@ -39,8 +39,6 @@ public class FiltrePlacesFragment extends Fragment {
     CheckBox cbStadium;
     @BindView(R.id.zoo)
     CheckBox cbZoo;
-    @BindView(R.id.buttonValidate)
-    Button buttonValidate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -235,12 +233,6 @@ public class FiltrePlacesFragment extends Fragment {
             }
         });
 
-        buttonValidate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         //myTripsOrganizedPresenter = new MyTripsOrganizedPresenter(this , getContext());
         //myTripsOrganizedPresenter.getTripsById();
 

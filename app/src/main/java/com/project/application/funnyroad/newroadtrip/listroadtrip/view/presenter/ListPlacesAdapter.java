@@ -38,7 +38,7 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
 
     private Variable variables;
 
-    public ArrayList<String> listChecked = new ArrayList<String>();
+    public ArrayList<CustomPlace> listChecked = new ArrayList<CustomPlace>();
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -69,11 +69,13 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
             if(v.getId() == checkBox.getId()){
                 if (checkBox.isChecked()){
                     Log.d("checked", "onClick: ");
-                    listChecked.add(listPlaces.get(position).getPlaceId());
+                    listChecked.add(listPlaces.get(position));
+                    listPlaces.get(position).setPlaceChecked(true);
                 }
                 if (!checkBox.isChecked()){
                     Log.d("unchecked", "onClick: ");
-                    listChecked.remove(listPlaces.get(position).getPlaceId());
+                    listChecked.remove(listPlaces.get(position));
+                    listPlaces.get(position).setPlaceChecked(false);
                 }
             }
         }
@@ -124,7 +126,7 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
                 holder.placeDescription.setText("Zoo");
                 break;
             default:
-                holder.placeDescription.setText("Inconnu");
+                holder.placeDescription.setText("Autre");
                 break;
         }
         if (Float.parseFloat(place.getPlaceGrade()) != -1.0) {
@@ -133,6 +135,12 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
         } else {
             holder.placeGrade.setRating(0);
             holder.gradeValue.setText("Non noté");
+        }
+        if (place.getPlaceChecked()) {
+            holder.checkBox.setChecked(true);
+        }
+        else {
+            holder.checkBox.setChecked(false);
         }
     }
 

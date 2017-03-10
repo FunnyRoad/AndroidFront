@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,8 +31,10 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListPlacesAdapter;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.PlaceJSONParser;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
+import com.project.application.funnyroad.newroadtrip.view.ActivityCreateNewRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
@@ -44,6 +48,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -68,6 +73,7 @@ public class ListPlacesFragment extends Fragment {
 
     List<LatLng> listPointsForNewTrack = new ArrayList<LatLng>();
 
+    List<String> listId = new ArrayList<String>();
     List<CustomPlace> listPlaces = new ArrayList<CustomPlace>();
 
     List<CustomPlace> listPlacesWithFilter = new ArrayList<CustomPlace>();
@@ -80,6 +86,8 @@ public class ListPlacesFragment extends Fragment {
     Place placeDeparture;
     Place placeArrival;
 
+    //PresenterListRoadTrip presenterListRoadTrip = new PresenterListRoadTrip();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,6 +98,9 @@ public class ListPlacesFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         variables = (Variable) getActivity().getApplicationContext();
+
+        this.listPlaces.clear();
+        this.listId.clear();
 
         this.listPointsOnTrack = variables.getPlacesOnTrack();
 
@@ -103,6 +114,8 @@ public class ListPlacesFragment extends Fragment {
     }
 
     public void setThePlaces() {
+
+
         for (int i=0;i<this.listPointsOnTrack.size();i++) {
             StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
             sb.append("location=" + this.listPointsOnTrack.get(i).latitude + "," + this.listPointsOnTrack.get(i).longitude);
@@ -116,6 +129,7 @@ public class ListPlacesFragment extends Fragment {
 
         // Invokes the "doInBackground()" method of the class PlaceTask
         for (int i=0;i<this.listUrl.size();i++) {
+            //for (int j=0;j<)
             startMyTask(new PlacesTask(), this.listUrl.get(i));
         }
     }
@@ -217,26 +231,21 @@ public class ListPlacesFragment extends Fragment {
             for (int i=0; i<list.size(); i++) {
                 HashMap<String,String> hmPlace = list.get(i);
 
-                String placeId = hmPlace.get("place_id");
-                String placeName = hmPlace.get("place_name");
-                String placeGrade;
-                if (hmPlace.get("place_grade") != null)
-                    placeGrade = hmPlace.get("place_grade");
-                else
-                    placeGrade = "-1.0";
-                String placeType;
-                if (hmPlace.get("place_type") != null)
-                    placeType = hmPlace.get("place_type");
-                else
-                    placeType = "";
+                if (!hmPlace.isEmpty()) {
+                    String placeId = hmPlace.get("place_id");
+                    String placeName = hmPlace.get("place_name");
+                    String placeGrade = hmPlace.get("place_grade");
+                    String placeType = hmPlace.get("place_type");
 
-                listPlaces.add(new CustomPlace(placeId,placeName,placeGrade,placeType));
-                //listPlacesWithFilter.add(new CustomPlace(placeId,placeName,placeGrade,placeType));
+                    if (!listId.contains(placeId)) {
+                        listPlaces.add(new CustomPlace(placeId, placeName, placeGrade, placeType));
+                        listId.add(placeId);
+                    }
+                }
             }
 
             //variables.setListPlacesFromQuery(listPlaces);
             //variables.setListPlacesWithFilter(listPlacesWithFilter);
-
             listPlacesAdapter = new ListPlacesAdapter(getActivity(),listPlaces);
             recycler_view_list_places.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
             recycler_view_list_places.setItemAnimator(new DefaultItemAnimator());
@@ -254,9 +263,10 @@ public class ListPlacesFragment extends Fragment {
 
     @OnClick(R.id.buttonAdd)
     public void sendCheckedBox(){
-        ArrayList<String> listPlacesChecked = listPlacesAdapter.listChecked;
+        final ArrayList<CustomPlace> listPlacesChecked = listPlacesAdapter.listChecked;
         for (int i=0;i<listPlacesChecked.size();i++) {
-            PendingResult<PlaceBuffer> placeTemp = Places.GeoDataApi.getPlaceById(variables.getGoogleApiClient(), listPlacesChecked.get(i));
+            variables.getListPlaceChosen().add(listPlacesChecked.get(i));
+            PendingResult<PlaceBuffer> placeTemp = Places.GeoDataApi.getPlaceById(variables.getGoogleApiClient(), listPlacesChecked.get(i).getPlaceId());
             placeTemp.setResultCallback(new ResultCallback<PlaceBuffer>() {
                 @Override
                 public void onResult(@NonNull PlaceBuffer places) {
@@ -267,6 +277,30 @@ public class ListPlacesFragment extends Fragment {
                 }
             });
         }
-        variables.setIdPlacesOnTrack(listPlacesChecked);
+        //variables.setIdPlacesOnTrack(listPlacesChecked);
+        variables.setPointsToDraw(listPointsForNewTrack);
+
+        Intent intent = new Intent(getActivity(), ActivityCreateNewRoadTrip.class);
+        Bundle bundle = new Bundle();
+        for (int i=0;i<listPlacesChecked.size();i++) {
+            bundle.putString("place_name",listPlacesChecked.get(i).getPlaceName());
+            bundle.putString("place_grade", listPlacesChecked.get(i).getPlaceGrade());
+            bundle.putString("place_type", listPlacesChecked.get(i).getPlaceType());
+        }
+        startActivity(intent);
+
+        /*
+        Fragment fragment = new VisualRoadTripFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.visualMap, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_fragment, new VisualRoadTripFragment())
+                .commit();
+                */
     }
 }

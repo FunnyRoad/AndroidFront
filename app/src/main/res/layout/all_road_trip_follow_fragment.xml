@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="60dp">
+    android:layout_marginTop="60dp"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:text="Vous ne suivez aucun roadtrip"
@@ -12,7 +13,9 @@
         android:textAlignment="center"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"/>
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -24,5 +27,6 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerViewFollow" />
+        android:id="@+id/recyclerViewFollow"
+        android:background="@color/colorPrimaryDark"/>
 </LinearLayout>

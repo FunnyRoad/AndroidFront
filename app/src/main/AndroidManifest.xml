@@ -24,18 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- <meta-data
+        <meta-data
              android:name="com.google.android.geo.API_KEY"
-             android:value="AIzaSyAXhBdyKxUo_cb-EkSgWJQTdqR0QjLcqes" />
-        -->
-        <!-- google maps v2 et la clé -->
-        <!-- <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyD7e9WnZzmSMOP2kwrvPsGbdR7s0GIb-gQ"/>
-        -->
-       <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBfFJtBbewWfExJmWNeHDHGLKE2O1Ntpws" />
+
+             android:value="AIzaSyC4U7mZR5d7Sf2lp4bhq8aCd_d8h_e6A20" />
 
 
         <activity android:name=".login.view.ActivityLogin">
@@ -59,8 +51,10 @@
         <!--======= <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
  -->
 
-         <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
+        <activity android:name="com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice">
+        </activity>
 
+        <activity android:name="com.project.application.funnyroad.newroadtrip.view.ActivityCreateNewRoadTrip">
         </activity>
 
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
