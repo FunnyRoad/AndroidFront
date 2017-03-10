@@ -186,6 +186,7 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
                     .into(imgProfilePic);
 
             Log.d(TAG, "handleSignInResult: email exemple " + email);
+            Utility.storeInformationUser(getActivity() , "pictureGmail" , personPhotoUrl );
             Utility.storeInformationUser(getActivity(),"firebaseId" , firebaseId);
             Utility.storeInformationUser(getActivity(), "email" , email);
             Utility.storeInformationUser(getActivity(), "lastName" , lastName);

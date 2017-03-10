@@ -16,7 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -25,6 +29,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.project.application.funnyroad.R;
 //import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice;
+import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.googlemap.view.view.ActivityNewRoadTripRouteChoice;
 import com.project.application.funnyroad.lieu.view.LieuxFragment;
 import com.project.application.funnyroad.login.view.ActivityLogin;
@@ -44,8 +49,6 @@ import butterknife.OnClick;
 
 public class ActivityHome2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         GoogleApiClient.OnConnectionFailedListener{
-
-
 
     @BindView(R.id.nav_view)
     NavigationView navigationView;
@@ -72,8 +75,25 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
         };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header=navigationView.getHeaderView(0);
+        TextView userName = (TextView) header.findViewById(R.id.userNameNav);
+        TextView email = (TextView) header.findViewById(R.id.emailNav);
+        ImageView image = (ImageView) header.findViewById(R.id.imageViewNav);
+        userName.setText(Utility.getInformationUser(this ,"personName"));
+        email.setText(Utility.getInformationUser(this , "email"));
+
+        Glide.with(this).load(Utility.getInformationUser(this ,"pictureGmail"))
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(image);
+
+        Fragment fragmentHome = new FragmentHome();
+        FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragmentHome);
+        ft.commit();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

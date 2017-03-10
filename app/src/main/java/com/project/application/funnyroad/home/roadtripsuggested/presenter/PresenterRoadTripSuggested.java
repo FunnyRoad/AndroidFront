@@ -34,9 +34,9 @@ public class PresenterRoadTripSuggested{
         this.activity = activity;
     }
 
-    public void getAllRoadsTripByCity(double latitude , double longitude, double distance){
+    public void getAllRoadsTripByCity(int idUser ,double latitude , double longitude, double distance){
         mIServiceRoadTripSuggested.showLoading(true);
-        iWebServiceRoadTripSuggested.allRoadTripSuggested(latitude,longitude, distance,new Callback<ArrayList<RoadTrip>>() {
+        iWebServiceRoadTripSuggested.allRoadTripSuggested(idUser,latitude,longitude, distance,new Callback<ArrayList<RoadTrip>>() {
             @Override
             public void success(ArrayList<RoadTrip> roadTrips, Response response) {
                 mIServiceRoadTripSuggested.showLoading(false);

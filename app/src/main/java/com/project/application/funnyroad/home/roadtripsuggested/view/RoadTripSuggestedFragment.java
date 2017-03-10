@@ -36,6 +36,7 @@ import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.common.UtilityCheckPermissionGPS;
 import com.project.application.funnyroad.home.allroadtrip.presenter.AllRoadTripAdapter;
 import com.project.application.funnyroad.home.model.RoadTrip;
@@ -194,7 +195,7 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
                 latitudeUser = likelyPlaces.get(0).getPlace().getLatLng().latitude;
                 longitudeUser = likelyPlaces.get(0).getPlace().getLatLng().longitude;
                 Log.d("RoadTripSuggest", "onCreateView: " + latitudeUser +" " +longitudeUser );
-                presenterRoadTripSuggested.getAllRoadsTripByCity(latitudeUser , longitudeUser , 250 );
+                presenterRoadTripSuggested.getAllRoadsTripByCity(Utility.getIdUser(getActivity()),latitudeUser , longitudeUser , 250 );
                 likelyPlaces.release();
             }
         });
@@ -222,7 +223,6 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
     @Override
     public void onResume() {
         super.onResume();
-        //presenterAllRoadTrip.getAllRoadTrip();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.project.application.funnyroad.detailroadtripnew.view;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.common.LayoutCommonActivity;
@@ -23,5 +24,8 @@ public class DetailRoadTripActivity extends LayoutCommonActivity {
                 .beginTransaction()
                 .add(R.id.container_fragment, mDetailRoadTripFragment)
                 .commit();
+
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
 }

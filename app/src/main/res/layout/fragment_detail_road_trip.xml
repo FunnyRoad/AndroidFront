@@ -14,7 +14,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <TextView
             android:text="Départ"
@@ -34,7 +36,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <TextView
             android:text="Destination"
@@ -134,7 +138,7 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:id="@+id/mapRoadTrip"
                 android:layout_height="300dp"
-                class="com.project.application.funnyroad.detailroadtripnew.view.WorkaroundMapFragment"/>
+                />
 
             <Button
                 android:text="Supprimer road trip"

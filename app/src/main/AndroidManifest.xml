@@ -27,15 +27,16 @@
         <!-- <meta-data
              android:name="com.google.android.geo.API_KEY"
              android:value="AIzaSyAXhBdyKxUo_cb-EkSgWJQTdqR0QjLcqes" />
-         -->
+        -->
         <!-- google maps v2 et la clé -->
-        <!--<meta-data
+        <!-- <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyD7e9WnZzmSMOP2kwrvPsGbdR7s0GIb-gQ"/>  -->
-
-        <meta-data
+            android:value="AIzaSyD7e9WnZzmSMOP2kwrvPsGbdR7s0GIb-gQ"/>
+        -->
+       <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDDq6MYe4h91FrhUBNZCmd1xpmQxGkDYqo" />
+            android:value="AIzaSyBfFJtBbewWfExJmWNeHDHGLKE2O1Ntpws" />
+
 
         <activity android:name=".login.view.ActivityLogin">
             <intent-filter>
@@ -65,9 +66,30 @@
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
          </activity>   -->
 
-        <activity android:name=".addplace.view.AddPlaceActivity"></activity>
-        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
+        <activity android:name=".addplace.view.AddPlaceActivity"
+            android:parentActivityName=".detailroadtripnew.view.DetailRoadTripActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".detailroadtripnew.view.DetailRoadTripActivity" />
 
-        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
+        </activity>
+        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"
+            android:parentActivityName=".home.view.ActivityHome2">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.view.ActivityHome2" />
+
+        </activity>
+
+        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"
+            android:parentActivityName=".detailroadtripnew.view.DetailRoadTripActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".detailroadtripnew.view.DetailRoadTripActivity" />
+
+        </activity>
     </application>
 </manifest>

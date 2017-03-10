@@ -63,7 +63,7 @@ public class PresenterAllRoadTrip {
 
             @Override
             public void failure(RetrofitError error) {
-                Toast.makeText( activity, " Vous n'êtes pas ajouté aux followers du road trip", Toast.LENGTH_SHORT).show();
+                Toast.makeText( activity, " Vous suivez déjà ce road trip !", Toast.LENGTH_SHORT).show();
 
             }
         });

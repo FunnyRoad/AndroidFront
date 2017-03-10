@@ -58,7 +58,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by you on 18/02/2017.
+ * Created by oa on 18/02/2017.
  */
 
 public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallback, IServiceDetailRoadTrip,
@@ -107,7 +107,6 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
 
         ButterKnife.bind(this, view);
 
-        this.getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         presenterDetailRoadTrip = new PresenterDetailRoadTrip(this);
 
@@ -154,13 +153,13 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
         gMap = ((SupportMapFragment)this.getChildFragmentManager().findFragmentById(R.id.mapRoadTrip));
         gMap.getMapAsync(this);
 
-        ((WorkaroundMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapRoadTrip))
+        /*((WorkaroundMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapRoadTrip))
                 .setListener(new WorkaroundMapFragment.OnTouchListener() {
             @Override
             public void onTouch() {
                 mScrollView.requestDisallowInterceptTouchEvent(true);
             }
-        });
+        });*/
 
         return view;
     }
