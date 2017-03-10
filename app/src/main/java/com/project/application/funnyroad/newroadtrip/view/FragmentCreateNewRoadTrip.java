@@ -37,11 +37,13 @@ public class FragmentCreateNewRoadTrip extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        variables = (Variable) getActivity().getApplicationContext();
         // On récupère la view du fragment
         View view = inflater.inflate(R.layout.fragment_create_road_trip, container, false);
+
         // On bind la view du fragment pour l'utiliser avec ButterKnife.
         ButterKnife.bind(this, view);
-
+        
         return view;
     }
 }
