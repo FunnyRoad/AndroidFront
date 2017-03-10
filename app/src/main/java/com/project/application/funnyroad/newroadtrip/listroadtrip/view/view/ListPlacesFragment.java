@@ -36,6 +36,7 @@ import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.Pla
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
 import com.project.application.funnyroad.newroadtrip.view.ActivityCreateNewRoadTrip;
 import com.project.application.funnyroad.newroadtrip.view.ActivityNewMRoadTrip;
+import com.project.application.funnyroad.newroadtrip.view.FragmentCreateNewRoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.view.VisualRoadTripFragment;
 
 import org.json.JSONObject;
@@ -280,6 +281,7 @@ public class ListPlacesFragment extends Fragment {
         //variables.setIdPlacesOnTrack(listPlacesChecked);
         variables.setPointsToDraw(listPointsForNewTrack);
 
+        /*
         Intent intent = new Intent(getActivity(), ActivityCreateNewRoadTrip.class);
         Bundle bundle = new Bundle();
         for (int i=0;i<listPlacesChecked.size();i++) {
@@ -288,19 +290,19 @@ public class ListPlacesFragment extends Fragment {
             bundle.putString("place_type", listPlacesChecked.get(i).getPlaceType());
         }
         startActivity(intent);
+        */
 
-        /*
-        Fragment fragment = new VisualRoadTripFragment();
+        Fragment fragment = new FragmentCreateNewRoadTrip();
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.visualMap, fragment);
+        fragmentTransaction.replace(R.id.container_fragment, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_fragment, new VisualRoadTripFragment())
+                .replace(R.id.container_fragment, new FragmentCreateNewRoadTrip())
                 .commit();
-                */
+
     }
 }

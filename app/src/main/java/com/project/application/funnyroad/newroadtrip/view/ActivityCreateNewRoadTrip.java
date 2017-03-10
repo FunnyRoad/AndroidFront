@@ -30,6 +30,7 @@ public class ActivityCreateNewRoadTrip extends LayoutCommonActivity {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             //fragmentTransaction.add(new LinearLayout(getApplicationContext()).getId(),fragmentCreateNewRoadTrip, 1);
             //fragmentTransaction.commit();
+            //fragmentTransaction.replace()
         }
 
     }

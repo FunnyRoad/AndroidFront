@@ -52,8 +52,7 @@
             android:background="@android:drawable/ic_input_add"
             android:layout_weight="0.02"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="sans-serif-medium"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            android:fontFamily="sans-serif-medium"/>
     </LinearLayout>
 
 </LinearLayout>
