@@ -24,7 +24,10 @@
             android:layout_height="wrap_content"
             android:hint="Entrez votre email "
             android:inputType="textEmailAddress"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -38,7 +41,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Entrez votre mot de passe"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -61,14 +67,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/login_register"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/login_connexion"
             android:layout_weight="1"
-            android:text="Connexion" />
+            android:text="Connexion"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            android:background="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 </LinearLayout>

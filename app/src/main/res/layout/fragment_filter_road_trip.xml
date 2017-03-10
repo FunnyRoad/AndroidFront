@@ -4,19 +4,22 @@
     android:layout_height="fill_parent"
     android:background="#FFFFFF"
     android:padding="15dp"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:backgroundTint="@color/colorPrimaryDark">
 
     <TableRow>
 
         <CheckBox
             android:id="@+id/amusement_park"
             android:layout_weight="5"
-            android:text="Parc d'attractions"/>
+            android:text="Parc d'attractions"
+            android:textColor="@color/colorPrimary"/>
 
         <CheckBox
             android:id="@+id/aquarium"
             android:layout_weight="20"
-            android:text="Aquarium" />
+            android:text="Aquarium"
+            android:textColor="@color/colorPrimary" />
     </TableRow>
 
     <TableRow>
@@ -24,12 +27,14 @@
         <CheckBox
             android:id="@+id/art_gallery"
             android:layout_weight="5"
-            android:text="Galerie d'art"/>
+            android:text="Galerie d'art"
+            android:textColor="@color/colorPrimary"/>
 
         <CheckBox
             android:id="@+id/campground"
             android:layout_weight="20"
-            android:text="Camping"/>
+            android:text="Camping"
+            android:textColor="@color/colorPrimary"/>
     </TableRow>
 
     <TableRow>
@@ -41,12 +46,14 @@
         <CheckBox
             android:id="@+id/museum"
             android:layout_weight="5"
-            android:text="Musée"/>
+            android:text="Musée"
+            android:textColor="@color/colorPrimary"/>
 
         <CheckBox
             android:id="@+id/park"
             android:layout_weight="20"
-            android:text="Parc"/>
+            android:text="Parc"
+            android:textColor="@color/colorPrimary"/>
     </TableRow>
 
     <TableRow>
@@ -54,24 +61,17 @@
         <CheckBox
             android:id="@+id/stadium"
             android:layout_weight="5"
-            android:text="Stade"/>
+            android:text="Stade"
+            android:textColor="@color/colorPrimary"/>
 
         <CheckBox
             android:id="@+id/zoo"
             android:layout_weight="20"
-            android:text="Zoo"/>
+            android:text="Zoo"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"/>
     </TableRow>
 
     <TableRow>
-    </TableRow>
-
-    <TableRow>
-
-        <Button
-            android:id="@+id/buttonValidate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
     </TableRow>
 </TableLayout>

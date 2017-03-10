@@ -92,7 +92,7 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
         if (mGoogleApiClient.isConnected()){
             Log.d("RoadTripSuggest", "onCreateView: dans le if");
-            if (ContextCompat.checkSelfPermission(this.getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this.getActivity(),
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSION_REQUEST_CODE);

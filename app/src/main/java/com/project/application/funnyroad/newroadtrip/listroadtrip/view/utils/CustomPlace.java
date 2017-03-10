@@ -8,6 +8,7 @@ public class CustomPlace {
 
     //ATTRIBUTES
 
+    private Boolean placeChecked;
     private String placeId;
     private String placeName;
     private String placeGrade;
@@ -16,6 +17,7 @@ public class CustomPlace {
     //CONSTRUCTOR
 
     public CustomPlace(String placeId, String placeName, String placeGrade, String placeType) {
+        this.placeChecked = false;
         this.placeId = placeId;
         this.placeName = placeName;
         this.placeGrade = placeGrade;
@@ -23,6 +25,15 @@ public class CustomPlace {
     }
 
     //METHODS
+
+
+    public Boolean getPlaceChecked() {
+        return placeChecked;
+    }
+
+    public void setPlaceChecked(Boolean placeChecked) {
+        this.placeChecked = placeChecked;
+    }
 
     public String getPlaceId() {
         return placeId;

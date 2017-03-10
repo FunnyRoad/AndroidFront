@@ -2,11 +2,13 @@ package com.project.application.funnyroad.newroadtrip;
 
 import android.app.Activity;
 import android.app.Application;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
@@ -43,9 +45,14 @@ public class Variable extends Application {
 
     public List<LatLng> placesOnTrack = new ArrayList<LatLng>();
 
+    public List<LatLng> pointsToDraw = new ArrayList<LatLng>();
+
+    public List<CustomPlace> listPlaceChosen = new ArrayList<CustomPlace>();
+
     public GoogleApiClient googleApiClient;
 
     public GoogleMap gMap;
+
     //METHODS
 
     public Place getPlaceDeparture() {
@@ -115,6 +122,26 @@ public class Variable extends Application {
         this.placesOnTrack.add(latLng);
     }
 
+    public List<LatLng> getPointsToDraw() {
+        return pointsToDraw;
+    }
+
+    public void setPointsToDraw(List<LatLng> pointsToDraw) {
+        this.pointsToDraw = pointsToDraw;
+    }
+
+    public void addPointToDraw(LatLng latLng) {
+        this.pointsToDraw.add(latLng);
+    }
+
+    public List<CustomPlace> getListPlaceChosen() {
+        return listPlaceChosen;
+    }
+
+    public void setListPlaceChosen(List<CustomPlace> listPlaceChosen) {
+        this.listPlaceChosen = listPlaceChosen;
+    }
+
     public HashMap<String,Boolean> getMapTypes() {
         return mapTypes;
     }
@@ -131,7 +158,7 @@ public class Variable extends Application {
     }
 
     public void removeType(String type) {
-        this.mapTypes.remove(type);
+        this.mapTypes.put(type,false);
     }
 
     public void addType(String type) {
