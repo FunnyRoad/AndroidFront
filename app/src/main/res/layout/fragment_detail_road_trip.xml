@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDetailDepart"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -36,6 +37,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:background="@color/colorPrimaryDark">
@@ -53,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewDetailDestination"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -61,6 +64,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="@color/colorPrimaryDark">
 
         <TextView
@@ -76,12 +80,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="null"
             android:ems="10"
             android:id="@+id/textViewDetailDescription"
             android:layout_weight="1"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="sans-serif-medium"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -91,9 +95,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/butUpload"
         android:visibility="gone"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:fontFamily="sans-serif-medium"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/colorPrimary"/>
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -103,17 +107,20 @@
         android:visibility="gone" />
 
     <TextView
-        android:text="Les places desservies"
+        android:text="Lieux visités :"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:id="@+id/textView13"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium" />
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp" />
 
     <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
         android:id="@+id/scrollView">
 
         <LinearLayout
@@ -147,12 +154,13 @@
                 android:elevation="1dp"
                 android:gravity="bottom|center_horizontal"
                 android:visibility="gone"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="sans-serif-medium"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorPrimary"/>
 
             <fragment
                 android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:id="@+id/mapRoadTrip"
                 android:layout_height="300dp"
@@ -164,9 +172,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/butDeleteRoadTrip"
                 android:visibility="gone"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="sans-serif-medium"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorPrimary"/>
         </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>

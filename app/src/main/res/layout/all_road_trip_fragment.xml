@@ -19,6 +19,7 @@
         android:text="Aucun road trip à afficher"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:textColor="@color/colorPrimary"
         android:fontFamily="sans-serif-medium"
         android:id="@+id/textViewListEmpty"
@@ -28,6 +29,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_margin="10dp"
         android:id="@+id/recycler_view_all_road_trip"
         android:layout_marginBottom="10dp"

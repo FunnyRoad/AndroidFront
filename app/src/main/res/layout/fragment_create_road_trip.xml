@@ -18,16 +18,29 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:inputType="textPersonName"
                 android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextRTTitle"
                 android:textColor="@color/colorPrimary"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:text="Lieux sélectionnés :"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textViewListPlaces"
+                android:textColor="@color/colorPrimary"
+                android:background="@color/colorPrimaryDark"
+                android:textSize="14sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:id="@+id/placesFromRT"
                 android:background="@color/colorPrimaryDark"/>
 
@@ -35,9 +48,11 @@
                 android:text="Valider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:id="@+id/addRT"
                 android:background="@color/colorPrimary"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

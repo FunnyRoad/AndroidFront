@@ -46,11 +46,11 @@
             android:fontFamily="sans-serif-medium"  />
 
         <Button
-            android:layout_width="43dp"
-            android:layout_height="61dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:id="@+id/buttonNotFollow"
-            android:background="@android:drawable/ic_menu_delete"
-            android:layout_weight="0.06"
+            android:background="@drawable/ic_close_black_24dp"
+            android:layout_weight="0.02"
             android:textColor="@color/colorPrimary"
             android:fontFamily="sans-serif-medium" />
 

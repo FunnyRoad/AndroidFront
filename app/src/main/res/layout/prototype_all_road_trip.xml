@@ -46,10 +46,10 @@
             android:fontFamily="sans-serif-medium" />
 
         <Button
-            android:layout_width="43dp"
-            android:layout_height="38dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:id="@+id/buttonFollow"
-            android:background="@android:drawable/ic_input_add"
+            android:background="@drawable/ic_add_black_24dp"
             android:layout_weight="0.02"
             android:textColor="@color/colorPrimary"
             android:fontFamily="sans-serif-medium"/>
