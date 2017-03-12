@@ -240,7 +240,7 @@ public class ItineraireTask extends AsyncTask<Void, Integer, Boolean>  {
                 markerB.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
                 //On met à jour la carte
-                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lstLatLng.get(lstLatLng.size()/2), 5));
+                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lstLatLng.get(lstLatLng.size()/2), 2));
                 gMap.addMarker(markerA);
                 gMap.addPolyline(polylines);
                 gMap.addMarker(markerB);
