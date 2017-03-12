@@ -18,8 +18,8 @@ public interface IWebServiceAllRoadTrip {
     @GET("/roadtrips")
     public void allRoadTrip(Callback<ArrayList<RoadTrip>> callback);
 
-    @PUT("/guest/{guestId}/roadTrip/{roadtripId}")
-    public void addGuestToRoad(@Path("guestId") int id , @Path("roadtripId") int roadtripId, Callback<Object> callback );
+    @PUT("/follower/{userId}/roadtrip/{roadtripId}")
+    public void addGuestToRoad(@Path("userId") int id , @Path("roadtripId") int roadtripId, Callback<Object> callback );
 
 
 }

@@ -72,6 +72,7 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
             int position = getAdapterPosition();
             if(v.getId() == buttonFollow.getId()) {
                 presenterAllRoadTrip.addUserToGuestList( Utility.getIdUser(activity) , tripsList.get(position).getId());
+                buttonFollow.setBackgroundResource(R.drawable.ic_check_black_24dp);
             }
         }
     }

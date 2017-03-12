@@ -78,18 +78,19 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
 
         View header=navigationView.getHeaderView(0);
-        TextView userName = (TextView) header.findViewById(R.id.userNameNav);
+        //TextView userName = (TextView) header.findViewById(R.id.userNameNav);
         TextView email = (TextView) header.findViewById(R.id.emailNav);
-        ImageView image = (ImageView) header.findViewById(R.id.imageViewNav);
-        userName.setText(Utility.getInformationUser(this ,"personName"));
+        //ImageView image = (ImageView) header.findViewById(R.id.imageViewNav);
+        //userName.setText(Utility.getInformationUser(this ,"personName"));
         email.setText(Utility.getInformationUser(this , "email"));
 
+        /*
         Glide.with(this).load(Utility.getInformationUser(this ,"pictureGmail"))
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(image);
-
+        */
         Fragment fragmentHome = new FragmentHome();
         FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragmentHome);

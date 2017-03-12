@@ -195,7 +195,7 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
                 latitudeUser = likelyPlaces.get(0).getPlace().getLatLng().latitude;
                 longitudeUser = likelyPlaces.get(0).getPlace().getLatLng().longitude;
                 Log.d("RoadTripSuggest", "onCreateView: " + latitudeUser +" " +longitudeUser );
-                presenterRoadTripSuggested.getAllRoadsTripByCity(Utility.getIdUser(getActivity()),latitudeUser , longitudeUser , 250 );
+                presenterRoadTripSuggested.getAllRoadsTripByCity(Utility.getIdUser(getActivity()),latitudeUser , longitudeUser , 2 );
                 likelyPlaces.release();
             }
         });
