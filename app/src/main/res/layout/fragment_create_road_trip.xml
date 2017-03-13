@@ -20,22 +20,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:inputType="textPersonName"
-                android:text="Name"
                 android:ems="10"
                 android:id="@+id/editTextRTTitle"
                 android:textColor="@color/colorPrimary"
                 android:background="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:hint="Veuillez entrer le nom du Road Trip" />
 
             <TextView
                 android:text="Lieux sélectionnés :"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/textViewListPlaces"
                 android:textColor="@color/colorPrimary"
                 android:background="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"

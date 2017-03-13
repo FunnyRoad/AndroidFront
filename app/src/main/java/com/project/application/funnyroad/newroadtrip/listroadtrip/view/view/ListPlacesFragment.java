@@ -102,6 +102,7 @@ public class ListPlacesFragment extends Fragment {
 
         this.listPlaces.clear();
         this.listId.clear();
+        variables.getListPlaceChosen().clear();
 
         this.listPointsOnTrack = variables.getPlacesOnTrack();
 
@@ -281,28 +282,8 @@ public class ListPlacesFragment extends Fragment {
         //variables.setIdPlacesOnTrack(listPlacesChecked);
         variables.setPointsToDraw(listPointsForNewTrack);
 
-        /*
         Intent intent = new Intent(getActivity(), ActivityCreateNewRoadTrip.class);
-        Bundle bundle = new Bundle();
-        for (int i=0;i<listPlacesChecked.size();i++) {
-            bundle.putString("place_name",listPlacesChecked.get(i).getPlaceName());
-            bundle.putString("place_grade", listPlacesChecked.get(i).getPlaceGrade());
-            bundle.putString("place_type", listPlacesChecked.get(i).getPlaceType());
-        }
+
         startActivity(intent);
-        */
-
-        Fragment fragment = new FragmentCreateNewRoadTrip();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container_fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container_fragment, new FragmentCreateNewRoadTrip())
-                .commit();
-
     }
 }
