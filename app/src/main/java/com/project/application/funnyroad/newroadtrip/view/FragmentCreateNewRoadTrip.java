@@ -14,6 +14,7 @@ import android.widget.EditText;
 import com.project.application.funnyroad.R;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListPlacesAdapter;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
 
 import java.util.List;
@@ -37,6 +38,8 @@ public class FragmentCreateNewRoadTrip extends Fragment {
     @BindView(R.id.addRT)
     Button buttonAddRT;
 
+    private PresenterListRoadTrip presenterListRoadTrip;
+
     private ListPlacesAdapter listPlacesAdapter;
 
     private List<CustomPlace> listPlacesChosen;
@@ -52,10 +55,12 @@ public class FragmentCreateNewRoadTrip extends Fragment {
         // On récupère la view du fragment
         View view = inflater.inflate(R.layout.fragment_create_road_trip, container, false);
 
-        this.listPlacesChosen = variables.getListPlaceChosen();
-
         // On bind la view du fragment pour l'utiliser avec ButterKnife.
         ButterKnife.bind(this, view);
+
+        this.listPlacesChosen = variables.getListPlaceChosen();
+
+        //presenterListRoadTrip = new PresenterListRoadTrip(this);
 
         listPlacesAdapter = new ListPlacesAdapter(getActivity(),this.listPlacesChosen);
         recyclerViewPlaces.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -64,8 +69,11 @@ public class FragmentCreateNewRoadTrip extends Fragment {
 
         return view;
     }
-    /*
+
     @OnClick(R.id.addRT)
-    public void createRoadTrip
-    */
+    public void createRoadTrip() {
+
+
+    }
+
 }
