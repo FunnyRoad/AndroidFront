@@ -2,6 +2,8 @@ package com.project.application.funnyroad.detailroadtripnew.view;
 
 import android.graphics.Bitmap;
 
+import com.project.application.funnyroad.addplace.model.Picture;
+import com.project.application.funnyroad.detailroadtripnew.model.Post;
 import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
@@ -15,12 +17,13 @@ public interface IServiceDetailRoadTrip {
 
     public void showLoading(boolean bool);
     public void getListPlacesSuccess(ArrayList<Place> places);
-    //public void getListPhotosSuccess(ArrayList<Bitmap> photos);
     public void getListFailed(String msg);
-    //public void listPhotosEmpty();
+    public void deleteRoadTripFailed(String msg);
     public void listPlacesEmpty();
     public void goToListRoadTrip();
-    public void deleteRoadTripFailed(String msg);
     public void getInformationRoadTrip(RoadTrip roadTrip);
     public void fillFragment(RoadTrip roadTrip);
+    public void postAddSuccess(Post post);
+    public void pictureAddedSuccess();
+    public void allPostSuccess(ArrayList<Post> posts);
 }

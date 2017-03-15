@@ -86,12 +86,6 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
 
         presenterProfil.getInformationUser(value); // on recupere les information de l'utilisateur a partir de la BD
 
-        Log.d("TAG", "onCreateView: id : "+ value);
-        /*editTextEmail.setText(Utility.getInformationUser(getActivity() , "email"));
-        editTextFirstName.setText(Utility.getInformationUser(getActivity() , "personName"));
-        editTextLastName.setText(Utility.getInformationUser(getActivity() , "lastName"));
-        editTextUserName.setText(Utility.getInformationUser(getActivity() , "userName"));
-        */
         loadImageFromStorage(path);
 
         return view;
@@ -124,12 +118,6 @@ public class ProfilFragment extends Fragment implements IServiceProfil{
 
     @Override
     public void showInformationsUser(User user){
-        /*Utility.storeInformationUser(getActivity() , "email" , user.getMail());
-        Utility.storeInformationUser(getActivity() , "personName" , user.getFirtsName());
-        Utility.storeInformationUser(getActivity() , "lastName" , user.getLastName());
-        Utility.storeInformationUser(getActivity() , "userName" , user.getUsername());
-        */
-
         editTextFirstName.setText(user.getFirtsName());
         editTextLastName.setText(user.getLastName());
         editTextEmail.setText(user.getMail());

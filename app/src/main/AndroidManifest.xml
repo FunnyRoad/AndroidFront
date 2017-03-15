@@ -27,7 +27,7 @@
         <meta-data
              android:name="com.google.android.geo.API_KEY"
 
-             android:value="AIzaSyC4U7mZR5d7Sf2lp4bhq8aCd_d8h_e6A20" />
+             android:value="AIzaSyDDq6MYe4h91FrhUBNZCmd1xpmQxGkDYqo" />
 
 
         <activity android:name=".login.view.ActivityLogin">
@@ -60,9 +60,30 @@
         <!-- <activity android:name="com.project.application.funnyroad.googlemap.view.googleMapActivity">
          </activity>   -->
 
-        <activity android:name=".addplace.view.AddPlaceActivity"></activity>
-        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"></activity>
+        <activity android:name=".addplace.view.AddPlaceActivity"
+            android:parentActivityName=".detailroadtripnew.view.DetailRoadTripActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".detailroadtripnew.view.DetailRoadTripActivity" />
 
-        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"></activity>
+        </activity>
+        <activity android:name=".detailroadtripnew.view.DetailRoadTripActivity"
+            android:parentActivityName=".home.view.ActivityHome2">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.view.ActivityHome2" />
+
+        </activity>
+
+        <activity android:name=".detailEndroit.view.DetailsEndroitActivity"
+            android:parentActivityName=".detailroadtripnew.view.DetailRoadTripActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".detailroadtripnew.view.DetailRoadTripActivity" />
+
+        </activity>
     </application>
 </manifest>

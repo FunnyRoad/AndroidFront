@@ -409,7 +409,6 @@ public class AddPlaceFragment extends Fragment implements LocationListener, Adap
 
     @Override
     public void addImageToPlaceSuccess(){
-        //Intent intent = new Intent(getActivity() , ActivityHome2.class);
-        //startActivity(intent);
+
     }
 }

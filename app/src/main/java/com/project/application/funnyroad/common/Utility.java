@@ -106,8 +106,7 @@ public class Utility {
 
     public static String getInformationUser(Activity activity , String key){
         String value = PreferenceManager.getDefaultSharedPreferences(activity).getString(key , "");
-        //SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
-        //String userInformation = sharedPref.getString(key , "");
+
         return value;
     }
 

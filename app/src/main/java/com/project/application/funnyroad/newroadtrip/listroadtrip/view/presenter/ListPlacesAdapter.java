@@ -1,6 +1,7 @@
 package com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +13,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.detailEndroit.view.DetailsEndroitActivity;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +65,7 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
             super(view);
             ButterKnife.bind(this, view);
             checkBox.setOnClickListener(this);
+            view.setOnClickListener(this);
         }
 
         @Override
@@ -78,6 +83,12 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesAdapter.My
                     listPlaces.get(position).setPlaceChecked(false);
                 }
             }
+            else{
+                Intent intent = new Intent(v.getContext(), DetailsEndroitActivity.class);
+                intent.putExtra("endroitSelected", (Serializable) listPlaces.get(position));
+                //v.getContext().startActivity(intent);
+            }
+
         }
     }
 

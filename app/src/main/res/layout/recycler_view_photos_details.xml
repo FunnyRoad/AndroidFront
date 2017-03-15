@@ -12,14 +12,6 @@
         android:id="@+id/imageView_photo" />
 
     <TextView
-        android:text="PHOTO"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:textAlignment="center" />
-
-    <TextView
-        android:text="Inofmtation de l'place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView6" />

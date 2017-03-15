@@ -42,11 +42,6 @@ public class DetailsRoadTripAdapter extends RecyclerView.Adapter<DetailsRoadTrip
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    /*Intent intent = new Intent(v.getContext(), DetailsEndroitActivity.class);
-                    intent.putExtra("endroitSelected",photoRoadList.getClass());
-                    view.getContext().startActivity(intent);
-
-                   */
                 }
             });
         }

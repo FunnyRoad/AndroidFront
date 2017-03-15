@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark"
+    app:layout_collapseParallaxMultiplier="1.0">
 
     <ImageView
         android:layout_width="match_parent"
         app:srcCompat="@drawable/ic_menu_profil"
         android:id="@+id/imageProfil"
         android:layout_marginBottom="100dp"
-        android:layout_height="150dp" />
+        android:layout_height="57dp" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -51,7 +52,8 @@
                 android:id="@+id/editTextFirstName"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -79,7 +81,8 @@
                 android:id="@+id/editTextLastName"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,7 +109,8 @@
                 android:id="@+id/editTextEMail"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -133,18 +137,20 @@
                 android:id="@+id/editTextUserName"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <Button
             android:text="Enregistrer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:id="@+id/buttSave"
             android:visibility="visible"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:fontFamily="sans-serif-medium"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimary"/>
 
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.project.application.funnyroad.R;
@@ -24,7 +25,7 @@ import butterknife.ButterKnife;
 
 
 /**
- * Created by you on 21/01/2017.
+ * Created by oa on 21/01/2017.
  */
 
 public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.MyViewHolder> {
@@ -36,6 +37,8 @@ public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.
         // récuperation des composants utilisé pour chaque item de la recyclerview
         @BindView(R.id.endroitName)
         TextView endroitName;
+        @BindView(R.id.ratingBarListPlace)
+        RatingBar ratingBarListPlace;
 
         public MyViewHolder(final View view) {
             super(view);
@@ -76,6 +79,7 @@ public class ListEndroitAdapter extends RecyclerView.Adapter<ListEndroitAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position){
         Place place = placeList.get(position);
         holder.endroitName.setText(place.getName());
+        holder.ratingBarListPlace.setRating(place.getGrade());
     }
 
     @Override

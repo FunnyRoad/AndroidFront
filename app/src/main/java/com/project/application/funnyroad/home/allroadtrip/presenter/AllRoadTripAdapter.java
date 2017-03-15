@@ -3,7 +3,6 @@ package com.project.application.funnyroad.home.allroadtrip.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +71,7 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
             int position = getAdapterPosition();
             if(v.getId() == buttonFollow.getId()) {
                 presenterAllRoadTrip.addUserToGuestList( Utility.getIdUser(activity) , tripsList.get(position).getId());
+                buttonFollow.setBackgroundResource(R.drawable.ic_check_black_24dp);
             }
         }
     }
@@ -105,15 +105,12 @@ public class AllRoadTripAdapter extends RecyclerView.Adapter<AllRoadTripAdapter.
                 @Override
                 public void onResult(PlaceBuffer places) {
                     if (!places.getStatus().isSuccess()) {
-                        Log.d("allRoadTripAdapter", "Place query did not complete. Error: " +
-                                places.getStatus().toString());
                         return;
                     }
                     // Selecting the first object buffer.
                     final Place place = places.get(0);
                     namePlace = place.getName().toString();
                     holder.textViewDestination.setText(namePlace);
-                    //Log.d("allRoadTripAdapter", "onResult: " + place.getId() + " "+ namePlace);
                 }
             });
         }

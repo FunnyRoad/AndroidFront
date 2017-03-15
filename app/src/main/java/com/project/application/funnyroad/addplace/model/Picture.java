@@ -1,7 +1,9 @@
 package com.project.application.funnyroad.addplace.model;
 
+import com.project.application.funnyroad.detailroadtripnew.model.Post;
+
 /**
- * Created by you on 28/02/2017.
+ * Created by oa on 28/02/2017.
  */
 
 public class Picture {
@@ -9,6 +11,11 @@ public class Picture {
     private int id;
     private String type;
     private int place;
+    private Post post;
+
+    public Picture(String type){
+        this.type = type;
+    }
 
     public Picture(String type, int place) {
         this.type = type;
@@ -43,5 +50,13 @@ public class Picture {
 
     public void setPlace(int place) {
         this.place = place;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

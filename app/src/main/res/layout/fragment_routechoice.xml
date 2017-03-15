@@ -9,7 +9,8 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
             android:text="Départ"
@@ -29,10 +30,11 @@
             android:inputType="text"
             android:lines="1"
             android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
@@ -65,31 +67,34 @@
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
+        android:layout_marginTop="5dp"
         android:text="Rechercher"
         android:fontFamily="sans-serif-condensed"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_weight="3"
         android:layout_height="430dp">
 
-        <Button
-            android:text="Valider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/submit"
-            android:layout_gravity="bottom"
-            android:visibility="gone"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="sans-serif-medium"/>
-
         <fragment
             android:id="@+id/choiceMap"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"/>
     </FrameLayout>
+
+    <Button
+        android:text="Valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:layout_gravity="bottom"
+        android:visibility="gone"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-medium"
+        android:layout_weight="3" />
 </LinearLayout>

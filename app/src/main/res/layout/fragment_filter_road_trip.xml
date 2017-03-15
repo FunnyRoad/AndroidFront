@@ -7,7 +7,8 @@
     android:weightSum="100"
     android:backgroundTint="@color/colorPrimaryDark">
 
-    <TableRow>
+    <TableRow
+        android:layout_marginTop="5dp">
 
         <CheckBox
             android:id="@+id/amusement_park"
@@ -22,7 +23,8 @@
             android:textColor="@color/colorPrimary" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_marginTop="5dp">
 
         <CheckBox
             android:id="@+id/art_gallery"
@@ -37,11 +39,8 @@
             android:textColor="@color/colorPrimary"/>
     </TableRow>
 
-    <TableRow>
-
-    </TableRow>
-
-    <TableRow>
+    <TableRow
+        android:layout_marginTop="5dp">
 
         <CheckBox
             android:id="@+id/museum"
@@ -56,7 +55,8 @@
             android:textColor="@color/colorPrimary"/>
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_marginTop="5dp">
 
         <CheckBox
             android:id="@+id/stadium"

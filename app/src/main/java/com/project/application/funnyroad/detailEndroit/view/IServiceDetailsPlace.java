@@ -16,7 +16,7 @@ public interface IServiceDetailsPlace {
     public void showLoading(boolean bool);
     public void getInformationFailed(String msg); // probleme lors de l'appel web service
     public void listPhotosEmpty();
-    public void getInformationSuccess(); // connexion reussie
+    public void getInformationSuccess(Place place); // connexion reussie
     public void uploadPlaceSuccess(Place place);
     public void deletePlaceSuccess();
     public void getListPictureModel(ArrayList<Picture> list);

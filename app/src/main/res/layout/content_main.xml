@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_input_add"
+        app:srcCompat="@drawable/ic_add_black_24dp"
         android:id="@+id/floatingActionButton"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"

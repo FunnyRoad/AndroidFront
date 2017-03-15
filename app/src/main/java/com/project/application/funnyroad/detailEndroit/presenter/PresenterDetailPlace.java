@@ -39,7 +39,7 @@ public class PresenterDetailPlace {
             @Override
             public void success(Place place, Response response) {
                 mIServiceDetailsPlace.showLoading(false);
-                mIServiceDetailsPlace.uploadPlaceSuccess(place);
+                mIServiceDetailsPlace.getInformationSuccess(place);
             }
 
             @Override
@@ -77,6 +77,23 @@ public class PresenterDetailPlace {
                     mIServiceDetailsPlace.listPhotosEmpty();
                 }
                 mIServiceDetailsPlace.getListPictureModel(pictures);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                mIServiceDetailsPlace.showLoading(false);
+                mIServiceDetailsPlace.getInformationFailed(error.getMessage());
+            }
+        });
+    }
+
+    public void ratePlace(int idPlace , float rate){
+        mIServiceDetailsPlace.showLoading(true);
+        iWebServiceListRoadTrip.ratePlace(idPlace, rate, new Callback<Place>() {
+            @Override
+            public void success(Place place, Response response) {
+                mIServiceDetailsPlace.showLoading(false);
+                mIServiceDetailsPlace.uploadPlaceSuccess(place);
             }
 
             @Override

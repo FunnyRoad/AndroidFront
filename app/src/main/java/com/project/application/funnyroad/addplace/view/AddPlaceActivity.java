@@ -16,9 +16,6 @@ public class AddPlaceActivity extends LayoutCommonActivity {
         super.onCreate(savedInstanceState);
         AddPlaceFragment mAddPlaceFragment = new AddPlaceFragment();
 
-        //desactiver la toolbar
-        //mToolbar.setVisibility(View.GONE);
-
         getSupportFragmentManager()//appel fragment manager jva
                 .beginTransaction()
                 .add(R.id.container_fragment, mAddPlaceFragment)

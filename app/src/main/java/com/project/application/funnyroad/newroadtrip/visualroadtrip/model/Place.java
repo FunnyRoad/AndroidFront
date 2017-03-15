@@ -22,11 +22,11 @@ public class Place implements Parcelable, Serializable {
     private String description;
     private double longitude;
     private double latitude;
-    private double grade;
+    private float grade;
     private String type;
     private ArrayList<Picture> pictures;
 
-    public Place(int id , String name , double latitude, double longitude ,String description, double grade ,String type ){
+    public Place(int id , String name , double latitude, double longitude ,String description, float grade ,String type ){
         this.id = id;
         this.name = name;
         this.description = description;
@@ -36,7 +36,7 @@ public class Place implements Parcelable, Serializable {
         this.type = type;
     }
 
-    public Place(String name , double latitude, double longitude ,String description, double grade ,String type ){
+    public Place(String name , double latitude, double longitude ,String description, float grade ,String type ){
         this.name = name;
         this.description = description;
         this.longitude = longitude;
@@ -137,11 +137,11 @@ public class Place implements Parcelable, Serializable {
     }
 
 
-    public double getGrade() {
+    public float getGrade() {
         return grade;
     }
 
-    public void setGrade(double grade) {
+    public void setGrade(float grade) {
         this.grade = grade;
     }
 

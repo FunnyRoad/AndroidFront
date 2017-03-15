@@ -1,10 +1,12 @@
 package com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils;
 
+import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
+
 /**
  * Created by sameur on 06/03/2017.
  */
 
-public class CustomPlace {
+public class CustomPlace extends Place{
 
     //ATTRIBUTES
 
@@ -25,7 +27,6 @@ public class CustomPlace {
     }
 
     //METHODS
-
 
     public Boolean getPlaceChecked() {
         return placeChecked;

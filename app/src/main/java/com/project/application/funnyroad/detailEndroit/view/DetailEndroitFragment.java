@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by you on 20/02/2017.
+ * Created by oa on 20/02/2017.
  */
 
 public class DetailEndroitFragment extends Fragment implements AdapterView.OnItemSelectedListener , IServiceDetailsPlace{
@@ -58,11 +59,14 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
     TextView textViewListPhotoEmpty;
     @BindView(R.id.buttonDeletePlace)
     Button buttonDeletePlace;
+    @BindView(R.id.ratingBar)
+    RatingBar ratingBar;
 
     private Place place;
     private int roadTripOwner;
     private int roadTripId;
     private PresenterDetailPlace presenterDetailPlace;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
@@ -92,9 +96,6 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
             place = (Place) i.getSerializableExtra("endroitSelected");
             roadTripOwner = i.getIntExtra("roadTripOwner", -1);
             roadTripId = i.getIntExtra("roadTripId" , -1);
-            Log.d("TAG", "onCreateView: roadtrip id : "+ roadTripId);
-            Log.d("TAG", "onCreateView: user id : "+ Utility.getIdUser(getActivity()));
-            Log.d("TAG", "onCreateView: roadtrip owner id : "+ roadTripOwner);
 
             textViewNameEndroit.setText(place.getName());
             textViewDescriptionEndroit.setText(place.getDescription());
@@ -106,6 +107,7 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
                 textViewNameEndroit.setEnabled(false);
                 textViewDescriptionEndroit.setEnabled(false);
                 spinnerDetailPlace.setEnabled(false);
+                ratingBar.setVisibility(View.GONE);
             }
             else{
                 textViewNameEndroit.setEnabled(true);
@@ -118,17 +120,6 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
 
         }
 
-        /*Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
-        Bitmap bmp = Bitmap.createBitmap(200, 100, conf); // this creates a MUTABLE bitmap
-
-        ArrayList<Bitmap> list = new ArrayList<>();
-        list.add(bmp); list.add(bmp);list.add(bmp);
-       // place.setListPhotos(list);
-        DetailsEndroitAdapter mAdapter = new DetailsEndroitAdapter(list);
-        recycler_view_list_photo_endroit.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
-        recycler_view_list_photo_endroit.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_list_photo_endroit.setAdapter(mAdapter);
-        */
         return view;
     }
 
@@ -145,7 +136,7 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
     @OnClick(R.id.buttonUploadPlace)
     public void uploadPlace(){
         Place newPlace = new Place( place.getId() , textViewNameEndroit.getText().toString(), place.getLatitude() ,
-                place.getLongitude(), textViewDescriptionEndroit.getText().toString() ,0 , (String) spinnerDetailPlace.getSelectedItem());
+                place.getLongitude(), textViewDescriptionEndroit.getText().toString() ,ratingBar.getRating() , (String) spinnerDetailPlace.getSelectedItem());
 
         presenterDetailPlace.uploadPlace(newPlace);
     }
@@ -186,8 +177,8 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
     }
 
     @Override
-    public void getInformationSuccess() {
-
+    public void getInformationSuccess(Place place) {
+        presenterDetailPlace.ratePlace(place.getId() , ratingBar.getRating());
     }
 
     @Override
@@ -196,12 +187,13 @@ public class DetailEndroitFragment extends Fragment implements AdapterView.OnIte
             textViewNameEndroit.setEnabled(false);
             textViewDescriptionEndroit.setEnabled(false);
             spinnerDetailPlace.setEnabled(false);
+            ratingBar.setVisibility(View.GONE);
         }
         else{
             textViewNameEndroit.setEnabled(true);
             textViewDescriptionEndroit.setEnabled(true);
             spinnerDetailPlace.setEnabled(true);
-
+            ratingBar.setVisibility(View.VISIBLE);
             buttonUploadPlace.setVisibility(View.VISIBLE);
         }
 

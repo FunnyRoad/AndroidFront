@@ -64,7 +64,6 @@ public class FragmentHome extends Fragment {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Log.d("TAG", "onTabSelected: "+tab.getPosition());
                 viewPager.setCurrentItem(tab.getPosition());
             }
 

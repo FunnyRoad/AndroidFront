@@ -10,7 +10,7 @@ import com.project.application.funnyroad.home.roadtripsuggested.view.RoadTripSug
 
 
 /**
- * Created by oraberkane on 03/02/2017.
+ * Created by oa on 03/02/2017.
  */
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
