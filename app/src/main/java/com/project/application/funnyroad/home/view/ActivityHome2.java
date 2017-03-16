@@ -80,7 +80,6 @@ public class ActivityHome2 extends AppCompatActivity implements NavigationView.O
         View header=navigationView.getHeaderView(0);
         TextView email = (TextView) header.findViewById(R.id.emailNav);
         email.setText(Utility.getInformationUser(this , "email"));
-
         Fragment fragmentHome = new FragmentHome();
         FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame, fragmentHome);
