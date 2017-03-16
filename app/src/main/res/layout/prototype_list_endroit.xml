@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/ratingBarListPlace"
             android:numStars="5"
-            android:isIndicator="true" />
+            android:isIndicator="true"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small" />
 
     </LinearLayout>
 

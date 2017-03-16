@@ -66,7 +66,7 @@
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
+        android:layout_height="34dp"
         android:layout_marginTop="5dp"
         android:text="Rechercher"
         android:fontFamily="sans-serif-condensed"
@@ -89,7 +89,7 @@
     <Button
         android:text="Valider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:id="@+id/submit"
         android:layout_gravity="bottom"
         android:visibility="gone"

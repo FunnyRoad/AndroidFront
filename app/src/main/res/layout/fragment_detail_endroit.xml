@@ -113,12 +113,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
         android:numStars="5"
-        android:stepSize="1.0"/>
+        android:stepSize="0.1"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small" />
 
     <Button
         android:text="Mettre à jour la place"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:id="@+id/buttonUploadPlace"
         android:visibility="gone"
         android:textColor="@color/colorPrimary"
@@ -135,7 +136,7 @@
     <Button
         android:text="Supprimer la place"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:id="@+id/buttonDeletePlace"
         android:visibility="gone"
         android:textColor="@color/colorPrimary"

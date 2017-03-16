@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.addplace.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.project.application.funnyroad.R;
@@ -15,6 +16,10 @@ public class AddPlaceActivity extends LayoutCommonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AddPlaceFragment mAddPlaceFragment = new AddPlaceFragment();
+
+        mToolbar.setTitle("Création d'un Lieu");
+        mToolbar.setTitleTextColor(Color.rgb(255,255,255));
+        mToolbar.setBackgroundColor(Color.rgb(1,108,80));
 
         getSupportFragmentManager()//appel fragment manager jva
                 .beginTransaction()

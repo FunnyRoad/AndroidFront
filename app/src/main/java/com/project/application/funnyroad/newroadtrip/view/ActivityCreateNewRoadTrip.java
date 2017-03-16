@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.newroadtrip.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.project.application.funnyroad.R;
@@ -18,6 +19,9 @@ public class ActivityCreateNewRoadTrip extends LayoutCommonActivity {
 
         //desactiver la toolbar
         //mToolbar.setVisibility(View.GONE);
+        mToolbar.setTitle("Validation du Road Trip");
+        mToolbar.setTitleTextColor(Color.rgb(255,255,255));
+        mToolbar.setBackgroundColor(Color.rgb(1,108,80));
 
         getSupportFragmentManager()
                 .beginTransaction()

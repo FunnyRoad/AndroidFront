@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewDetailDepart"
             android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -56,6 +57,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewDetailDestination"
             android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -97,14 +99,16 @@
         <Button
             android:text="Choisir une photo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/butChoosePhotoRoad"
-            android:layout_weight="1" />
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary" />
 
         <Button
             android:text="Ajouter la photo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:id="@+id/buttonAddPhotoToRoad"
             android:layout_weight="1"
             android:visibility="gone" />
@@ -115,7 +119,8 @@
     <Button
         android:text="Mettre à jour"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/butUpload"
         android:visibility="gone"
         android:textColor="@color/colorPrimaryDark"
@@ -144,6 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
         android:layout_marginTop="15dp"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/scrollView">
 
         <LinearLayout
@@ -155,10 +161,12 @@
             android:background="@color/colorPrimaryDark">
 
             <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_marginBottom="10dp"
+                android:background="@color/colorPrimaryDark"
                 android:id="@+id/recyclerViewPhotosRoad"
-                android:layout_height="250dp" />
+                android:layout_height="100dp"
+                android:layout_weight="0.85" />
 
             <TextView
                 android:text="Aucun endroit à afficher"
@@ -178,27 +186,27 @@
             <Button
                 android:text="Ajouter une place"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:id="@+id/addPlace"
                 android:elevation="1dp"
-                android:gravity="bottom|center_horizontal"
                 android:visibility="gone"
                 android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="sans-serif-medium"
                 android:background="@color/colorPrimary"/>
 
             <fragment
-                android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:id="@+id/mapRoadTrip"
                 android:layout_height="300dp"
-                />
+                android:layout_weight="0.95"
+                android:layout_width="365dp" />
 
             <Button
                 android:text="Supprimer road trip"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/butDeleteRoadTrip"
                 android:visibility="gone"
                 android:textColor="@color/colorPrimaryDark"

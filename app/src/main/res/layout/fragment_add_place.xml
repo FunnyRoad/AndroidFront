@@ -7,17 +7,33 @@
     android:background="@color/colorPrimaryDark">
 
     <TextView
-        android:text="TextView"
+        android:text="Latitude"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:id="@+id/textView26" />
+
+    <TextView
+        android:text=""
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/textView7"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"  />
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="170dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Longitude :"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:id="@+id/textView25" />
+
+    <TextView
+        android:text=""
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/textView8"
@@ -25,8 +41,16 @@
         android:fontFamily="sans-serif-medium"  />
 
     <TextView
-        android:text="TextView"
+        android:text="Ville :"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/textView27"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView
+        android:text=""
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/textView9"
@@ -62,7 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:id="@+id/spinner"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"/>
 
     </LinearLayout>
 
@@ -86,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:hint="Entrez le nom du lieu"
             android:ems="10"
             android:id="@+id/editTextDescriptionPlace"
             android:layout_weight="1"
@@ -103,28 +128,31 @@
         android:layout_marginTop="5dp">
 
         <Button
-            android:text="récupérer ma position "
+            android:text="Récupérer Position "
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:id="@+id/buttonDisplayPosition"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <Button
             android:text="Ajouter cette place"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:id="@+id/buttonAddPlace"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
             android:visibility="gone"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:fontFamily="sans-serif-medium"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@color/colorPrimary"/>
     </LinearLayout>
 
     <Button
         android:text="Choisir une photo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:id="@+id/uploadPhoto"
         android:layout_marginTop="5dp"
         android:visibility="gone"
@@ -136,6 +164,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
         app:srcCompat="@drawable/ic_menu_photos"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/imageViewUpload"
         android:layout_gravity="center"
         android:layout_height="200dp" />
@@ -143,7 +172,7 @@
     <Button
         android:text="Ajouter la photo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_marginTop="5dp"
         android:id="@+id/butAddImageToPlace"
         android:visibility="gone"

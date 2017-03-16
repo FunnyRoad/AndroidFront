@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.newroadtrip.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -50,6 +51,10 @@ public class ActivityNewMRoadTrip extends LayoutCommonActivity {
                 visualRoadTripFragment.setArguments(bundle);
             }
         }
+
+        mToolbar.setTitle("Création d'un Road Trip");
+        mToolbar.setTitleTextColor(Color.rgb(255,255,255));
+        mToolbar.setBackgroundColor(Color.rgb(1,108,80));
 
         getSupportFragmentManager()
                 .beginTransaction()

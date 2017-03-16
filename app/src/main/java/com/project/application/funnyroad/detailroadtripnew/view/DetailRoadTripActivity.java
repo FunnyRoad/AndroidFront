@@ -1,5 +1,7 @@
 package com.project.application.funnyroad.detailroadtripnew.view;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -20,6 +22,8 @@ public class DetailRoadTripActivity extends LayoutCommonActivity {
         //desactiver la toolbar
         //mToolbar.setVisibility(View.GONE);
         mToolbar.setTitle("Détail du Roadtrip");
+        mToolbar.setTitleTextColor(Color.rgb(255,255,255));
+        mToolbar.setBackgroundColor(Color.rgb(1,108,80));
         getSupportFragmentManager()//appel fragment manager jva
                 .beginTransaction()
                 .add(R.id.container_fragment, mDetailRoadTripFragment)

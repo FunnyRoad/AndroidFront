@@ -50,6 +50,7 @@
             android:layout_height="24dp"
             android:id="@+id/buttonFollow"
             android:background="@drawable/ic_add_black_24dp"
+            android:backgroundTint="#006633"
             android:layout_weight="0.02"
             android:textColor="@color/colorPrimary"
             android:fontFamily="sans-serif-medium"/>
