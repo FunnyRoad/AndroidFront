@@ -252,7 +252,7 @@ public class DetailRoadTripFragment extends Fragment implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         new GeocodeInverse(this.getContext(), googleMap, listPlace,
-               roadTrip.getBegin(), roadTrip.getDestination() , textViewDetailDestination).execute();
+                roadTrip.getBegin(), roadTrip.getDestination() , textViewDetailDestination).execute();
     }
 
     @Override
