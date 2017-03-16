@@ -172,8 +172,8 @@ public class Utility {
             location.getLatitude();
             location.getLongitude();
 
-            p1 = new Departure((double) (location.getLatitude() * 1E6),
-                    (double) (location.getLongitude() * 1E6) , "");
+            p1 = new Departure("",(double) (location.getLatitude() * 1E6),
+                    (double) (location.getLongitude() * 1E6));
 
             return p1;
         }

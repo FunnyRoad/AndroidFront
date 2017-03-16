@@ -41,6 +41,7 @@ import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.login.presenter.PresenterLogin;
+import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.profil.view.presenter.PresenterProfil;
 
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     private static final String TAG = "FragmentLogin2";
     private static final int RC_SIGN_IN = 007;
 
+    private Variable variable;
     private static GoogleApiClient mGoogleApiClient;
     private ProgressDialog mProgressDialog;
 
@@ -93,6 +95,7 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
 
         presenterLogin = new PresenterLogin(this);
 
+        variable = (Variable) getActivity().getApplicationContext();
         /*Departure d1 = new Departure(50.633333 , 3.066667 , null);
         Departure d2 = new Departure( 48.856614 , 2.35222199 , null);
         Departure d3 = new Departure( 43.610769 , 3.87671599 , null);
@@ -196,6 +199,8 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             // on sauvegarde firebaseId DANS L'APPLICATION
             Utility.storeFirebaseId(getActivity(), firebaseId);
             user = new User(email, firebaseId, personName, lastName, userName, null, "");
+            variable.setUser(user);
+
             Log.d(TAG, "handleSignInResult: recup: "+Utility.getInformationUser(getActivity() ,"firebaseId" ));
             presenterLogin.getUsers();
         }

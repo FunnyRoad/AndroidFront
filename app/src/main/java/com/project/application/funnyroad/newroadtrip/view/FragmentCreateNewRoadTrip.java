@@ -12,11 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.home.model.Departure;
+import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListPlacesAdapter;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
+import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.IServiceListRoad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,7 +31,7 @@ import butterknife.OnClick;
  * Created by sameur on 10/03/2017.
  */
 
-public class FragmentCreateNewRoadTrip extends Fragment {
+public class FragmentCreateNewRoadTrip extends Fragment implements IServiceListRoad {
 
     //ATTRIBUTES
 
@@ -44,6 +48,10 @@ public class FragmentCreateNewRoadTrip extends Fragment {
 
     private List<CustomPlace> listPlacesChosen;
 
+    private List<Integer> listIdPlacesChosen;
+
+    private RoadTrip roadTrip;
+
     private Variable variables;
 
     //METHODS
@@ -59,8 +67,13 @@ public class FragmentCreateNewRoadTrip extends Fragment {
         ButterKnife.bind(this, view);
 
         this.listPlacesChosen = variables.getListPlaceChosen();
+        /*
+        for (int i=0;i<listPlacesChosen.size();i++) {
+            listIdPlacesChosen.add(listPlacesChosen.get(i))
+        }
+        */
 
-        //presenterListRoadTrip = new PresenterListRoadTrip(this);
+        presenterListRoadTrip = new PresenterListRoadTrip(this);
 
         listPlacesAdapter = new ListPlacesAdapter(getActivity(),this.listPlacesChosen);
         recyclerViewPlaces.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -73,7 +86,29 @@ public class FragmentCreateNewRoadTrip extends Fragment {
     @OnClick(R.id.addRT)
     public void createRoadTrip() {
 
+        roadTrip = new RoadTrip(editTextRTTitle.getText().toString(),
+                variables.getUser(),
+                new Departure(variables.getPlaceDeparture().getId(),variables.getPlaceDeparture().getLatLng().latitude,variables.getPlaceDeparture().getLatLng().longitude),
+                variables.getPlaceArrival().getName().toString(),
+                new ArrayList<Integer>(),
+                new ArrayList<Integer>()
+        );
+
+        presenterListRoadTrip.createRoadTrip(roadTrip);
+    }
+
+    @Override
+    public void showLoading(boolean bool) {
 
     }
 
+    @Override
+    public void createRoadTrip(RoadTrip roadTrip) {
+
+    }
+
+    @Override
+    public void errorLoading(String msg) {
+
+    }
 }

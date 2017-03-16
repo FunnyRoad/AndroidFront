@@ -26,29 +26,6 @@ public class PresenterListRoadTrip {
         mIServiceListRoad = iServiceListRoad;
     }
 
-    /**
-     * la liste des endroit entre departure et arrival
-     * @param departure
-     * @param arrival
-     */
-    public void getListPlaces(String departure , String arrival){
-
-        mIServiceListRoad.showLoading(true);
-        iWebServiceListRoadTrip.listPlacesBetweenDepArr(departure, arrival, new Callback<ArrayList<Place>>() {
-            @Override
-            public void success(ArrayList<Place> places, Response response) {
-                mIServiceListRoad.showLoading(false);
-                mIServiceListRoad.loadingList(places);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                mIServiceListRoad.showLoading(false);
-                mIServiceListRoad.errorLoading(error.getMessage());
-            }
-        });
-    }
-
     public void createRoadTrip(RoadTrip roadTrip)
     {
         mIServiceListRoad.showLoading(true);
@@ -56,7 +33,7 @@ public class PresenterListRoadTrip {
             @Override
             public void success(RoadTrip roadTrip, Response response) {
                 mIServiceListRoad.showLoading(false);
-                mIServiceListRoad.gotToVisual();
+                mIServiceListRoad.createRoadTrip(roadTrip);
 
             }
 
@@ -67,24 +44,5 @@ public class PresenterListRoadTrip {
             }
         });
 
-    }
-
-    public void getNearPlaces(Double latitude, Double longitude, Integer distance)
-    {
-        mIServiceListRoad.showLoading(true);
-        iWebServiceListRoadTrip.getNearPlaces(latitude, longitude, distance, new Callback<ArrayList<Place>>() {
-            @Override
-            public void success(ArrayList<Place> places, Response response) {
-                mIServiceListRoad.showLoading(false);
-                mIServiceListRoad.gotToVisual();
-            }
-
-
-            @Override
-            public void failure(RetrofitError error) {
-                mIServiceListRoad.showLoading(false);
-                mIServiceListRoad.errorLoading(error.getMessage());
-            }
-        });
     }
 }

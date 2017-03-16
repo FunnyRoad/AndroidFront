@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.project.application.funnyroad.login.model.User;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class Variable extends Application {
 
     public HashMap<String,Boolean> mapTypes = new HashMap<String, Boolean>();
 
+    public User user;
+
     public Place placeDeparture;
     public Place placeArrival;
 
@@ -54,6 +57,15 @@ public class Variable extends Application {
     public GoogleMap gMap;
 
     //METHODS
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Place getPlaceDeparture() {
         return placeDeparture;

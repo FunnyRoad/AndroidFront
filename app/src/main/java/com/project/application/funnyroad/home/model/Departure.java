@@ -14,10 +14,10 @@ public class Departure implements Serializable {
     private String googleId;
     private RoadTrip roadtrip;
 
-    public Departure(double latitude, double longitude, String googleId) {
+    public Departure(String googleId, double latitude, double longitude) {
+        this.googleId = googleId;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.googleId = googleId;
     }
 
     public int getId() {

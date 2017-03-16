@@ -25,12 +25,11 @@ public class RoadTrip implements Serializable {
     public RoadTrip(String name , User owner, Departure begin, String destination, ArrayList<Integer> listPlace ,
                     ArrayList<Integer> guests ) {
         this.name = name;
+        this.owner = owner;
         this.departure = begin;
         this.arrival = destination;
-        this.name= name;
         this.places = listPlace;
         this.guests = guests;
-        this.owner = owner;
     }
 
 
