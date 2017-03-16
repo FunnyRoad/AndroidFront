@@ -46,9 +46,6 @@ public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAd
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    //Intent intent = new Intent(v.getContext(), RequestsActivity.class);
-                    //intent.putExtra("tripSelectedId",""+tripsList.get(position).getId_trip());
-                    //view.getContext().startActivity(intent);
                 }
             });
         }
@@ -73,7 +70,7 @@ public class DetailsEndroitAdapter extends RecyclerView.Adapter<DetailsEndroitAd
     public void onBindViewHolder(MyViewHolder holder, int position){
         int id = endroitList.get(position).getId();
         String type = endroitList.get(position).getType();
-        Picasso.with(ctx).load("http://vps376653.ovh.net:8080/picture/"+id +"."+type).resize(600, 200).into(holder.photo);
+        Picasso.with(ctx).load("http://vps376653.ovh.net:8080/picture/"+id +"."+type).resize(600, 300).into(holder.photo);
     }
 
     @Override

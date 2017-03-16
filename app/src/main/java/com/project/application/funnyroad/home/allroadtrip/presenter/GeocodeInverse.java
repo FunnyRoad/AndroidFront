@@ -47,7 +47,6 @@ public class GeocodeInverse {
             String url = "https://maps.googleapis.com/maps/api/geocode/xml?place_id="+ this.placeId + "&key=AIzaSyCS_TEWx2Np-booaLt0IrUS4e3ETAa3Pps";
             final InputStream stream = new URL(url).openStream();
 
-            Log.d("GeocodeInverse", "doInBackground: "+url);
             //Traitement des données
             final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             documentBuilderFactory.setIgnoringComments(true);
@@ -60,10 +59,8 @@ public class GeocodeInverse {
             //On récupère d'abord le status de la requête
             final String status = document.getElementsByTagName("status").item(0).getTextContent();
             if (!"OK".equals(status)) {
-                Log.d("TAG", "getNameOfPLace: document pas bon");
                 return placeName;
             }
-            Log.d("GeocodeInverse", "getNameOfPLace: recup doc success");
             final Element element = (Element) document.getElementsByTagName("formatted_address").item(0);
             placeName = element.getTextContent();
             return placeName;

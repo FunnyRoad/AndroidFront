@@ -15,7 +15,6 @@ public class AutoCompletePlace {
     public AutoCompletePlace( String id, String description) {
         this.id = id;
         this.description = description;
-        this.descriptionBegin = descriptionBegin;
     }
 
     public AutoCompletePlace( double latitude, double longitude ) {

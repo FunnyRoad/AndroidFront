@@ -77,7 +77,6 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
                 }
 
                 clear();
-                Log.d("autocomplete", "performFiltering: " + constraint.toString());
                 displayPredictiveResults(constraint.toString());
 
                 return null;
@@ -113,10 +112,8 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutoCompletePlace> {
                                                 }
                                                 // Selecting the first object buffer.
                                                 final Place place = places.get(0);
-                                                Log.d("AutoCompleteAdapter", "onResult: " + place.getLatLng().latitude +" " +place.getLatLng().longitude );
                                                 autoCompletePlace.setLatitude(place.getLatLng().latitude);
                                                 autoCompletePlace.setLongitude(place.getLatLng().longitude );
-                                                //add(new AutoCompletePlace(place.getLatLng().latitude, place.getLatLng().longitude));
                                             }
                                         });
                                     }

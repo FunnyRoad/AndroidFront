@@ -89,6 +89,29 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Choisir une photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/butChoosePhotoRoad"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Ajouter la photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonAddPhotoToRoad"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
     <Button
         android:text="Mettre à jour"
         android:layout_width="match_parent"
@@ -130,6 +153,12 @@
             android:weightSum="1"
             android:layout_marginRight="30dp"
             android:background="@color/colorPrimaryDark">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/recyclerViewPhotosRoad"
+                android:layout_height="250dp" />
 
             <TextView
                 android:text="Aucun endroit à afficher"

@@ -22,7 +22,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
- * Created by oraberkane on 02/02/2017.
+ * Created by oa on 02/02/2017.
  */
 
 
@@ -36,7 +36,6 @@ public class PresenterLogin {
 
 
     public PresenterLogin(IServiceLogin iLoginService) {
-        // mContext = context;
         mIServiceLogin = iLoginService;
     }
 

@@ -80,8 +80,6 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
         ButterKnife.bind(this, view );
 
-        Log.d("RoadSuggest", "onCreateView: ");
-
         presenterRoadTripSuggested = new PresenterRoadTripSuggested(this);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this.getActivity())
@@ -91,32 +89,17 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
                 .build();
 
         if (mGoogleApiClient.isConnected()){
-            Log.d("RoadTripSuggest", "onCreateView: dans le if");
             if (ContextCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this.getActivity(),
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSION_REQUEST_CODE);
             } else {
-                Log.d("RoadTripSuggest", "onCreateView: dans le else");
                 callPlaceDetectionApi();
             }
         }
         else{
-            Log.d("RoadTripSuggest", "onCreateView: dans le grand else");
             callPlaceDetectionApi();
         }
-
-        /*RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
-        RoadTrip roadTrip2 = new RoadTrip("lens" , "marseille" , "découvrir et s'amuser");
-        RoadTrip roadTrip3 = new RoadTrip("sochaux" , "montpellier" , "découvrir et s'amuser");
-        ArrayList<RoadTrip> listRoadTrip = new ArrayList<>();
-        listRoadTrip.add(roadTrip1);listRoadTrip.add(roadTrip2);listRoadTrip.add(roadTrip3);
-
-        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip);
-        recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_all_road_trip.setAdapter(mAdapter);
-        */
 
         return view;
     }
@@ -164,16 +147,12 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d("RoadTRIPSUGGEST", "Google Places API connection failed with error code: "
-                + connectionResult.getErrorCode());
-
         Toast.makeText(getActivity(), "Google Places API connection failed with error code:" + connectionResult.getErrorCode(),
                 Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        Log.d("RoadTripSuggest", "onCreateView: dans le onRequestPermission");
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -184,18 +163,19 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
     }
 
     private void callPlaceDetectionApi() throws SecurityException {
-        Log.d("RoadTripSuggest", "onCreateView: dans la fonction callPlaceDetection");
         mGoogleApiClient.connect();
         PendingResult<PlaceLikelihoodBuffer> result = Places.PlaceDetectionApi
                 .getCurrentPlace(mGoogleApiClient, null);
         result.setResultCallback(new ResultCallback<PlaceLikelihoodBuffer>() {
             @Override
             public void onResult(PlaceLikelihoodBuffer likelyPlaces) {
-                Log.d("RoadTripSuggest", "onResult: " +likelyPlaces.get(0).getPlace().getName() +" " + likelyPlaces.get(1).getPlace().getName() );
                 latitudeUser = likelyPlaces.get(0).getPlace().getLatLng().latitude;
                 longitudeUser = likelyPlaces.get(0).getPlace().getLatLng().longitude;
+                presenterRoadTripSuggested.getAllRoadsTripByCity(Utility.getIdUser(getActivity()),latitudeUser , longitudeUser , 250 );
+/*=======
                 Log.d("RoadTripSuggest", "onCreateView: " + latitudeUser +" " +longitudeUser );
                 presenterRoadTripSuggested.getAllRoadsTripByCity(Utility.getIdUser(getActivity()),latitudeUser , longitudeUser , 2 );
+>>>>>>> f1dae8a338d6347c73286e6493a38aedca7558ab*/
                 likelyPlaces.release();
             }
         });
@@ -214,7 +194,6 @@ public class RoadTripSuggestedFragment extends Fragment implements IServiceRoadT
     @Override
     public void onStart() {
         if( ! mGoogleApiClient.isConnected()){
-            Log.d("AllRoadTripFragment", "onStart: googleapi pas connecté");
             mGoogleApiClient.connect();
         }
         super.onStart();

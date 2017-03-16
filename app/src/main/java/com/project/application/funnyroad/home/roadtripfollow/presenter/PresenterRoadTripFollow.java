@@ -65,7 +65,6 @@ public class PresenterRoadTripFollow {
             public void success(Object o, Response response) {
                 mIServiceFollowRoadTrip.showLoading(false);
                 getFollowedRoadTrip(userId);
-                //Toast.makeText(activity, " le roadtrip numéro: "+ roadTripId+" a bien été supprimé", Toast.LENGTH_SHORT).show();
             }
 
             @Override

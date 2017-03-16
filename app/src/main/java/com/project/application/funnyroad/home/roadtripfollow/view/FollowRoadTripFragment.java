@@ -52,7 +52,6 @@ public class FollowRoadTripFragment extends Fragment implements IServiceFollowRo
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
 
-        Log.d("FollowRoad", "onCreateView: ");
         View view = inflater.inflate(R.layout.all_road_trip_follow_fragment,container,false);
 
         ButterKnife.bind(this , view);
@@ -127,7 +126,6 @@ public class FollowRoadTripFragment extends Fragment implements IServiceFollowRo
     @Override
     public void onStart() {
         if( ! mGoogleApiClient.isConnected()){
-            Log.d("AllRoadTripFragment", "onStart: googleapi pas connecté");
             mGoogleApiClient.connect();
         }
         super.onStart();

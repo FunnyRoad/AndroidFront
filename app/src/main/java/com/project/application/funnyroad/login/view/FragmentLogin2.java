@@ -54,7 +54,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by you on 27/02/2017.
+ * Created by oa on 27/02/2017.
  */
 
 public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnectionFailedListener, IServiceLogin{
@@ -160,11 +160,9 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            Log.e(TAG, "display name: " + acct.getDisplayName());
             String personName = acct.getDisplayName();
             String lastName = acct.getFamilyName();
             String email = acct.getEmail();
@@ -177,9 +175,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             if(acct.getPhotoUrl() != null)
                 personPhotoUrl = acct.getPhotoUrl().toString();
 
-            Log.e(TAG, "Name: " + personName + ", email: " + email
-                    + ", Image: " + personPhotoUrl);
-
             txtName.setText(personName);
             txtEmail.setText(email);
             Glide.with(getContext()).load(personPhotoUrl)
@@ -188,7 +183,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imgProfilePic);
 
-            Log.d(TAG, "handleSignInResult: email exemple " + email);
             Utility.storeInformationUser(getActivity() , "pictureGmail" , personPhotoUrl );
             Utility.storeInformationUser(getActivity(),"firebaseId" , firebaseId);
             Utility.storeInformationUser(getActivity(), "email" , email);
@@ -199,9 +193,11 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
             // on sauvegarde firebaseId DANS L'APPLICATION
             Utility.storeFirebaseId(getActivity(), firebaseId);
             user = new User(email, firebaseId, personName, lastName, userName, null, "");
+
             variable.setUser(user);
 
             Log.d(TAG, "handleSignInResult: recup: "+Utility.getInformationUser(getActivity() ,"firebaseId" ));
+
             presenterLogin.getUsers();
         }
         else {
@@ -228,7 +224,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
         if (opr.isDone()) {
             // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
             // and the GoogleSignInResult will be available instantly.
-            Log.d(TAG, "Got cached sign-in");
             GoogleSignInResult result = opr.get();
             handleSignInResult(result);
         } else {
@@ -250,7 +245,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(connectionResult.getErrorMessage());
         builder.setCancelable(true);
@@ -283,26 +277,14 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     private void updateUI(boolean isSignedIn) {
         if (isSignedIn) {
             btnSignIn.setVisibility(View.GONE);
-            btnSignOut.setVisibility(View.VISIBLE);
-            btnRevokeAccess.setVisibility(View.VISIBLE);
-            llProfileLayout.setVisibility(View.VISIBLE);
         } else {
             btnSignIn.setVisibility(View.VISIBLE);
-            btnSignOut.setVisibility(View.GONE);
-            btnRevokeAccess.setVisibility(View.GONE);
-            llProfileLayout.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void isLoginSuccess(int userId) {
         Utility.storeIdUser(getActivity(),userId);
-        Log.d(TAG, "isLoginSuccess: id login: " + userId);
-        /*SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt("idUser", userId );
-        editor.commit();
-        */
         Intent intent = new Intent(getActivity() , ActivityHome2.class);
         startActivity(intent);
     }
@@ -325,7 +307,6 @@ public class FragmentLogin2 extends Fragment implements GoogleApiClient.OnConnec
     @Override
     public void createRoadTrip() {
         Toast.makeText(getContext(), "road trip créer avec succes", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "createRoadTrip: roadtrip creer avec success");
     }
 
     @Override

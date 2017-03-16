@@ -52,7 +52,6 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
 
         View view = inflater.inflate(R.layout.all_road_trip_fragment,container,false);
 
-        Log.d("ALLroadtrip", "onCreateView: ");
         ButterKnife.bind(this, view );
 
         presenterAllRoadTrip = new PresenterAllRoadTrip(this);
@@ -62,19 +61,6 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
                 .addApi(Places.GEO_DATA_API)
                 .addConnectionCallbacks(this)
                 .build();
-
-        /*RoadTrip roadTrip1 = new RoadTrip("lille" , "lyon" , "découvrir et s'amuser");
-        RoadTrip roadTrip2 = new RoadTrip("lens" , "marseille" , "découvrir et s'amuser");
-        RoadTrip roadTrip3 = new RoadTrip("sochaux" , "montpellier" , "découvrir et s'amuser");
-        ArrayList<RoadTrip> listRoadTrip = new ArrayList<>();
-        listRoadTrip.add(roadTrip1);listRoadTrip.add(roadTrip2);listRoadTrip.add(roadTrip3);
-
-        AllRoadTripAdapter mAdapter = new AllRoadTripAdapter(listRoadTrip);
-        recycler_view_all_road_trip.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recycler_view_all_road_trip.setItemAnimator(new DefaultItemAnimator());
-        recycler_view_all_road_trip.setAdapter(mAdapter);
-        */
-
         return view;
     }
 
@@ -120,15 +106,10 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
 
     @Override
     public void onConnected(Bundle bundle) {
-        Log.d("AllRoadTripFragment", "Google Places API connected.");
-
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d("AllRoadTripFragment", "Google Places API connection failed with error code: "
-                + connectionResult.getErrorCode());
-
         Toast.makeText(this.getContext(), "Google Places API connection failed with error code:" +
                         connectionResult.getErrorCode(),
                 Toast.LENGTH_LONG).show();
@@ -136,13 +117,11 @@ public class AllRoadTripFragment extends Fragment implements IServiceAllRoadTrip
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.d("AllRoadTripFragment", "Google Places API connection suspended.");
     }
 
     @Override
     public void onStart() {
         if( ! mGoogleApiClient.isConnected()){
-            Log.d("AllRoadTripFragment", "onStart: googleapi pas connecté");
             mGoogleApiClient.connect();
         }
         super.onStart();

@@ -113,15 +113,12 @@ public class FollowRoadTripAdapter extends RecyclerView.Adapter<FollowRoadTripAd
                 @Override
                 public void onResult(PlaceBuffer places) {
                     if (!places.getStatus().isSuccess()) {
-                        Log.d("allRoadTripAdapter", "Place query did not complete. Error: " +
-                                places.getStatus().toString());
                         return;
                     }
                     // Selecting the first object buffer.
                     final Place place = places.get(0);
                     namePlace = place.getName().toString();
                     holder.textViewDestination.setText(namePlace);
-                    //Log.d("allRoadTripAdapter", "onResult: " + place.getId() + " "+ namePlace);
                 }
             });
         }
