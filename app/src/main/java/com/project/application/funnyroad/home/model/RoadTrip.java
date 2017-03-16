@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by you on 18/02/2017.
+ * Created by oa on 18/02/2017.
  */
 
 public class RoadTrip implements Serializable {

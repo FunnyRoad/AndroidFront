@@ -1,6 +1,7 @@
 package com.project.application.funnyroad.newroadtrip.listroadtrip.view.service;
 
 import com.project.application.funnyroad.home.model.RoadTrip;
+import com.project.application.funnyroad.newroadtrip.model.RoadTripSent;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public interface IWebServiceListRoadTrip {
      */
 
     @POST("/roadtrip")
-    public void createRoadTrip(@Body RoadTrip roadTrip, Callback<RoadTrip> callback);
+    public void createRoadTrip(@Body RoadTripSent roadTrip, Callback<RoadTrip> callback);
 
     /**
      * renvoie la liste des places proches d'un point sur l'itinéraire

@@ -1,5 +1,6 @@
 package com.project.application.funnyroad.newroadtrip.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,13 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.project.application.funnyroad.R;
+import com.project.application.funnyroad.common.Utility;
 import com.project.application.funnyroad.home.model.Departure;
 import com.project.application.funnyroad.home.model.RoadTrip;
+import com.project.application.funnyroad.home.view.ActivityHome2;
 import com.project.application.funnyroad.newroadtrip.Variable;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.ListPlacesAdapter;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.presenter.PresenterListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.utils.CustomPlace;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.IServiceListRoad;
+import com.project.application.funnyroad.newroadtrip.model.RoadTripSent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +54,7 @@ public class FragmentCreateNewRoadTrip extends Fragment implements IServiceListR
 
     private List<Integer> listIdPlacesChosen;
 
-    private RoadTrip roadTrip;
+    private RoadTripSent roadTrip;
 
     private Variable variables;
 
@@ -85,15 +89,13 @@ public class FragmentCreateNewRoadTrip extends Fragment implements IServiceListR
 
     @OnClick(R.id.addRT)
     public void createRoadTrip() {
-
-        roadTrip = new RoadTrip(editTextRTTitle.getText().toString(),
-                variables.getUser(),
+        roadTrip = new RoadTripSent(editTextRTTitle.getText().toString(),
+                Utility.getIdUser(getActivity()),
                 new Departure(variables.getPlaceDeparture().getId(),variables.getPlaceDeparture().getLatLng().latitude,variables.getPlaceDeparture().getLatLng().longitude),
-                variables.getPlaceArrival().getName().toString(),
+                variables.getPlaceArrival().getId(),
                 new ArrayList<Integer>(),
                 new ArrayList<Integer>()
         );
-
         presenterListRoadTrip.createRoadTrip(roadTrip);
     }
 
@@ -104,7 +106,8 @@ public class FragmentCreateNewRoadTrip extends Fragment implements IServiceListR
 
     @Override
     public void createRoadTrip(RoadTrip roadTrip) {
-
+        Intent intent = new Intent(getContext() , ActivityHome2.class);
+        getActivity().startActivity(intent);
     }
 
     @Override

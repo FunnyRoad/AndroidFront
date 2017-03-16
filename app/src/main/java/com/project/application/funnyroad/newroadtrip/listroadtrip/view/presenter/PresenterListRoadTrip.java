@@ -4,6 +4,7 @@ import com.project.application.funnyroad.common.ConnexionWebService;
 import com.project.application.funnyroad.home.model.RoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.service.IWebServiceListRoadTrip;
 import com.project.application.funnyroad.newroadtrip.listroadtrip.view.view.IServiceListRoad;
+import com.project.application.funnyroad.newroadtrip.model.RoadTripSent;
 import com.project.application.funnyroad.newroadtrip.visualroadtrip.model.Place;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class PresenterListRoadTrip {
         mIServiceListRoad = iServiceListRoad;
     }
 
-    public void createRoadTrip(RoadTrip roadTrip)
+    public void createRoadTrip(RoadTripSent roadTrip)
     {
         mIServiceListRoad.showLoading(true);
         iWebServiceListRoadTrip.createRoadTrip(roadTrip, new Callback<RoadTrip>() {

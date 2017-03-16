@@ -83,6 +83,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1002170437465-aejpdg11kl4ku9fs2eu6ene27nqiu3mj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.application.funnyroad",
+            "certificate_hash": "44e53727fa3cfef701ee20de60afbfd302197a96"
+          }
+        },
+        {
+          "client_id": "1002170437465-n1at1o48gij60uon8kgnv6egh03mqaoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.application.funnyroad",
+            "certificate_hash": "54cdccf52b7b7d37332a48118fc989d8555ccd9c"
+          }
+        },
+        {
           "client_id": "1002170437465-3tv1u7j1nkf8pmk1v0dq4gc711qm7l1f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
